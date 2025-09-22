@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+/* dark mode syntax */
+  @custom-variant dark (&:where(.dark, .dark *));
+
+@layer components {
+  .btn-primary {
+    @apply bg-blue-500 rounded-lg text-base leading-4 text-white py-4 px-6 inline-flex items-center justify-center gap-2 font-semibold cursor-pointer hover:bg-black transition-all;
+  }
+
+  .form-control {
+    @apply w-full py-3 bg-white border border-gray-300 pl-4 pr-14 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-blue-500;
+  }
+
+  /* Tailwind classes diye reusable component */
+  .search-btn {
+    @apply cursor-pointer h-10 w-11 rounded-lg bg-blue-500 text-white grid place-items-center hover:bg-black transition-all focus:outline-none;
+  }
+  .offcanvas-toggle{
+    @apply w-12 h-12 flex items-center justify-center text-xl rounded-lg bg-white text-gray-900 hover:bg-gray-900 hover:text-white transition-all cursor-pointer;
+  }
+}
+
+@layer utilities {
+
+  .btn-primary.btn-white {
+    background-color: var(--color-white);
+    color: var(--color-gray-900);
+  }
+
+  .btn-primary.btn-white:hover {
+    background-color: var(--color-gray-900);
+    color: var(--color-white);
+  }
+
+  .btn-primary.btn-black {
+    background-color: var(--color-black);
+    color: var(--color-white);
+  }
+
+  .btn-primary.btn-black:hover {
+    background-color: var(--color-blue-500);
+    color: var(--color-white);
+  }
+}

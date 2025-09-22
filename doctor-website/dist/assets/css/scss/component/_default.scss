@@ -1,0 +1,36 @@
+/* ======= basic style start ========*/
+
+html,
+body {
+    overflow-x: hidden;
+    font-family: var(--font-sans);
+}
+
+.scrollbar-none {
+    scrollbar-width: none;
+}
+
+.full {
+    border-radius: 9999px !important;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    /* scrollbar width */
+}
+
+::-webkit-scrollbar-track {
+    background: color-mix(in srgb, var(--color-blue-500) 20%, transparent);
+    /* track transparent */
+}
+
+::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--color-blue-500) 60%, transparent);
+    border-radius: 8px;
+}
+
+/* Firefox modern scrollbar */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-blue-500) #f1f1f1;
+}
