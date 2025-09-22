@@ -41,6 +41,28 @@ class RoleSeeder extends Seeder
             'user_delete',
             'permission_update',
 
+            'faq_read',
+            'faq_create',
+            'faq_update',
+            'faq_delete',
+
+            'social_link_read',
+            'social_link_create',
+            'social_link_update',
+            'social_link_delete',
+            'social_link_status_update',
+
+            'testimonial_read',
+            'testimonial_create',
+            'testimonial_update',
+            'testimonial_delete',
+
+            'blog_read',
+            'blog_create',
+            'blog_update',
+            'blog_delete',
+
+
             'profile_read',
             'profile_update',
             'email_update',

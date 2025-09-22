@@ -8,6 +8,10 @@ use Database\Seeders\RoleSeeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\UploadSeeder;
 use Database\Seeders\PermissionSeeder;
+use Modules\Blog\Database\Seeders\BlogSeeder;
+use Modules\Faq\Database\Seeders\FaqTableSeeder;
+use Modules\Testimonial\Database\Seeders\TestimonialTableSeeder;
+use Modules\SocialLink\Database\Seeders\SocialLinkDatabaseSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -29,5 +33,11 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call(TodoSeeder::class);
+        // module seeder
+        $this->call(BlogSeeder::class);
+       $this->call(SocialLinkDatabaseSeeder::class);
+       $this->call(TestimonialTableSeeder::class);
+        $this->call(FaqTableSeeder::class);
+
     }
 }

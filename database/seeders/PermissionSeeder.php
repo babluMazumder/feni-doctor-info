@@ -39,6 +39,33 @@ class PermissionSeeder extends Seeder
             'database_backup'   => ['read' => 'database_backup_read'],
 
             'route'             => ['read' => 'route_read', 'search' => 'route_search',],
+            'faq'   => [
+                'read'              => 'faq_read',
+                'create'            => 'faq_create',
+                'update'            => 'faq_update',
+                'delete'            => 'faq_delete'
+            ],
+
+            'social_link' => [
+                'read'              => 'social_link_read',
+                'create'            => 'social_link_create',
+                'update'            => 'social_link_update',
+                'delete'            => 'social_link_delete',
+                'status'            => 'social_link_status_update',
+            ],
+
+            'testimonial'   => [
+                'read'              => 'testimonial_read',
+                'create'            => 'testimonial_create',
+                'update'            => 'testimonial_update',
+                'delete'            => 'testimonial_delete'
+            ],
+            'blog'  => [
+                'read'              => 'blog_read',
+                'create'            => 'blog_create',
+                'update'            => 'blog_update',
+                'delete'            => 'blog_delete'
+            ],
 
 
 

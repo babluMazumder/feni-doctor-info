@@ -34,6 +34,7 @@ class SettingSeeder extends Seeder
             ['key' => 'name',                   'value' => 'Parcel Fly'],
             ['key' => 'phone',                  'value' => '+8802999888'],
             ['key' => 'email',                  'value' => 'info@parcelfly.com'],
+            ['key' => 'paginate_value',                  'value' => '10'],
             ['key' => 'copyright',              'value' => 'All rights reserved. Development by Parcel Fly Developers.'],
 
             ['key' => 'light_logo',               'value' => $this->uploadRepo->uploadSeederByPath("backend/assets/img/logo/starter_kit_title_logo.png")],

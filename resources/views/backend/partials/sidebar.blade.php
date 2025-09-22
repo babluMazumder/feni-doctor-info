@@ -14,6 +14,30 @@
                 </ul>
             </li>
 
+
+             <li>
+                <a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="icon-wrench"></i><span class="nav-text">{{ ___('menus.website_setup') }}</span></a>
+                <ul aria-expanded="false">
+
+                    @if (hasPermission('blog_read'))
+                        <li> <a href="{{ route('blog.index') }}">{{ ___('label.blogs') }}</a> </li>
+                        @endif
+                        @if (hasPermission('testimonial_read'))
+                        <li> <a href="{{ route('testimonial.index') }}" >{{ ___('label.testimonial') }}</a> </li>
+                        @endif
+
+                        @if (hasPermission('social_link_read'))
+                        <li> <a href="{{ route('socialLink.index') }}"> {{ ___('label.social_link') }} </a> </li>
+                        @endif
+
+                        @if (hasPermission('faq_read'))
+                        <li> <a href="{{ route('faq.index') }}" >{{ ___('label.faqs') }}</a> </li>
+                        @endif
+
+                </ul>
+            </li>
+
+
             @if(hasPermission('todo_read'))
             <li> <a href="{{ route('todo.index') }}" aria-expanded="true"> <i class="icon-notebook"></i> <span class="nav-text">{{___('menus.todo_list')}}</span> </a> </li>
             @endif
