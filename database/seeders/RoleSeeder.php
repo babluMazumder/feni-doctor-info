@@ -62,6 +62,21 @@ class RoleSeeder extends Seeder
             'blog_update',
             'blog_delete',
 
+            'hospital_read',
+            'hospital_create',
+            'hospital_update',
+            'hospital_delete',
+
+            'bloodbank_read',
+            'bloodbank_create',
+            'bloodbank_update',
+            'bloodbank_delete',
+
+            'blooddonor_read',
+            'blooddonor_create',
+            'blooddonor_update',
+            'blooddonor_delete',
+
 
             'profile_read',
             'profile_update',

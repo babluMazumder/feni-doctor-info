@@ -11,7 +11,7 @@ Route::middleware(['XSS', 'auth'])->group(function () {
     Route::get('admin/user/create',                     [UserController::class, 'create'])->name('user.create')->middleware('hasPermission:user_create');
     Route::post('admin/user/store',                     [UserController::class, 'store'])->name('user.store')->middleware('hasPermission:user_create');
     Route::get('admin/user/edit/{id}',                  [UserController::class, 'edit'])->name('user.edit')->middleware('hasPermission:user_update');
-    Route::put('admin/user/update',                     [UserController::class, 'update'])->name('user.update')->middleware('hasPermission:user_update');
+    Route::put('admin/user/update',                     [UserController::class, 'update'])->name('user.update')->middleware('hasPermission:user_update'); 
     Route::delete('admin/user/delete/{id}',             [UserController::class, 'delete'])->name('user.delete')->middleware('hasPermission:user_delete');
 
     // permissions

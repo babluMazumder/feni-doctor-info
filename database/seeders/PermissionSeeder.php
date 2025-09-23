@@ -66,6 +66,24 @@ class PermissionSeeder extends Seeder
                 'update'            => 'blog_update',
                 'delete'            => 'blog_delete'
             ],
+            'hospital'  => [
+                'read'              => 'hospital_read',
+                'create'            => 'hospital_create',
+                'update'            => 'hospital_update',
+                'delete'            => 'hospital_delete'
+            ],
+            'bloodbank' => [
+                'read'              => 'bloodbank_read',
+                'create'            => 'bloodbank_create',
+                'update'            => 'bloodbank_update',
+                'delete'            => 'bloodbank_delete'
+            ],
+            'blooddonor' => [
+                'read'              => 'blooddonor_read',
+                'create'            => 'blooddonor_create',
+                'update'            => 'blooddonor_update',
+                'delete'            => 'blooddonor_delete'
+            ],
 
 
 

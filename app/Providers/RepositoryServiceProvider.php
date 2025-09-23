@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Interfaces\AuthInterface;
+use App\Models\Backend\BloodDonor;
 use App\Repositories\AuthRepository;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\Role\RoleInterface;
@@ -13,10 +14,16 @@ use App\Repositories\Todo\TodoRepository;
 use App\Repositories\User\UserRepository;
 use App\Repositories\Upload\UploadInterface;
 use App\Repositories\Upload\UploadRepository;
+use App\Repositories\Hospital\HospitalInterface;
 use App\Repositories\Language\LanguageInterface;
 use App\Repositories\Settings\SettingsInterface;
+use App\Repositories\Hospital\HospitalRepository;
 use App\Repositories\Language\LanguageRepository;
 use App\Repositories\Settings\SettingsRepository;
+use App\Repositories\BloodBank\BloodBankInterface;
+use App\Repositories\BloodBank\BloodBankRepository;
+use App\Repositories\BloodDonor\BloodDonorInterface;
+use App\Repositories\BloodDonor\BloodDonorRepository;
 use App\Repositories\LoginActivity\LoginActivityInterface;
 use App\Repositories\LoginActivity\LoginActivityRepository;
 
@@ -44,6 +51,9 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(RoleInterface::class,                  RoleRepository::class);
 
         $this->app->bind(TodoInterface::class,                  TodoRepository::class);
+        $this->app->bind(HospitalInterface::class,                  HospitalRepository::class);
+        $this->app->bind(BloodBankInterface::class,                  BloodBankRepository::class);
+        $this->app->bind(BloodDonorInterface::class,                  BloodDonorRepository::class);
     }
 
     /**

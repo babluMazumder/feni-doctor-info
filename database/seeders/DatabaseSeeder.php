@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Database\Seeders\RoleSeeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\UploadSeeder;
+use Database\Seeders\BloodBankSeeder;
 use Database\Seeders\PermissionSeeder;
 use Modules\Blog\Database\Seeders\BlogSeeder;
 use Modules\Faq\Database\Seeders\FaqTableSeeder;
@@ -38,6 +39,9 @@ class DatabaseSeeder extends Seeder
        $this->call(SocialLinkDatabaseSeeder::class);
        $this->call(TestimonialTableSeeder::class);
         $this->call(FaqTableSeeder::class);
+        $this->call(HospitalSeeder::class);
+        $this->call(BloodBankSeeder::class);
+
 
     }
 }

@@ -182,5 +182,6 @@
     "total_user": "Total User",
     "phrase": "Phrase",
     "login_activity_read": "Login Activity Read",
-    "edit_user": "Edit User"
+    "edit_user": "Edit User",
+    "available_groups": "Available Groups"
 }

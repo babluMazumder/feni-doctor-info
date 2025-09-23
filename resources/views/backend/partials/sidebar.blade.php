@@ -36,6 +36,27 @@
 
                 </ul>
             </li>
+             <li>
+                <a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="icon-wrench"></i><span class="nav-text">{{ ___('menus.Hospital_info') }}</span></a>
+                <ul aria-expanded="false">
+
+                        @if (hasPermission('hospital_read'))
+                        <li> <a href="{{ route('hospital.index') }}">{{ ___('label.hospitals') }}</a> </li>
+                        @endif
+                        @if (hasPermission('bloodbank_read'))
+                        <li> <a href="{{ route('bloodbank.index') }}" >{{ ___('label.blood_bank') }}</a> </li>
+                        @endif
+
+                        @if (hasPermission('blooddonor_read'))
+                        <li> <a href="{{ route('blooddonor.index') }}"> {{ ___('label.blood_donor') }} </a> </li>
+                        @endif
+
+                        {{-- @if (hasPermission('faq_read'))
+                        <li> <a href="{{ route('faq.index') }}" >{{ ___('label.faqs') }}</a> </li>
+                        @endif --}}
+
+                </ul>
+            </li>
 
 
             @if(hasPermission('todo_read'))

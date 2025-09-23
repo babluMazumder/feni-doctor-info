@@ -5,8 +5,11 @@ use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Backend\TodoController;
 use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\HospitalController;
 use App\Http\Controllers\Backend\LanguageController;
+use App\Http\Controllers\Backend\BloodBankController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\BloodDonorController;
 use App\Http\Controllers\Backend\ActivityLogController;
 use App\Http\Controllers\Backend\LoginActivityController;
 
@@ -69,4 +72,33 @@ Route::middleware('auth')->group(function () {
     // Search
     Route::get('search', [SearchController::class, 'search'])->name('search')->middleware('hasPermission:route_search');
     Route::post('search/routes', [SearchController::class, 'searchRoute'])->name('search.route')->middleware('hasPermission:route_search');
+
+
+    //Hospital
+    Route::get('hospital/index', [HospitalController::class, 'index'])->name('hospital.index')->middleware('hasPermission:hospital_read');
+    Route::get('hospital/create', [HospitalController::class, 'create'])->name('hospital.create')->middleware('hasPermission:hospital_create');
+    Route::post('hospital/store', [HospitalController::class, 'store'])->name('hospital.store')->middleware('hasPermission:hospital_create');
+    Route::get('hospital/edit/{id}', [HospitalController::class, 'edit'])->name('hospital.edit')->middleware('hasPermission:hospital_update');
+    Route::put('hospital/update/{id}', [HospitalController::class, 'update'])->name('hospital.update')->middleware('hasPermission:hospital_update');
+    Route::delete('hospital/delete/{id}', [HospitalController::class, 'delete'])->name('hospital.delete')->middleware('hasPermission:hospital_delete');
+
+    //blood bank
+    Route::get('bloodbank/index', [BloodBankController::class, 'index'])->name('bloodbank.index')->middleware('hasPermission:bloodbank_read');
+    Route::get('bloodbank/create', [BloodBankController::class, 'create'])->name('bloodbank.create')->middleware('hasPermission:bloodbank_create');
+    Route::post('bloodbank/store', [BloodBankController::class, 'store'])->name('bloodbank.store')->middleware('hasPermission:bloodbank_create');
+    Route::get('bloodbank/edit/{id}', [BloodBankController::class, 'edit'])->name('bloodbank.edit')->middleware('hasPermission:bloodbank_update');
+    Route::put('bloodbank/update/{id}', [BloodBankController::class, 'update'])->name('bloodbank.update')->middleware('hasPermission:bloodbank_update');
+    Route::delete('bloodbank/delete/{id}', [BloodBankController::class, 'delete'])->name('bloodbank.delete')->middleware('hasPermission:bloodbank_delete');
+    //blood donor
+    Route::get('blooddonor/index', [BloodDonorController::class, 'index'])->name('blooddonor.index')->middleware('hasPermission:blooddonor_read');
+    Route::get('blooddonor/create', [BloodDonorController::class, 'create'])->name('blooddonor.create')->middleware('hasPermission:blooddonor_create');
+    Route::post('blooddonor/store', [BloodDonorController::class, 'store'])->name('blooddonor.store')->middleware('hasPermission:blooddonor_create');
+    Route::get('blooddonor/edit/{id}', [BloodDonorController::class, 'edit'])->name('blooddonor.edit')->middleware('hasPermission:blooddonor_update');
+    Route::put('blooddonor/update/{id}', [BloodDonorController::class, 'update'])->name('blooddonor.update')->middleware('hasPermission:blooddonor_update');
+    Route::delete('blooddonor/delete/{id}', [BloodDonorController::class, 'delete'])->name('blooddonor.delete')->middleware('hasPermission:blooddonor_delete');
+
+
+
+
+
 });
