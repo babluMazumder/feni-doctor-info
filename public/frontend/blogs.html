@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/flag-icons/css/flag-icons.min.css" />
+    <link href="./assets/vendor/swiper-bundle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/font/style.css">
+    <link href="./tailwind.css" rel="stylesheet">
+    <link href="./assets/css/scss/style.css" rel="stylesheet">
+    <title>Doctor - Website</title>
+</head>
+
+<body>
+
+    <!-------- scroll top btn--------->
+
+    <a class="scroll-button" href="#"><i class="ph-bold ph-arrow-up"></i></a>
+
+    <div class="bg-white py-5 w-full text-gray-500 hidden lg:block">
+        <div class="max-w-[1224px] mx-auto flex justify-between gap-30 px-4 lg:px-3">
+
+            <div class="flex justify-between items-center gap-30 flex-1">
+                <!-- Logo -->
+                <a href="./index.html" class="shrink-0 flex justify-center lg:justify-start">
+                    <img src="./assets/img/logo-light-2.png" alt="Logo" class="max-h-[50px]">
+                </a>
+
+                <!-- Search Bar -->
+                <form action="#" class="relative w-full order-3 lg:order-none">
+                    <input type="search" name="q" placeholder="Search doctors, services…"
+                        class="form-control rounded-lg">
+                    <button type="submit" aria-label="Search" class="search-btn absolute inset-y-[5px] right-1.5">
+                        <i class="ph-light ph-magnifying-glass text-xl"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Contact & Hours -->
+            <div class="flex justify-between gap-8 top-right">
+
+                <!-- Contact -->
+                <div class="flex items-center gap-3">
+                    <i class="ph-light ph-headset text-5xl text-blue-500"></i>
+                    <div>
+                        <span class="block">Contact Us</span>
+                        <a href="tel:+1636543569"
+                            class="text-gray-950 font-semibold text-lg hover:text-blue-500 transition">
+                            +163-654-3569
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hours -->
+                <div class="flex items-center gap-3">
+                    <i class="ph-light ph-clock text-5xl text-blue-500"></i>
+                    <div>
+                        <span class="block">Monday - Friday</span>
+                        <span class="text-gray-950 font-semibold text-lg">24/7 Hours Open</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- header section Start -->
+
+    <header
+        class="headerSticky bg-white lg:bg-blue-500 relative z-[2] py-3 lg:py-0 border-b border-gray-200 lg:border-0">
+        <div class="container max-w-[1224px] mx-auto px-4 lg:px-0">
+            <div class="text-white hover:text-green-500 flex justify-between gap-3 items-center">
+                <!-- Logo -->
+                <a href="./index.html" class="shrink-0 flex justify-center lg:justify-start lg:hidden">
+                    <img src="./assets/img/logo-light-2.png" alt="Logo" class="max-h-[35px] md:max-h-[40px]">
+                </a>
+                <ul class="menu hidden lg:flex items-center gap-8 text-base font-medium uppercase">
+                    <li class="has-submenu">
+                        <a href="./index.html" class="py-6 text-white hover:text-green-400 transition duration-300 flex gap-2 items-center">Home</a>
+                    </li>
+                    <li><a href="./category.html" class="py-6 text-white hover:text-green-400 transition duration-300 block">Category</a></li>
+                    <li><a href="./doctors.html" class="py-6 text-white hover:text-green-400 transition duration-300 block">Doctors</a></li>
+                    <li class="has-submenu">
+                        <a href="#" class="py-6 text-white hover:text-green-400 transition duration-300 flex gap-2 items-center">Pages <i class="ph-bold ph-caret-down"></i></a>
+                        <ul class="submenu shadow-lg capitalize">
+                            <li><a href="./about.html" class="py-6 text-white hover:text-green-400 transition duration-300 block">About Us</a></li>
+                            <li><a href="./terms-condition.html">Terms & Condition</a></li>
+                            <li><a href="./privacy-policy.html">Privacy Policy</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="./blogs.html" class="py-6 text-white hover:text-green-400 transition duration-300 block">Blog</a></li>
+                    <li><a href="./contact.html" class="py-6 text-white hover:text-green-400 transition duration-300 block">Contact</a></li>
+                </ul>
+
+                <div class="flex gap-6 items-center">
+                    <ul class="menu hidden lg:flex items-center gap-8 text-base font-medium uppercase">
+                        <li class="has-submenu">
+                            <a href="#" class="py-6 text-white hover:text-green-400 transition duration-300 flex gap-2 items-center"><span class="fi fi-gb"></span> English <i
+                                    class="ph-bold ph-caret-down"></i></a>
+                            <ul class="submenu shadow-lg capitalize">
+                                <li><a href="#" class="flex-row-reverse"><span class="fi fi-gb"></span>
+                                        English</a></li>
+                                <li><a href="#" class="flex-row-reverse"><span class="fi fi-bd"></span>
+                                        Bangla</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="hidden lg:block">
+                        <a href="#" class="btn-primary rounded-lg btn-white"> Appointment Now <i
+                                class="ph-bold ph-arrow-up-right"></i></a>
+                    </div>
+                    <div class="offcanvas-toggle ">
+                        <i class="ph-bold ph-list"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- header section Ends -->
+
+
+    <!-- header offcanvas start -->
+    <div
+        class="overlay bg-black/80 cursor-pointer fixed inset-0 pointer-events-none transition-all duration-300 w-full h-full transform translate-x-full z-[999]">
+    </div>
+
+    <div
+        class="offcanvas w-full sm:w-[400px] fixed right-0 top-0 z-[9999] p-4 lg:p-8 bg-white shadow-lg transform translate-x-full transition-transform duration-300">
+        <!-- Overlay -->
+
+        <div class="offcanvas-header flex items-center justify-between mb-10">
+            <!-- Logo -->
+            <a href="./index.html" class="shrink-0">
+                <img src="./assets/img/logo-light-2.png" alt="Logo" class="max-h-[42px]">
+            </a>
+            <button
+                class="close-btn border-0 bg-blue-500 text-white w-10 h-10 rounded-full flex items-center justify-center text-sm cursor-pointer hover:bg-green-500"
+                type="button"> <i class="ph ph-x"></i></button>
+        </div>
+        <div class="offcanvas-body overflow-y-auto scrollbar-none text-gray-500">
+            <p class="mb-8 hidden lg:block text-base font-normal leading-6">Lorem ipsum dolor sit amet consectetur
+                adipisicing elit.
+                Dolor iure, veniam eius omnis ducimus nam?</p>
+            <ul
+                class="menu flex lg:hidden flex-col items-start gap-0 text-sm font-medium uppercase text-gray-900 mb-10">
+                <!-- Home -->
+                <li class="has-dropdown w-full">
+                    <a href="./index.html"
+                        class="py-4 flex justify-between gap-2 items-center border-b border-gray-200">
+                        Home
+                    </a>
+                </li>
+
+                <!-- About Us -->
+                <li class="w-full"><a href="./category.html"
+                        class="py-4 flex justify-between border-b border-gray-200">Category</a>
+                </li>
+
+                <!-- Service -->
+                <li class="w-full"><a href="./doctors.html"
+                        class="py-4 flex justify-between border-b border-gray-200">Doctors</a>
+                </li>
+
+                <!-- Pages -->
+                <li class="has-dropdown w-full">
+                    <a href="#" class="py-4 flex justify-between gap-2 items-center border-b border-gray-200">
+                        Pages
+                        <button
+                            class="toggle-btn w-6 h-6 text-sm rounded-full flex items-center justify-center bg-gray-200 cursor-pointer">
+                            <i class="ph ph-plus"></i>
+                        </button>
+                    </a>
+                    <ul class="px-4 submenu uppercase overflow-hidden max-h-0 transition-all duration-300">
+                        <li><a href="./about.html" class="py-4 flex justify-between border-b border-gray-200">About
+                                Us</a>
+                        </li>
+                        <li><a href="./terms-condition.html"
+                                class="py-4 flex justify-between border-b border-gray-200">Terms & Condition</a>
+                        </li>
+                        <li><a href="./privacy-policy.html"
+                                class="py-4 flex justify-between border-b border-gray-200">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="w-full"><a href="./blogs.html"
+                        class="py-4 flex justify-between border-b border-gray-200">Blog</a></li>
+                <li class="w-full"><a href="./contact.html"
+                        class="py-4 flex justify-between border-b border-gray-200">Contact</a>
+                </li>
+            </ul>
+            <div class="mb-6">
+                <h4 class="text-xl font-semibold leading-6 mb-4 text-black">Contact Us</h4>
+                <p class="flex items-center gap-3 text-base leading-6 mb-3"><i
+                        class="ph ph-map-pin text-xl text-blue-500"></i> 2478 Street City Ohio 90255</p>
+                <p class="flex items-center gap-3 text-base leading-6 mb-3"><i
+                        class="ph ph-envelope-simple text-xl text-blue-500"></i> info@mediax.com</p>
+                <p class="flex items-center gap-3 text-base leading-6 mb-3"><i
+                        class="ph ph-phone text-xl text-blue-500"></i> +(402) 763 282 46</p>
+            </div>
+            <ul class="social flex items-center gap-2 mb-10">
+                <li>
+                    <a href="#"
+                        class="bg-gray-200 w-10 h-10 rounded-full flex items-center justify-center text-lg text-gray-800 hover:bg-blue-500 hover:text-white transition-all"><i
+                            class="icon-facebook"></i></a>
+                </li>
+                <li><a href="#"
+                        class="bg-gray-200 w-10 h-10 rounded-full flex items-center justify-center text-lg text-gray-800 hover:bg-blue-500 hover:text-white transition-all"><i
+                            class="icon-twitter"></i></a></li>
+                <li><a href="#"
+                        class="bg-gray-200 w-10 h-10 rounded-full flex items-center justify-center text-lg text-gray-800 hover:bg-blue-500 hover:text-white transition-all"><i
+                            class="icon-linkedin"></i></a></li>
+                <li><a href="#"
+                        class="bg-gray-200 w-10 h-10 rounded-full flex items-center justify-center text-lg text-gray-800 hover:bg-blue-500 hover:text-white transition-all"><i
+                            class="icon-pinterest"></i></a></li>
+            </ul>
+
+            <div class="hidden lg:block">
+                <!-- Title -->
+                <h3 class="text-gray-500 text-base leading-4 mb-4">Subscribe for newsletter</h3>
+
+                <!-- Input + Button -->
+                <div class="flex items-center relative overflow-hidden mb-4">
+                    <input type="email" placeholder="Enter Email" class="form-control h-12 rounded-lg" />
+                    <button
+                        class="bg-blue-500 absolute right-0 text-lg border-blue-500 px-4 py-2 w-16 h-12 rounded-r-lg cursor-pointer hover:bg-gray-900 transition text-white ">
+                        <!-- Paper plane icon (Phosphor) -->
+                        <i class="ph-fill ph-paper-plane-tilt"></i>
+                    </button>
+                </div>
+
+                <label class="flex items-center gap-2 cursor-pointer mb-4">
+                    <label class="flex items-center justify-center gap-2 cursor-pointer relative">
+                        <!-- Checkbox -->
+                        <input type="checkbox"
+                            class="peer w-5 h-5 leding-4 appearance-none rounded border border-gray-400 checked:bg-blue-500 checked:border-blue-500 relative" />
+                        <!-- Custom check icon -->
+                        <i class="ph ph-check text-white text-xs absolute hidden peer-checked:block"></i>
+                    </label>
+                    <span class="">I agree with the terms & conditions</span>
+                </label>
+
+                <!-- App Store Buttons -->
+                <div class="flex gap-3">
+                    <a href="#" class="block">
+                        <img src="./assets/img/apple_store.png" alt="App Store" class="h-10" />
+                    </a>
+                    <a href="#" class="block">
+                        <img src="./assets/img/play_store.png" alt="Google Play" class="h-10" />
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- header offcanvas Ends -->
+
+
+    <!-- page breadcrumb start -->
+
+    <section class=" py-16 sm:py-18 relative z-[1] text-white">
+        <div class="bg-cover bg-center absolute top-0 bottom-0 w-full h-full z-[-2]"
+            style="background-image: url(./assets/img/testimonial.jpg);"></div>
+        <div class="bg-overly absolute top-0 bottom-0 w-full h-full z-[-1]" style="background-color: rgba(0,0,0,0.5);">
+        </div>
+        <div class="px-6 relative z-[1]">
+            <div class="text-center breadcrumb">
+                <h2 class="text-4xl sm:text-6xl font-bold mb-4">Blogs</h2>
+                <ul class="flex gap-2 items-ceneter justify-center leading-6 text-base font-medium">
+                    <li class="flex gap-2 items-center text-gray-200"><a href="./index.html">Home</a> <i
+                            class="ph-bold ph-caret-right"></i></li>
+                    <li class="flex gap-2 items-center"><a href="./blogs.html">Blogs</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- page breadcrumb Ends -->
+
+
+
+
+    <!-- blog section Start -->
+
+    <section class="bg-gray-50 py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="text-base sm:text-xl font-semibold flex items-center justify-center gap-2 leading-4 mb-3">
+                    <span class="text-blue-500 leading-4">
+                        <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480">
+                            <path
+                                d="M480 240A240 240 0 0 1 240 0 240 240 0 0 1 0 240a240 240 0 0 1 240 240 240 240 0 0 1 240-240Z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </span>
+                    Blogs</span>
+                <h2 class="text-2xl sm:text-4xl font-bold text-gray-800 mb-4">News & Blogs</h2>
+            </div>
+
+            <!-- Blog Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+                <!-- Blog Card 1 -->
+                <div
+                    class="bg-white rounded-2xl shadow border border-gray-100 hover:shadow-lg transition overflow-hidden group">
+                    <!-- Parent div with padding -->
+                    <div class="p-6 overflow-hidden rounded-2xl">
+                        <div class="aspect-[16/10] overflow-hidden rounded-2xl">
+                            <a href="./blog-details.html"><img src="./assets/img/blog-1.jpg" alt="Blog 1"
+                                    class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"></a>
+                        </div>
+                    </div>
+
+                    <div class="pb-6 px-6">
+                        <div class="flex items-center text-gray-500 text-sm mb-2 space-x-4">
+                            <span class="flex items-center gap-1"><i class="ph ph-user text-green-500"></i> By
+                                Mediax</span>
+                            <span class="flex items-center gap-1"><i class="ph ph-calendar text-green-500"></i> 15
+                                March, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">
+                            <a href="./blog-details.html" class="text-gray-900 hover:text-blue-500 transition">Exploring
+                                Trends in Medical Cosmetic Procedures</a>
+                        </h3>
+                        <a href="./blog-details.html" class="btn-primary rounded-lg h-10">Read More <i
+                                class="ph-bold ph-arrow-up-right"></i></a>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white rounded-2xl shadow border border-gray-100 hover:shadow-lg transition overflow-hidden group">
+                    <!-- Parent div with padding -->
+                    <div class="p-6 overflow-hidden rounded-2xl">
+                        <div class="aspect-[16/10] overflow-hidden rounded-2xl">
+                            <a href="./blog-details.html"><img src="./assets/img/blog-2.jpg" alt="Blog 1"
+                                    class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"></a>
+                        </div>
+                    </div>
+
+                    <div class="pb-6 px-6">
+                        <div class="flex items-center text-gray-500 text-sm mb-2 space-x-4">
+                            <span class="flex items-center gap-1"><i class="ph ph-user text-green-500"></i> By
+                                Mediax</span>
+                            <span class="flex items-center gap-1"><i class="ph ph-calendar text-green-500"></i> 15
+                                March, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">
+                            <a href="./blog-details.html" class="text-gray-900 hover:text-blue-500 transition">Exploring
+                                Trends in Medical Cosmetic Procedures</a>
+                        </h3>
+                        <a href="./blog-details.html" class="btn-primary rounded-lg h-10">Read More <i
+                                class="ph-bold ph-arrow-up-right"></i></a>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white rounded-2xl shadow border border-gray-100 hover:shadow-lg transition overflow-hidden group">
+                    <!-- Parent div with padding -->
+                    <div class="p-6 overflow-hidden rounded-2xl">
+                        <div class="aspect-[16/10] overflow-hidden rounded-2xl">
+                            <a href="./blog-details.html"><img src="./assets/img/blog-3.jpg" alt="Blog 1"
+                                    class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"></a>
+                        </div>
+                    </div>
+
+                    <div class="pb-6 px-6">
+                        <div class="flex items-center text-gray-500 text-sm mb-2 space-x-4">
+                            <span class="flex items-center gap-1"><i class="ph ph-user text-green-500"></i> By
+                                Mediax</span>
+                            <span class="flex items-center gap-1"><i class="ph ph-calendar text-green-500"></i> 15
+                                March, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">
+                            <a href="./blog-details.html" class="text-gray-900 hover:text-blue-500 transition">Exploring
+                                Trends in Medical Cosmetic Procedures</a>
+                        </h3>
+                        <a href="./blog-details.html" class="btn-primary rounded-lg h-10">Read More <i
+                                class="ph-bold ph-arrow-up-right"></i></a>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white rounded-2xl shadow border border-gray-100 hover:shadow-lg transition overflow-hidden group">
+                    <!-- Parent div with padding -->
+                    <div class="p-6 overflow-hidden rounded-2xl">
+                        <div class="aspect-[16/10] overflow-hidden rounded-2xl">
+                            <a href="./blog-details.html"><img src="./assets/img/about-1.jpg" alt="Blog 1"
+                                    class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"></a>
+                        </div>
+                    </div>
+
+                    <div class="pb-6 px-6">
+                        <div class="flex items-center text-gray-500 text-sm mb-2 space-x-4">
+                            <span class="flex items-center gap-1"><i class="ph ph-user text-green-500"></i> By
+                                Mediax</span>
+                            <span class="flex items-center gap-1"><i class="ph ph-calendar text-green-500"></i> 15
+                                March, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">
+                            <a href="./blog-details.html" class="text-gray-900 hover:text-blue-500 transition">Exploring
+                                Trends in Medical Cosmetic Procedures</a>
+                        </h3>
+                        <a href="./blog-details.html" class="btn-primary rounded-lg h-10">Read More <i
+                                class="ph-bold ph-arrow-up-right"></i></a>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white rounded-2xl shadow border border-gray-100 hover:shadow-lg transition overflow-hidden group">
+                    <!-- Parent div with padding -->
+                    <div class="p-6 overflow-hidden rounded-2xl">
+                        <div class="aspect-[16/10] overflow-hidden rounded-2xl">
+                            <a href="./blog-details.html"><img src="./assets/img/about-2.jpg" alt="Blog 1"
+                                    class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"></a>
+                        </div>
+                    </div>
+
+                    <div class="pb-6 px-6">
+                        <div class="flex items-center text-gray-500 text-sm mb-2 space-x-4">
+                            <span class="flex items-center gap-1"><i class="ph ph-user text-green-500"></i> By
+                                Mediax</span>
+                            <span class="flex items-center gap-1"><i class="ph ph-calendar text-green-500"></i> 15
+                                March, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">
+                            <a href="./blog-details.html" class="text-gray-900 hover:text-blue-500 transition">Exploring
+                                Trends in Medical Cosmetic Procedures</a>
+                        </h3>
+                        <a href="./blog-details.html" class="btn-primary rounded-lg h-10">Read More <i
+                                class="ph-bold ph-arrow-up-right"></i></a>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white rounded-2xl shadow border border-gray-100 hover:shadow-lg transition overflow-hidden group">
+                    <!-- Parent div with padding -->
+                    <div class="p-6 overflow-hidden rounded-2xl">
+                        <div class="aspect-[16/10] overflow-hidden rounded-2xl">
+                            <a href="./blog-details.html"><img src="./assets/img/carousel-1.jpg" alt="Blog 1"
+                                    class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"></a>
+                        </div>
+                    </div>
+
+                    <div class="pb-6 px-6">
+                        <div class="flex items-center text-gray-500 text-sm mb-2 space-x-4">
+                            <span class="flex items-center gap-1"><i class="ph ph-user text-green-500"></i> By
+                                Mediax</span>
+                            <span class="flex items-center gap-1"><i class="ph ph-calendar text-green-500"></i> 15
+                                March, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">
+                            <a href="./blog-details.html" class="text-gray-900 hover:text-blue-500 transition">Exploring
+                                Trends in Medical Cosmetic Procedures</a>
+                        </h3>
+                        <a href="./blog-details.html" class="btn-primary rounded-lg h-10 justify-center">Read More <i
+                                class="ph-bold ph-arrow-up-right"></i></a>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- pagination  -->
+
+            <ul class="flex items-center justify-center">
+                <!-- Previous Button -->
+                <li>
+                    <a href="#"
+                        class="w-12 h-12 flex items-center justify-center ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
+                        <i class="ph ph-arrow-left"></i>
+                    </a>
+                </li>
+
+                <!-- Page Numbers -->
+                <li>
+                    <a href="#"
+                        class="w-12 h-12 flex items-center justify-center border bg-gray-200 border-gray-300 text-gray-700 hover:bg-gray-100 hover:text-gray-700">1</a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="w-12 h-12 flex items-center justify-center border border-gray-300 text-gray-700 hover:bg-gray-100 hover:text-gray-700">2</a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="w-12 h-12 flex items-center justify-center border border-gray-300 text-gray-700 hover:bg-gray-100 hover:text-gray-700">3</a>
+                </li>
+
+                <!-- Next Button -->
+                <li>
+                    <a href="#"
+                        class="w-12 h-12 flex items-center justify-center text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
+                        <i class="ph ph-arrow-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- blog section Ends -->
+
+
+
+    <!-- footer Start -->
+
+    <footer class="bg-[#0d1117] text-gray-400 relative z-[1]">
+        <div class="absolute bg-cover bg-center w-100 h-100 -top-1/5 -right-10 z-[-1]"
+            style="background-image: url(./assets/img/shape-bg/footer-shape-2.png);"></div>
+        <div class="absolute bg-cover bg-center w-100 h-100 bottom-0 left-0 z-[-1]"
+            style="background-image: url(./assets/img/shape-bg/footer-shape-1.png);"></div>
+        <div
+            class="container relative z-[1] max-w-[1224px] px-4 mx-auto lg:px-0 pt-20 pb-20 grid sm:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6">
+
+            <div>
+                <!-- Logo -->
+                <a href="#" class="shrink-0 block mb-6">
+                    <img src="./assets/img/logo-dark-2.png" alt="Logo" class="max-h-[50px]">
+                </a>
+                <p class="mb-6 text-base leading-relaxed">
+                    Subscribe to our newsletter today to receive latest news administrate cost effective for tactical
+                    data.
+                </p>
+
+                <ul class="space-y-3 text-base">
+                    <li class="flex items-center gap-2">
+                        <span class="text-blue-500 flex items-center gap-3"><i class="ph ph-map-pin text-xl"></i></span>
+                        2478 Street City Ohio 90255
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="text-blue-500 flex items-center gap-3"><i
+                                class="ph ph-envelope-simple text-xl"></i></span> info@mediax.com
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="text-blue-500 flex items-center gap-3">
+                            <i class="ph ph-phone-call text-xl"></i></span> +(402) 763 282 46
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="lg:ps-12">
+                <h3 class="footer-title pb-4 text-white text-xl sm:text-2xl font-semibold mb-6 relative">Quick Links
+
+                </h3>
+                <ul class="space-y-3 text-base">
+                    <li><a href="#" class="hover:text-blue-500 transition">About Us</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition">Terms of Use</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition">Our Services</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition">Help & FAQs</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition">Blog</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Popular Service -->
+            <div>
+                <h3 class="footer-title pb-4 text-white text-xl sm:text-2xl font-semibold mb-6 relative">Popular Service
+
+                </h3>
+                <ul class="space-y-3 text-base">
+                    <li><a href="#" class="hover:text-blue-500 transition">Cardiology Care</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition">Urgent Care</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition">Orthopedic Care</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition">Diagnosis Department</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition">Gastroenterology</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition">Therapy Department</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition">Dental Service</a></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="">
+                <h3 class="footer-title pb-4 text-white text-xl sm:text-2xl font-semibold mb-6 relative">Let’s Stay In
+                    Touch
+                </h3>
+                <p class="text-base mb-4">Subscribe for newsletter</p>
+                <!-- Input + Button -->
+                <div class="flex items-center relative overflow-hidden mb-4">
+                    <input type="email" placeholder="Enter Email" class="form-control h-12 rounded-lg" />
+                    <button
+                        class="bg-blue-500 absolute right-0 text-lg border-blue-500 px-4 py-2 w-16 h-12 rounded-r-lg cursor-pointer hover:bg-gray-900 transition text-white">
+                        <!-- Paper plane icon (Phosphor) -->
+                        <i class="ph-fill ph-paper-plane-tilt"></i>
+                    </button>
+                </div>
+                <label class="flex items-center gap-2 cursor-pointer mb-4">
+                    <label class="flex items-center justify-center gap-2 cursor-pointer relative">
+                        <!-- Checkbox -->
+                        <input type="checkbox"
+                            class="peer w-5 h-5 leding-4 appearance-none rounded border border-gray-400 checked:bg-blue-500 checked:border-blue-500" />
+                        <!-- Custom check icon -->
+                        <i class="ph ph-check text-white text-xs absolute hidden peer-checked:block"></i>
+                    </label>
+                    <span class="">I agree with the terms & conditions</span>
+                </label>
+
+                <div class="flex gap-3">
+                    <a href="#"><img src="./assets/img/apple_store.png" class="h-10" alt="App Store"></a>
+                    <a href="#"><img src="./assets/img/play_store.png" class="h-10" alt="Google Play"></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Footer -->
+        <div class="bg-gray-800 py-4 text-base text-center">
+            <div
+                class="container max-w-[1224px] px-4 mx-auto lg:px-0 flex flex-col md:flex-row items-center justify-between">
+                <p>Copyright © 2025 <a target="_blank" href="https://www.bugbuild.com"
+                        class="text-blue-500">Bugbuild</a>. All Rights Reserved.</p>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <a href="#"
+                        class="w-10 h-10 text-base bg-white text-gray-800 rounded-full flex items-center justify-center hover:bg-blue-500 hover:text-white transition">
+                        <i class="icon-facebook"></i>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 text-base bg-white text-gray-800 rounded-full flex items-center justify-center hover:bg-blue-500 hover:text-white transition">
+                        <i class="icon-twitter"></i>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 text-base bg-white text-gray-800 rounded-full flex items-center justify-center hover:bg-blue-500 hover:text-white transition">
+                        <i class="icon-pinterest"></i>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 text-base bg-white text-gray-800 rounded-full flex items-center justify-center hover:bg-blue-500 hover:text-white transition">
+                        <i class="icon-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- footer Ends -->
+
+
+    <!-- Phosphor icon -->
+    <script src="./assets/vendor/jquery/jquery.min.js"></script>
+    <script src="./assets/font/phosphor-icon.js"></script>
+    <script src="./assets/vendor/swiper-bundle.min.js"></script>
+    <script src="./assets/js/swiper-init.js"></script>
+    <script src="./assets/vendor/easing.min.js"></script>
+    <script src="./assets/js/main.js"></script>
+
+</body>
+
+</html>

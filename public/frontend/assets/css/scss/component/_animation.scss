@@ -1,0 +1,58 @@
+/* ========== animation Start ===========*/
+
+/* === Keyframes (SMOOTH) === */
+  @keyframes bob-x {
+    0%, 100% { transform: translateX(0); }
+    50%      { transform: translateX(12px); } /* subtle smooth side float */
+  }
+
+  @keyframes bob-y {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-12px); } /* gentle up/down float */
+  }
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  @keyframes ripple-effect {
+    0%   { transform: scale(0.8); opacity: 0.5; }
+    70%  { transform: scale(2.2); opacity: 0; }
+    100% { transform: scale(2.2); opacity: 0; }
+  }
+
+  /* === Classes === */
+  .float-bob-x {
+    animation: bob-x 3s ease-in-out infinite;
+    will-change: transform;
+  }
+  .float-bob-y {
+    animation: bob-y 3s ease-in-out infinite;
+    will-change: transform;
+  }
+  .rotate-slow {
+    animation: spin-slow 15s linear infinite; /* slower smooth spin */
+    will-change: transform;
+  }
+
+  .ripple {
+    position: relative;
+    overflow: hidden;
+  }
+  .ripple::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    transform-origin: center;
+    pointer-events: none;
+    opacity: 0;
+  }
+  .ripple-animate::after {
+    animation: ripple-effect 800ms ease-out;
+    background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.25) 40%, rgba(255,255,255,0) 70%);
+    opacity: 1;
+  }
+
+/* ========== animation Ends ===========*/

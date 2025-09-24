@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\LanguageController;
 use App\Http\Controllers\Backend\AmbulanceController;
 use App\Http\Controllers\Backend\BloodBankController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Backend\BloodDonorController;
 use App\Http\Controllers\Backend\ActivityLogController;
 use App\Http\Controllers\Backend\LoginActivityController;
@@ -30,10 +31,37 @@ Route::get('cache-clear', function () {
     return redirect()->back()->with('success', ___('alert.cache_successfully_cleared.'));
 })->name('cache.clear')->middleware('auth', 'hasPermission:dashboard_read');
 
+
+
+Route::middleware(['XSS'])->group(function () {
+
+
+//frontend start here
+
+ Route::get('/',                                               [FrontendController::class, 'index'])->name('home');
+
+    Route::get('contact-us',                                    [FrontendController::class, 'contact'])->name('contact');
+    Route::get('category',                                    [FrontendController::class, 'category'])->name('category');
+    Route::get('days',                                    [FrontendController::class, 'days'])->name('days');
+    Route::get('doctor',                                    [FrontendController::class, 'doctor'])->name('doctor');
+    Route::get('blogs',                                         [FrontendController::class, 'blog'])->name('blog');
+    Route::get('blogs-details',                          [FrontendController::class, 'blogDetails'])->name('blog.details');
+    Route::get('about',                                         [FrontendController::class, 'about'])->name('about');
+    Route::get('terms-conditions',                              [FrontendController::class, 'termsConditions'])->name('terms');
+    Route::get('privacy-policy',                                [FrontendController::class, 'privacy'])->name('privacy');
+    Route::get('faq',                                           [FrontendController::class, 'faq'])->name('faq');
+
+
+
+
+
+
+
+
 // 🔹 Protected routes
-Route::middleware('auth')->group(function () {
+    Route::middleware('auth')->group(function () {
     // Dashboard
-    Route::get('/', [DashboardController::class, 'index'])->name('home');
+    // Route::get('/', [DashboardController::class, 'index'])->name('home');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('hasPermission:dashboard_read');
 
     // Profile
@@ -107,6 +135,9 @@ Route::middleware('auth')->group(function () {
 
 
 
+
+
+});
 
 
 });
