@@ -84,6 +84,12 @@ class PermissionSeeder extends Seeder
                 'update'            => 'blooddonor_update',
                 'delete'            => 'blooddonor_delete'
             ],
+            'ambulance' => [
+                'read'              => 'ambulance_read',
+                'create'            => 'ambulance_create',
+                'update'            => 'ambulance_update',
+                'delete'            => 'ambulance_delete'
+            ],
 
 
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\TodoController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\HospitalController;
 use App\Http\Controllers\Backend\LanguageController;
+use App\Http\Controllers\Backend\AmbulanceController;
 use App\Http\Controllers\Backend\BloodBankController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\BloodDonorController;
@@ -96,6 +97,13 @@ Route::middleware('auth')->group(function () {
     Route::get('blooddonor/edit/{id}', [BloodDonorController::class, 'edit'])->name('blooddonor.edit')->middleware('hasPermission:blooddonor_update');
     Route::put('blooddonor/update/{id}', [BloodDonorController::class, 'update'])->name('blooddonor.update')->middleware('hasPermission:blooddonor_update');
     Route::delete('blooddonor/delete/{id}', [BloodDonorController::class, 'delete'])->name('blooddonor.delete')->middleware('hasPermission:blooddonor_delete');
+    //ambulance
+    Route::get('ambulance/index', [AmbulanceController::class, 'index'])->name('ambulance.index')->middleware('hasPermission:ambulance_read');
+    Route::get('ambulance/create', [AmbulanceController::class, 'create'])->name('ambulance.create')->middleware('hasPermission:ambulance_create');
+    Route::post('ambulance/store', [AmbulanceController::class, 'store'])->name('ambulance.store')->middleware('hasPermission:ambulance_create');
+    Route::get('ambulance/edit/{id}', [AmbulanceController::class, 'edit'])->name('ambulance.edit')->middleware('hasPermission:ambulance_update');
+    Route::put('ambulance/update/{id}', [AmbulanceController::class, 'update'])->name('ambulance.update')->middleware('hasPermission:ambulance_update');
+    Route::delete('ambulance/delete/{id}', [AmbulanceController::class, 'delete'])->name('ambulance.delete')->middleware('hasPermission:ambulance_delete');
 
 
 

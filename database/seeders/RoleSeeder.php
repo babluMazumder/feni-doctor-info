@@ -77,6 +77,11 @@ class RoleSeeder extends Seeder
             'blooddonor_update',
             'blooddonor_delete',
 
+            'ambulance_read',
+            'ambulance_create',
+            'ambulance_update',
+            'ambulance_delete',
+
 
             'profile_read',
             'profile_update',

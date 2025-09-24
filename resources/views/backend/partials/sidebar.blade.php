@@ -15,45 +15,45 @@
             </li>
 
 
-             <li>
+             <li class="{{ (request()->is('*website-setup*')) ? 'mm-active' : '' }}">
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="icon-wrench"></i><span class="nav-text">{{ ___('menus.website_setup') }}</span></a>
                 <ul aria-expanded="false">
 
                     @if (hasPermission('blog_read'))
-                        <li> <a href="{{ route('blog.index') }}">{{ ___('label.blogs') }}</a> </li>
+                        <li> <a href="{{ route('blog.index') }}" class="{{ (request()->is('*website-setup/blogs*')) ? 'mm-active' : '' }}" >{{ ___('label.blogs') }}</a> </li>
                         @endif
                         @if (hasPermission('testimonial_read'))
-                        <li> <a href="{{ route('testimonial.index') }}" >{{ ___('label.testimonial') }}</a> </li>
+                        <li> <a href="{{ route('testimonial.index') }}"  class="{{ (request()->is('*website-setup/testimonial*')) ? 'mm-active' : '' }}"  >{{ ___('label.testimonial') }}</a> </li>
                         @endif
 
                         @if (hasPermission('social_link_read'))
-                        <li> <a href="{{ route('socialLink.index') }}"> {{ ___('label.social_link') }} </a> </li>
+                        <li> <a href="{{ route('socialLink.index') }}"  class="{{ (request()->is('*website-setup/social-link*')) ? 'mm-active' : '' }}"> {{ ___('label.social_link') }} </a> </li>
                         @endif
 
                         @if (hasPermission('faq_read'))
-                        <li> <a href="{{ route('faq.index') }}" >{{ ___('label.faqs') }}</a> </li>
+                        <li> <a href="{{ route('faq.index') }}"  class="{{ (request()->is('*website-setup/faq*')) ? 'mm-active' : '' }}" >{{ ___('label.faqs') }}</a> </li>
                         @endif
 
                 </ul>
             </li>
-             <li>
+             <li class="{{ (request()->is('*hospital*','*bloodbank*','*blooddonor*','*ambulance*')) ? 'mm-active' : '' }}">
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="icon-wrench"></i><span class="nav-text">{{ ___('menus.Hospital_info') }}</span></a>
                 <ul aria-expanded="false">
 
                         @if (hasPermission('hospital_read'))
-                        <li> <a href="{{ route('hospital.index') }}">{{ ___('label.hospitals') }}</a> </li>
+                        <li> <a href="{{ route('hospital.index') }}" class={{ (request()->is('*hospital*')) ? 'mm-active' : '' }}>{{ ___('label.hospitals') }}</a> </li>
                         @endif
                         @if (hasPermission('bloodbank_read'))
-                        <li> <a href="{{ route('bloodbank.index') }}" >{{ ___('label.blood_bank') }}</a> </li>
+                        <li> <a href="{{ route('bloodbank.index') }}" class={{ (request()->is('*bloodbank*')) ? 'mm-active' : '' }} >{{ ___('label.blood_bank') }}</a> </li>
                         @endif
 
                         @if (hasPermission('blooddonor_read'))
-                        <li> <a href="{{ route('blooddonor.index') }}"> {{ ___('label.blood_donor') }} </a> </li>
+                        <li> <a href="{{ route('blooddonor.index') }}" class={{ (request()->is('*blooddonor*')) ? 'mm-active' : '' }} > {{ ___('label.blood_donor') }} </a> </li>
                         @endif
 
-                        {{-- @if (hasPermission('faq_read'))
-                        <li> <a href="{{ route('faq.index') }}" >{{ ___('label.faqs') }}</a> </li>
-                        @endif --}}
+                        @if (hasPermission('ambulance_read'))
+                        <li> <a href="{{ route('ambulance.index') }}" class={{ (request()->is('*ambulance*')) ? 'mm-active' : '' }} >{{ ___('label.ambulance') }}</a> </li>
+                        @endif
 
                 </ul>
             </li>

@@ -85,7 +85,13 @@
                                                     @endif
                                                 </td>
 
-                                                <td> {{ $row->status }} </td>
+                                                <td>
+                                                     @if($row->status->value == 1)
+                                                    <span class="class='bullet-badge  bullet-badge-success">{{ $row->status->name }}</span>
+                                                @else
+                                                    <span class="class='bullet-badge  bullet-badge-danger">{{ $row->status->name }}</span>
+                                                @endif
+                                             </td>
                                                 <td>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend be-addon">

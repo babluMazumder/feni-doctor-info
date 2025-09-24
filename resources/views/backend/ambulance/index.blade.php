@@ -27,8 +27,8 @@
                     <div class="card">
                         <div class="card-header mb-3">
                             <h4 class="title-site">{{ ___('label.blood_bank_list') }} </h4>
-                            @if (hasPermission('blooddonor_create'))
-                                <a href="{{ route('blooddonor.create') }}" class="j-td-btn"> <img
+                            @if (hasPermission('ambulance_create'))
+                                <a href="{{ route('ambulance.create') }}" class="j-td-btn"> <img
                                         src="{{ asset('backend') }}/icons/icon//plus-white.png" class="jj"
                                         alt="no image"> <span>{{ ___('menus.add') }}</span> </a>
                             @endif
@@ -41,39 +41,52 @@
                                     <thead class="bg">
                                         <tr>
                                             <th>{{ ___('label.id') }}</th>
-                                            <th>{{ ___('label.name') }}</th>
+                                            <th>{{ ___('label.service_name') }}</th>
+                                            <th>{{ ___('label.ambulance_type') }}</th>
+                                            <th>{{ ___('label.registration_no') }}</th>
+                                            <th>{{ ___('label.driver_name') }}</th>
+                                            <th>{{ ___('label.driver_phone') }}</th>
 
                                             <th>{{ ___('label.email') }}</th>
                                             <th>{{ ___('label.phone') }}</th>
+
                                             <th>{{ ___('label.address') }}</th>
                                             <th>{{ ___('label.district') }}</th>
-                                            <th>{{ ___('label.last_donation_date') }}</th>
 
-                                            <th>{{ ___('label.blood_group') }}</th>
-                                            <th>{{ ___('label.gender') }}</th>
-                                            <th>{{ ___('label.availability') }}</th>
+                                            <th>{{ ___('label.latitude') }}</th>
+                                            <th>{{ ___('label.longitude') }}</th>
+
                                             <th>{{ ___('label.status') }}</th>
                                             <th>{{ ___('label.action') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
-                                        @forelse( $bloodDonors as $key => $row)
+                                        @forelse($ambulance as $key => $row)
                                             <tr id="row_{{ $row->id }}">
                                                 <td>{{ ++$key }}</td>
-                                                <td> {{ $row->name }}</td>
+                                                <td> {{ $row->service_name }}</td>
+                                                <td> {{ $row->ambulance_type }}</td>
+                                                <td> {{ $row->registration_no }}</td>
+                                                <td> {{ $row->driver_name }}</td>
+                                                <td> {{ $row->driver_phone }}</td>
                                                 <td> {{ $row->email }}</td>
                                                 <td> {{ $row->phone }}</td>
                                                 <td> {{ $row->address }}</td>
                                                 <td> {{ $row->district }}</td>
-                                                <td> {{ $row->last_donation_date }}</td>
-                                                <td> {{ $row->blood_group }}</td>
-                                                <td> {{ $row->gender }}</td>
-                                                <td> {{ $row->availability }}</td>
-                                                <td>
-                                                    {{ $row->status }}
-                                                </td>
+                                                <td> {{ $row->latitude }}</td>
+                                                <td> {{ $row->longitude }}</td>
 
+
+                                                <td>
+                                                     {{-- {{ $row->status }} --}}
+                                                      @if($row->status->value == 1)
+                                                    <span class="class='bullet-badge  bullet-badge-success">{{ $row->status->name }}</span>
+                                                @else
+                                                    <span class="class='bullet-badge  bullet-badge-danger">{{ $row->status->name }}</span>
+                                                @endif
+
+                                                </td>
                                                 <td>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend be-addon">
@@ -85,16 +98,16 @@
 
                                                             <div class="dropdown-menu">
 
-                                                                @if (hasPermission('blooddonor_update'))
-                                                                    <a href="{{ route('blooddonor.edit', $row->id) }}"
+                                                                @if (hasPermission('ambulance_update'))
+                                                                    <a href="{{ route('ambulance.edit', $row->id) }}"
                                                                         class="dropdown-item"><i class="fa fa-edit"
                                                                             aria-hidden="true"></i>
                                                                         {{ ___('label.edit') }}</a>
                                                                 @endif
 
-                                                                @if (hasPermission('blooddonor_delete'))
+                                                                @if (hasPermission('ambulance_delete'))
                                                                     <a class="dropdown-item"
-                                                                        href="{{ route('blooddonor.delete', $row->id) }}"
+                                                                        href="{{ route('ambulance.delete', $row->id) }}"
                                                                         onclick="tryDelete(event)"
                                                                         data-remove-id="row_{{ $row->id }}"
                                                                         data-title="{{ ___('label.delete') }}"
@@ -116,11 +129,11 @@
                                     </tbody>
                                 </table>
                             </div>
-                            @if ($bloodDonors)
-                                <div class="mt-3">
-                                    <x-paginate-show :items="$bloodDonors" />
-                                </div>
-                            @endif
+                                @if ($ambulance)
+                                    <div class="mt-3">
+                                        <x-paginate-show :items="$ambulance" />
+                                    </div>
+                                @endif
                             <!-- pagination component -->
                         </div>
                     </div>
