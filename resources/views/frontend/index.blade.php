@@ -6,7 +6,7 @@
     <x-frontend.category />
     <x-frontend.doctors />
     <x-frontend.cta />
-    <x-frontend.testimonial />
-    <x-frontend.faq />
+    <x-frontend.testimonials />
+    <x-frontend.faqs />
     <x-frontend.blog />
 @endsection

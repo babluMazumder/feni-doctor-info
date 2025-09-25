@@ -81,6 +81,10 @@ class RoleSeeder extends Seeder
             'ambulance_create',
             'ambulance_update',
             'ambulance_delete',
+            'section_read',
+            'section_create',
+            'section_update',
+            'section_delete',
 
 
             'profile_read',

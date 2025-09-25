@@ -1,3 +1,5 @@
+
+{{-- @dd($languages) --}}
 <header
         class="headerSticky bg-white lg:bg-blue-500 relative z-[2] py-3 lg:py-0 border-b border-gray-200 lg:border-0">
         <div class="container max-w-[1224px] mx-auto px-4 lg:px-0">
@@ -17,7 +19,7 @@
                         <ul class="submenu shadow-lg capitalize">
                             <li><a href="{{ route('about') }}" class="py-6 text-white hover:text-green-400 transition duration-300 block">About Us</a></li>
                             <li><a href="{{ route('terms') }}">Terms & Condition</a></li>
-                            <li><a href="{{asset('frontend')}}/privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="">Privacy Policy</a></li>
                         </ul>
                     </li>
                     <li><a href="{{ route('blog') }}" class="py-6 text-white hover:text-green-400 transition duration-300 block">Blog</a></li>
@@ -30,10 +32,14 @@
                             <a href="#" class="py-6 text-white hover:text-green-400 transition duration-300 flex gap-2 items-center"><span class="fi fi-gb"></span> English <i
                                     class="ph-bold ph-caret-down"></i></a>
                             <ul class="submenu shadow-lg capitalize">
-                                <li><a href="#" class="flex-row-reverse"><span class="fi fi-gb"></span>
-                                        English</a></li>
-                                <li><a href="#" class="flex-row-reverse"><span class="fi fi-bd"></span>
-                                        Bangla</a></li>
+                                @foreach ($languages as $lang )
+                                 <li><a href="#" class="flex-row-reverse"><span class="{{ $lang->icon_class}}"></span>
+                                        {{ $lang->name }}</a></li>
+
+                                @endforeach
+
+                                {{-- <li><a href="#" class="flex-row-reverse"><span class="fi fi-bd"></span>
+                                        Bangla</a></li> --}}
                             </ul>
                         </li>
                     </ul>
@@ -76,7 +82,7 @@
                 class="menu flex lg:hidden flex-col items-start gap-0 text-sm font-medium uppercase text-gray-900 mb-10">
                 <!-- Home -->
                 <li class="has-dropdown w-full">
-                    <a href="{{asset('frontend')}}/index.html"
+                    <a href="/"
                         class="py-4 flex justify-between gap-2 items-center border-b border-gray-200">
                         Home
                     </a>

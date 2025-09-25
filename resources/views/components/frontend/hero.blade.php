@@ -9,7 +9,8 @@
         <div class="absolute hidden w-16 top-1/2 end-50 rotate-slow lg:block"><img src="{{asset('frontend')}}/assets/img/icons/dna.png"
                 class="" alt=""></div>
         <div class="w-full rounded-lg absolute top-0 bottom-0 bg-cover bg-center z[-1] opacity-30"
-            style="background-image: url('{{asset('frontend')}}/assets/img//shape-bg/abstract-3.jpg');"></div>
+            style="background-image: url('{{asset('frontend')}}/assets/img//shape-bg/abstract-3.jpg');">
+        </div>
         <div class="container max-w-[1224px] mx-auto px-4 lg:px-0 relative z-[1]">
             <div class="grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-12 lg:gap-[30px]">
                 <div class="">
@@ -21,13 +22,10 @@
                                     fill="currentColor"></path>
                             </svg>
                         </span>
-                        24/7 Emergency Service</span>
+                       {{customSection(\Modules\Section\Enums\Type::HERO_SECTION, 'hero_section_title')}}</span>
                     <h1 class="text-3xl sm:text-7xl font-bold sm:leading-18 mb-4 sm:mb-10 capitalize">Caring for <span
                             class="text-blue-500">Health</span> Caring for You</h1>
-                    <p class="text-base font-normal text-gray-500 leading-6 mb-4 sm:mb-8">Lorem ipsum dolor sit amet
-                        consectetur
-                        adipisicing
-                        elit. Commodi nulla quibusdam architecto, error exercitationem a?</p>
+                    <p class="text-base font-normal text-gray-500 leading-6 mb-4 sm:mb-8">{!!  customSection(\Modules\Section\Enums\Type::HERO_SECTION, 'description')!!}</p>
 
                     <form action="#"
                         class="p-4 sm:p-5 bg-white shadow-lg rounded-lg ring ring-gray-100 mb-4 sm:mb-8 flex flex-col lg:flex-row gap-4 lg:gap-0 items-center">
@@ -74,17 +72,19 @@
 
 
                     <div class="flex gap-4 items-center justify-center lg:justify-start flex-wrap">
-                        <a href="#" class="btn-primary inline-flex"> Appointment Now <i
+                        <a href="{{customSection(\Modules\Section\Enums\Type::HERO_SECTION, 'appointment_button_link')}}" class="btn-primary inline-flex"> {{customSection(\Modules\Section\Enums\Type::HERO_SECTION, 'appointment_button')}} <i
                                 class="ph-bold ph-arrow-up-right"></i></a>
-                        <a href="#" class="btn-primary btn-black inline-flex"></i> Discover More <i
+                        <a href="{{customSection(\Modules\Section\Enums\Type::HERO_SECTION, 'discover_button_link')}}" class="btn-primary btn-black inline-flex"></i> {{customSection(\Modules\Section\Enums\Type::HERO_SECTION, 'discover_button')}} <i
                                 class="ph-bold ph-arrow-up-right"></i></a>
                     </div>
                 </div>
 
                 <div class="hero-right lg:ps-20">
+                     @php $hero_image = customSection(\Modules\Section\Enums\Type::HERO_SECTION, 'hero_image'); @endphp
                     <div class="hero-img rounded-lg border-10 border-gray-900 p-4 aspect-[16/20]"><img
-                            class=" overflow-hidden w-full h-full object-cover rounded-lg" src="{{asset('frontend')}}/assets/img/img-7.jpg"
+                            class=" overflow-hidden w-full h-full object-cover rounded-lg" src="{{ $hero_image['original'] }}"
                             alt="">
+
                     </div>
                 </div>
             </div>

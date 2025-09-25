@@ -8,7 +8,7 @@
             <div class="flex justify-between items-center gap-30 flex-1">
                 <!-- Logo -->
                 <a href="/" class="shrink-0 flex justify-center lg:justify-start">
-                    <img src="{{asset('frontend')}}/assets/img/logo-light-2.png" alt="Logo" class="max-h-[50px]">
+                    <img src="{{ logo(settings('light_logo'),'original') }}" alt="Logo" class="max-h-[50px]">
                 </a>
 
                 <!-- Search Bar -->
@@ -31,7 +31,7 @@
                         <span class="block">Contact Us</span>
                         <a href="tel:+1636543569"
                             class="text-gray-950 font-semibold text-lg hover:text-blue-500 transition">
-                            +163-654-3569
+                            {{ settings('phone') }}
                         </a>
                     </div>
                 </div>
@@ -40,8 +40,8 @@
                 <div class="flex items-center gap-3">
                     <i class="ph-light ph-clock text-5xl text-blue-500"></i>
                     <div>
-                        <span class="block">Monday - Friday</span>
-                        <span class="text-gray-950 font-semibold text-lg">24/7 Hours Open</span>
+                        <span class="block">{{ settings('opening_days') }}</span>
+                        <span class="text-gray-950 font-semibold text-lg">{{ settings('opening_hours') }}</span>
                     </div>
                 </div>
             </div>

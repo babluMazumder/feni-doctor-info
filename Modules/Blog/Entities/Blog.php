@@ -31,4 +31,12 @@ class Blog extends Model
     {
         return $this->belongsTo(User::class, 'author', 'id');
     }
+     public function image()
+    {
+        return $this->belongsTo(Upload::class, 'file_id', 'id');
+    }
+     public function author()
+    {
+        return $this->belongsTo(User::class, 'author_id', 'id');
+    }
 }

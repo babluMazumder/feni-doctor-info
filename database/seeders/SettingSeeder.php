@@ -31,15 +31,18 @@ class SettingSeeder extends Seeder
     {
         return [
 
-            ['key' => 'name',                   'value' => 'Parcel Fly'],
+            ['key' => 'name',                   'value' => 'Doctor Info'],
             ['key' => 'phone',                  'value' => '+8802999888'],
-            ['key' => 'email',                  'value' => 'info@parcelfly.com'],
+            ['key' => 'email',                  'value' => 'info@doctorinfo.com'],
+            ['key' => 'opening_hours',                  'value' => '24/7 hours open'],
+            ['key' => 'opening_days',                  'value' => 'monday-friday'],
+            ['key' => 'address',                  'value' => 'Address:4th floor, Feni Center, Feni-3900, Bangladesh'],
             ['key' => 'paginate_value',                  'value' => '10'],
-            ['key' => 'copyright',              'value' => 'All rights reserved. Development by Parcel Fly Developers.'],
+            ['key' => 'copyright',              'value' => 'All rights reserved. Development by Doctor info Developers.'],
 
-            ['key' => 'light_logo',               'value' => $this->uploadRepo->uploadSeederByPath("backend/assets/img/logo/starter_kit_title_logo.png")],
-            ['key' => 'dark_logo',          'value' => $this->uploadRepo->uploadSeederByPath("backend/assets/img/logo/starter_kit_title_logo_dark.png")],
-            ['key' => 'favicon',            'value' => $this->uploadRepo->uploadSeederByPath("backend/assets/img/logo/starter_kit_title_favicon.png")],
+            ['key' => 'light_logo',               'value' => $this->uploadRepo->uploadSeederByPath("backend/assets/img/logo/logo-light.png")],
+            ['key' => 'dark_logo',          'value' => $this->uploadRepo->uploadSeederByPath("backend/assets/img/logo/logo-dark.png")],
+            ['key' => 'favicon',            'value' => $this->uploadRepo->uploadSeederByPath("backend/assets/img/logo/logo-light.png")],
 
 
             ['key' => 'sendmail_path',          'value' => '/usr/sbin/sendmail -bs -i'],

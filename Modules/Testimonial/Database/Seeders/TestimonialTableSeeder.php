@@ -2,8 +2,6 @@
 
 namespace Modules\Testimonial\Database\Seeders;
 
-use Faker\Factory;
-use App\Models\Backend\Upload;
 use App\Repositories\Upload\UploadInterface;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
@@ -17,23 +15,61 @@ class TestimonialTableSeeder extends Seeder
     {
         $this->uploadRepo = $uploadRepo;
     }
+
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
     public function run()
     {
         Model::unguard();
 
-        for ($key = 0; $key < 10; $key++) {
-            $testimonial              = new Testimonial();
-            $testimonial->client_name = fake()->name();
-            $testimonial->description = fake()->sentences(asText: true);
-            $testimonial->designation = 'Developer';
-            $testimonial->rating      = rand(0.5, 5);
+        $testimonials = [
+            [
+                'client_name' => 'Ayesha Rahman',
+                'designation' => 'Patient – Cardiology',
+                'description' => 'I was admitted for heart treatment and the doctors provided excellent care. The staff explained everything clearly and helped me recover faster than expected.',
+                'rating'      => 5,
+            ],
+            [
+                'client_name' => 'Md. Salman Hossain',
+                'designation' => 'Patient – Orthopedics',
+                'description' => 'After my accident, I received world-class orthopedic treatment here. The physiotherapy sessions were well-planned and I can now walk without support.',
+                'rating'      => 2,
+            ],
+            [
+                'client_name' => 'Nusrat Jahan',
+                'designation' => 'Patient – Gynecology',
+                'description' => 'The gynecology department is very professional. They provided safe maternity care during my pregnancy and supported me throughout the process.',
+                'rating'      => 3,
+            ],
+            [
+                'client_name' => 'Tanvir Ahmed',
+                'designation' => 'Patient – Neurology',
+                'description' => 'I was treated for migraine and the doctors helped me understand the cause and guided me with proper medication and lifestyle changes.',
+                'rating'      => 1,
+            ],
+            [
+                'client_name' => 'Shamima Akter',
+                'designation' => 'Patient – Pediatrics',
+                'description' => 'My child had recurring fever, but the pediatric team handled it with great care and patience. I am truly grateful for their dedication.',
+                'rating'      => 5,
+            ],
+            [
+                'client_name' => 'Faruk Chowdhury',
+                'designation' => 'Patient – General Surgery',
+                'description' => 'I underwent minor surgery here. The environment was clean, the staff was friendly, and I was discharged within a short time.',
+                'rating'      => 4.9,
+            ],
+        ];
+
+        foreach ($testimonials as $index => $data) {
+            $testimonial = new Testimonial();
+            $testimonial->client_name = $data['client_name'];
+            $testimonial->designation = $data['designation'];
+            $testimonial->description = $data['description'];
+            $testimonial->rating      = $data['rating'];
             $testimonial->image       = $this->uploadRepo->uploadSeederByPath("uploads/seeders/user/user-" . rand(1, 5) . '.png');
-            $testimonial->position    = $key;
+            $testimonial->position    = $index + 1;
             $testimonial->save();
         }
     }

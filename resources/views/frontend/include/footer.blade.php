@@ -19,15 +19,15 @@
                 <ul class="space-y-3 text-base">
                     <li class="flex items-center gap-2">
                         <span class="text-blue-500 flex items-center gap-3"><i class="ph ph-map-pin text-xl"></i></span>
-                        2478 Street City Ohio 90255
+                       {{ settings('address') }}
                     </li>
                     <li class="flex items-center gap-2">
                         <span class="text-blue-500 flex items-center gap-3"><i
-                                class="ph ph-envelope-simple text-xl"></i></span> info@mediax.com
+                                class="ph ph-envelope-simple text-xl"></i></span> {{ settings('email') }}
                     </li>
                     <li class="flex items-center gap-2">
                         <span class="text-blue-500 flex items-center gap-3">
-                            <i class="ph ph-phone-call text-xl"></i></span> +(402) 763 282 46
+                            <i class="ph ph-phone-call text-xl"></i></span> {{ settings('phone') }}
                     </li>
                 </ul>
             </div>
@@ -38,13 +38,13 @@
 
                 </h3>
                 <ul class="space-y-3 text-base">
-                    <li><a href="#" class="hover:text-blue-500 transition">About Us</a></li>
-                    <li><a href="#" class="hover:text-blue-500 transition">Terms of Use</a></li>
+                    <li><a href="{{ route('about') }}" class="hover:text-blue-500 transition">About Us</a></li>
+                    <li><a href="{{ route('terms') }}" class="hover:text-blue-500 transition">Terms of Use</a></li>
                     <li><a href="#" class="hover:text-blue-500 transition">Our Services</a></li>
                     <li><a href="#" class="hover:text-blue-500 transition">Help & FAQs</a></li>
-                    <li><a href="#" class="hover:text-blue-500 transition">Blog</a></li>
+                    <li><a href="{{ route('blog') }}" class="hover:text-blue-500 transition">Blog</a></li>
                     <li><a href="#" class="hover:text-blue-500 transition">Privacy Policy</a></li>
-                    <li><a href="#" class="hover:text-blue-500 transition">Contact Us</a></li>
+                    <li><a href="{{ route('contact') }}" class="hover:text-blue-500 transition">Contact Us</a></li>
                 </ul>
             </div>
 

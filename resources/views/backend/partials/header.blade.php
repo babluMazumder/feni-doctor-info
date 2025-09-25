@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="{{asset('backend')}}/css/style2.css" />
     <link rel="stylesheet" href="{{asset('backend')}}/css/custom.css" />
     <link rel="stylesheet" href="{{asset('backend')}}/css/responsive.css" />
+ <link rel="stylesheet" href="{{ asset('backend/vendor/summernote/summernote-lite.min.css')}}" />
+
+
 
 
     {{-- select 2 & flatfikr for date css  --}}

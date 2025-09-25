@@ -41,5 +41,10 @@
 <script src="{{ asset('backend/js/custom/dynamic_modal.js') }}"></script>
 
 <script src="{{asset('backend/js/custom/_developer.js')}}"></script>
+<script src="{{asset('backend/js/custom/_developer.js')}}"></script>
+  <script src="{{ asset('backend/vendor/summernote/summernote-lite.min.js')}}"></script>
+
+
+
 
 @include('backend.partials.alert-message')

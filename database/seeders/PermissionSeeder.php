@@ -90,6 +90,12 @@ class PermissionSeeder extends Seeder
                 'update'            => 'ambulance_update',
                 'delete'            => 'ambulance_delete'
             ],
+            'section' => [
+                'read'              => 'section_read',
+                'create'            => 'section_create',
+                'update'            => 'section_update',
+                'delete'            => 'section_delete'
+            ],
 
 
 

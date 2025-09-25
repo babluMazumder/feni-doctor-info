@@ -11,6 +11,7 @@ use Database\Seeders\BloodBankSeeder;
 use Database\Seeders\PermissionSeeder;
 use Modules\Blog\Database\Seeders\BlogSeeder;
 use Modules\Faq\Database\Seeders\FaqTableSeeder;
+use Modules\Section\Database\Seeders\SectionTableSeeder;
 use Modules\Testimonial\Database\Seeders\TestimonialTableSeeder;
 use Modules\SocialLink\Database\Seeders\SocialLinkDatabaseSeeder;
 
@@ -38,6 +39,7 @@ class DatabaseSeeder extends Seeder
         $this->call(BlogSeeder::class);
        $this->call(SocialLinkDatabaseSeeder::class);
        $this->call(TestimonialTableSeeder::class);
+       $this->call(SectionTableSeeder::class);
         $this->call(FaqTableSeeder::class);
         $this->call(HospitalSeeder::class);
         $this->call(BloodBankSeeder::class);

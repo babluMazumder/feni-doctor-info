@@ -2,6 +2,6 @@
     "Blog": true,
     "Faq": true,
     "Testimonial": true,
-    "SocialLink": true
-
+    "SocialLink": true,
+    "Section": true
 }

@@ -52,6 +52,21 @@
                                 <input id="email" type="text" name="email" placeholder="{{ ___('placeholder.enter_email') }}" class="form-control input-style-1" value="{{ old('email', settings('email')) }}">
                                 @error('email') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
+                            <div class="form-group col-md-4">
+                                <label class="label-style-1" for="address">{{ ___('label.address') }}</label>
+                                <input id="address" type="text" name="address" placeholder="{{ ___('placeholder.address') }}" class="form-control input-style-1" value="{{ old('address', settings('address')) }}">
+                                @error('address') <small class="text-danger mt-2">{{ $message }}</small> @enderror
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="label-style-1" for="opening_days">{{ ___('label.opening_days') }}</label>
+                                <input id="opening_days" type="text" name="opening_days" placeholder="{{ ___('placeholder.opening_days') }}" class="form-control input-style-1" value="{{ old('opening_days', settings('opening_days')) }}">
+                                @error('opening_days') <small class="text-danger mt-2">{{ $message }}</small> @enderror
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="label-style-1" for="opening_hours">{{ ___('label.opening_hours') }}</label>
+                                <input id="opening_hours" type="text" name="opening_hours" placeholder="{{ ___('placeholder.opening_hours') }}" class="form-control input-style-1" value="{{ old('opening_hours', settings('opening_hours')) }}">
+                                @error('opening_hours') <small class="text-danger mt-2">{{ $message }}</small> @enderror
+                            </div>
 
                             <div class="form-group col-md-4">
                                 <label class="label-style-1" for="paginate_value">{{ ___('label.paginate_value') }}</label>

@@ -23,6 +23,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Blog Card 1 -->
                 @foreach ($blogs->take(3) as $blog)
+                {{-- @dd($blog->slug) --}}
                   <div
                     class="bg-white rounded-xl shadow border border-gray-100 hover:shadow-lg transition overflow-hidden group">
                     <!-- Parent div with padding -->

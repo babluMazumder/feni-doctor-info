@@ -24,7 +24,7 @@
 
 
     <!-- blog details start -->
-
+{{-- @dd($blog) --}}
     <section class="blog-details py-16">
         <div class="container max-w-[1224px] px-4 lg:px-0 mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-10 lg:gap-20">
@@ -38,22 +38,20 @@
                             class="inline-block px-6 py-2 text-sm font-medium bg-gray-100 text-black hover:bg-blue-500 hover:text-white transition rounded-full">Heart</a>
                     </div>
 
-                    <h1 class="text-2xl md:text-5xl font-semibold lg:leading-15 mb-4">Exploring Trends in
-                        Medical
-                        Cosmetic Procedures</h1>
+                    <h1 class="text-2xl md:text-5xl font-semibold lg:leading-15 mb-4">{{ $blog->title }}</h1>
 
                     <div class="flex items-center justify-between gap-4 mb-6 md:mb-10">
                         <div class="flex items-center gap-4 flex-wrap">
                             <div class="flex gap-3 items-center">
                                 <div class="w-12 h-12 rounded-full overflow-hidden"><img src="{{asset('frontend')}}/assets/img/img-4.jpeg"
                                         class="w-full h-full object-cover" alt=""></div>
-                                <span class="text-gray-400">by <span class="text-gray-800">Dr. Jhone Doe</span></span>
+                                <span class="text-gray-400">by <span class="text-gray-800">{{@$blog->user->name}}</span></span>
                             </div>
                             <div class="line w-px h-4 bg-gray-300"></div>
 
                             <div class="flex gap-2 items-center">
                                 <div class="text-xl leading-1"><i class="ph ph-calendar-blank"></i></div>
-                                <span class="text-gray-800">31 August, 2025</span>
+                                <span class="text-gray-800">{{ $blog->date }}</span>
                             </div>
                         </div>
 
@@ -79,12 +77,10 @@
                     </div>
 
                     <div class="aspect-[16/10] rounded-xl overflow-hidden mb-6 lg:mb-10">
-                        <img src="{{asset('frontend')}}/assets/img/blog-2.jpg" class="w-full h-full object-cover" alt="">
+                        <img src="{{ getImage($blog->upload, 'image_two','default-image-80x80.png') }}" class="w-full h-full object-cover" alt="">
                     </div>
 
-                    <p class=" leading-7 font-normal text-lg mb-4 lg:mb-10">In today's digital age, the importance of
-                        mobile optimization cannot be overstated. With an increasing number of users accessing the
-                        internet through smartphones and tablets, designing for mobile-first.</p>
+                    <p class=" leading-7 font-normal text-lg mb-4 lg:mb-10">{{ $blog->description }}</p>
 
                     <div class="p-10 border-l-4 border-blue-500 rounded-2xl bg-gray-100 mb-6 lg:mb-10">
                         <h3 class="text-2xl sm:text-3xl font-semibold sm:leading-10 text-gray-900">Lorem ipsum dolor sit
@@ -138,18 +134,20 @@
 
                     <div
                         class="flex items-center xl:gap-30 gap-10 justify-between flex-wrap sm:flex-nowrap mt-7 border-y border-gray-200 lg:mt-10 py-5">
-                        <a href="#">
+                         @if ($previousBlog)
+                        <a href="{{ route('blog.details',['slug' => $previousBlog?->slug]) }}">
                             <span class="text-sm font-semibold text-gray-500 uppercase">Previous</span>
                             <strong
-                                class="text-xl font-semibold block prev mt-2 duration-300 hover:text-blue-500">Exploring
-                                Trends in Medical Cosmetic Procedures</strong>
+                                class="text-xl font-semibold block prev mt-2 duration-300 hover:text-blue-500">{{ $previousBlog?->title }}</strong>
                         </a>
-                        <a href="#" class="text-right">
+                        @endif
+                         @if ($nextBlog)
+                        <a href="{{ route('blog.details',['slug' => $nextBlog?->slug]) }}" class="text-right">
                             <span class="text-sm font-semibold text-gray-500 uppercase">Next</span>
                             <strong
-                                class="text-xl font-semibold block prev mt-2 duration-300 hover:text-blue-500">Exploring
-                                Trends in Medical Cosmetic Procedures</strong>
+                                class="text-xl font-semibold block prev mt-2 duration-300 hover:text-blue-500">{{ $nextBlog?->title }}</strong>
                         </a>
+                        @endif
                     </div>
                     <h4 class="capitalize text-lg font-semibold lg:mt-10 mt-6">Leave A comment</h4>
                     <form action="#" class="form grid sm:grid-cols-2 gap-4 gap-y-5 mt-6">
@@ -206,69 +204,27 @@
                             class="text-gray-900 hover:text-blue-500 transition duration-300">Exploring Trends in
                             Medical Cosmetic Procedures</a></h4>
 
-                    <div class="flex gap-4 items-center border-t border-gray-200 pt-4 mt-4">
-                        <div class="w-25 h-fit rounded-lg overflow-hidden shrink-0"><a href=""><img
-                                    class="w-full h-full object-cover" src="{{asset('frontend')}}/assets/img/blog-1.jpg" alt=""></a></div>
-                        <div>
-                            <a href="#"
-                                class="text-base font-semibold text-gray-900 hover:text-blue-500 transition duration-300">Exploring
-                                Trends in Medical Cosmetic Procedures</a>
-                            <div class="flex gap-2 items-center text-sm mt-2">
-                                <span class="text-gray-800">31 August, 2025</span>
-                                <div class="line w-px h-3 bg-gray-300"></div>
-                                <span class="text-gray-800">Hospital</span>
-                            </div>
-                        </div>
-                    </div>
+                              @foreach ($recentBlogs as $recentBlog)
+                            <div class="flex gap-4 items-center border-t border-gray-200 pt-4 mt-4">
+                                <div class="w-25 h-fit rounded-lg overflow-hidden shrink-0"><a href=""><img
+                                            class="w-full h-full object-cover" src="{{ getImage($recentBlog->upload, 'image_one','default-image-80x80.png') }}" alt=""></a></div>
+                                <div>
+                                    <a href="{{ route('blog.details',['slug' => $recentBlog->slug]) }}"
+                                        class="text-base font-semibold text-gray-900 hover:text-blue-500 transition duration-300">{{ $recentBlog->title }}</a>
+                                    <div class="flex gap-2 items-center text-sm mt-2">
+                                        <span class="text-gray-800">{{ $recentBlog->date }}</span>
+                                        <div class="line w-px h-3 bg-gray-300"></div>
+                                        <span class="text-gray-800"> by{{ $recentBlog->user?->name  }}</span>
+                                    </div>
+                                </div>
+                              </div>
+                                @endforeach
 
-                    <div class="flex gap-4 items-center border-t border-gray-200 pt-4 mt-4">
-                        <div class="w-25 h-fit rounded-lg overflow-hidden shrink-0"><a href=""><img
-                                    class="w-full h-full object-cover" src="{{asset('frontend')}}/assets/img/img-5.jpg" alt=""></a></div>
-                        <div>
-                            <a href="#"
-                                class="text-base font-semibold text-gray-900 hover:text-blue-500 transition duration-300">Exploring
-                                Trends in Medical Cosmetic Procedures</a>
-                            <div class="flex gap-2 items-center text-sm mt-2">
-                                <span class="text-gray-800">31 August, 2025</span>
-                                <div class="line w-px h-3 bg-gray-300"></div>
-                                <span class="text-gray-800">Hospital</span>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="flex gap-4 items-center border-t border-gray-200 pt-4 mt-4">
-                        <div class="w-25 h-fit rounded-lg overflow-hidden shrink-0"><a href=""><img
-                                    class="w-full h-full object-cover" src="{{asset('frontend')}}/assets/img/blog-2.jpg" alt=""></a></div>
-                        <div>
-                            <a href="#"
-                                class="text-base font-semibold text-gray-900 hover:text-blue-500 transition duration-300">Exploring
-                                Trends in Medical Cosmetic Procedures</a>
-                            <div class="flex gap-2 items-center text-sm mt-2">
-                                <span class="text-gray-800">31 August, 2025</span>
-                                <div class="line w-px h-3 bg-gray-300"></div>
-                                <span class="text-gray-800">Hospital</span>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="flex gap-4 items-center border-t border-gray-200 pt-4 mt-4">
-                        <div class="w-25 h-fit rounded-lg overflow-hidden shrink-0"><a href=""><img
-                                    class="w-full h-full object-cover" src="{{asset('frontend')}}/assets/img/2237.jpg" alt=""></a></div>
-                        <div>
-                            <a href="#"
-                                class="text-base font-semibold text-gray-900 hover:text-blue-500 transition duration-300">Exploring
-                                Trends in Medical Cosmetic Procedures</a>
-                            <div class="flex gap-2 items-center text-sm mt-2">
-                                <span class="text-gray-800">31 August, 2025</span>
-                                <div class="line w-px h-3 bg-gray-300"></div>
-                                <span class="text-gray-800">Hospital</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="banner mt-10 rounded-lg overflow-hidden">
+                    {{-- <div class="banner mt-10 rounded-lg overflow-hidden">
                         <img src="{{asset('frontend')}}/assets/img/blog-details.jpg" alt="">
-                    </div>
+                    </div> --}}
 
                 </div>
             </div>

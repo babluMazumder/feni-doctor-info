@@ -22,5 +22,7 @@ class ViewServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer('backend.partials.navbar', LangComposer::class);
+        View::composer('frontend.include.header', LangComposer::class);
+        // View::composer('frontend.include.header', LangComposer::class);
     }
 }

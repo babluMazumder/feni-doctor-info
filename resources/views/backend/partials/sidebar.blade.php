@@ -33,6 +33,9 @@
                         @if (hasPermission('faq_read'))
                         <li> <a href="{{ route('faq.index') }}"  class="{{ (request()->is('*website-setup/faq*')) ? 'mm-active' : '' }}" >{{ ___('label.faqs') }}</a> </li>
                         @endif
+                         {{-- @if (hasPermission('section_read')) --}}
+                        <li> <a href="{{ route('section.index') }}" class="{{ request()->is('*website-setup/section*') ? 'active' : '' }}">{{ ___('label.sections') }}</a> </li>
+                       {{-- @endif --}}
 
                 </ul>
             </li>

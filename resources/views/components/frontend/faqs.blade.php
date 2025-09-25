@@ -1,5 +1,5 @@
  <!-- faq section  Start-->
-
+{{-- @dd($faqs) --}}
     <section class=" mx-auto pb-16">
         <h2 class="text-2xl font-bold mb-6 text-center"></h2>
         <div class="container max-w-[1224px] mx-auto px-4 lg:px-0">
@@ -12,33 +12,37 @@
                                 fill="currentColor"></path>
                         </svg>
                     </span>
-                    FAQ</span>
-                <h2 class="text-2xl sm:text-4xl font-bold text-gray-800 mb-4">Frequently Asked Questions</h2>
+                   {{ customSection(\Modules\Section\Enums\Type::FAQ, 'short_title') }}</span>
+                <h2 class="text-2xl sm:text-4xl font-bold text-gray-800 mb-4">{{ customSection(\Modules\Section\Enums\Type::FAQ, 'title') }}</h2>
+                <p>{!! customSection(\Modules\Section\Enums\Type::FAQ, 'description') !!}</p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
                 <!-- Left Image -->
                 <div>
-                    <img src="{{asset('frontend')}}/assets/img/img-9.jpg" alt="FAQ Illustration" class="rounded-2xl shadow-lg w-full">
+                    <img src="{{ data_get(customSection(\Modules\Section\Enums\Type::FAQ,'faq_image'), 'image_one') }}" alt="FAQ Illustration" class="rounded-2xl shadow-lg w-full">
                 </div>
 
                 <div class="space-y-4">
-                    <!-- Item 1 -->
+                    @foreach ($faqs as $faq)
+                     <!-- Item 1 -->
                     <div class="accordion-item border border-gray-200 rounded-lg overflow-hidden">
                         <button onclick="toggleAccordion(this)"
                             class="w-full cursor-pointer flex justify-between items-center p-4 font-semibold text-gray-800 hover:bg-gray-100 transition">
-                            What is your service policy?
+                            {{ $faq->title }}
                             <i class="ph ph-plus text-xl transition-transform duration-300"></i>
                         </button>
                         <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 bg-white p-0">
                             <p class="p-4 text-gray-600">
-                                Our service policy ensures timely response and quality support. Lorem ipsum dolor sit
-                                amet, consectetur adipiscing elit.
+                                {!! $faq->description !!}
                             </p>
                         </div>
                     </div>
 
-                    <!-- Item 2 -->
+                    @endforeach
+
+
+                    {{-- <!-- Item 2 -->
                     <div class="accordion-item border border-gray-200 rounded-lg overflow-hidden">
                         <button onclick="toggleAccordion(this)"
                             class="w-full cursor-pointer flex justify-between items-center p-4 font-semibold text-gray-800 hover:bg-gray-100 transition">
@@ -93,7 +97,7 @@
                                 24/7.
                             </p>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
 

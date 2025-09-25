@@ -5,6 +5,7 @@ use App\Models\Backend\Setting;
 use App\Models\Backend\Language;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Cache;
+use Modules\Section\Entities\Section;
 use Illuminate\Support\Facades\Session;
 
 
@@ -78,7 +79,7 @@ if (!function_exists('hasPermission')) {
     }
 }
 
-// date format 
+// date format
 if (!function_exists('dateFormat')) {
     function dateFormat($newDate = null)
     {
@@ -153,5 +154,31 @@ if (!function_exists('defaultLanguage')) {
         }
 
         return Cache::remember($cacheKey, Carbon\Carbon::now()->addMinutes(10), fn () => Language::where('code', $app_local)->first());
+    }
+}
+
+
+if (!function_exists('customSection')) {
+    function customSection($type, $key)
+    {
+
+        $sections = Cache::rememberForever('sections', function () {
+
+            $all_sections = Section::with('upload')->select('type', 'key', 'value')->get();
+            $sections     = [];
+
+            foreach ($all_sections as $section) {
+
+                if (str_contains($section->key, 'image')) {
+                    $sections[$section->type][$section->key] = $section->image;
+                } else {
+                    $sections[$section->type][$section->key] = $section->value;
+                }
+            }
+
+            return $sections;
+        });
+
+        return data_get($sections, $type . '.' . $key, '');
     }
 }

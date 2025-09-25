@@ -45,7 +45,7 @@ Route::middleware(['XSS'])->group(function () {
     Route::get('days',                                    [FrontendController::class, 'days'])->name('days');
     Route::get('doctor',                                    [FrontendController::class, 'doctor'])->name('doctor');
     Route::get('blogs',                                         [FrontendController::class, 'blog'])->name('blog');
-    Route::get('blogs-details',                          [FrontendController::class, 'blogDetails'])->name('blog.details');
+    Route::get('blogs-details/{slug}',                          [FrontendController::class, 'blogDetails'])->name('blog.details');
     Route::get('about',                                         [FrontendController::class, 'about'])->name('about');
     Route::get('terms-conditions',                              [FrontendController::class, 'termsConditions'])->name('terms');
     Route::get('privacy-policy',                                [FrontendController::class, 'privacy'])->name('privacy');
