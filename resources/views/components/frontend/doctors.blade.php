@@ -13,8 +13,8 @@
                                 fill="currentColor"></path>
                         </svg>
                     </span>
-                    Doctors</span>
-                <h2 class="text-2xl sm:text-4xl font-bold text-gray-800 mb-4">Popular Doctors</h2>
+                   {{ customSection(\Modules\Section\Enums\Type::DOCTOR, 'doctor_title') }}</span>
+                <h2 class="text-2xl sm:text-4xl font-bold text-gray-800 mb-4">{{ customSection(\Modules\Section\Enums\Type::DOCTOR, 'doctor_sub_title') }}</h2>
             </div>
         </div>
 

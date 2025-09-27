@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Modules\Blog\Entities\Blog;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
+use Modules\Testimonial\Entities\Testimonial;
 use Modules\Blog\Repositories\Blog\BlogInterface;
 
 class FrontendController extends Controller
@@ -60,7 +61,10 @@ class FrontendController extends Controller
         return view('frontend.blog-details',compact('blog', 'recentBlogs', 'previousBlog', 'nextBlog'));
     }
     public function about(){
-        return view('frontend.about-us');
+          $testimonials = Cache::rememberForever('testimonials', function () {
+            return Testimonial::with('upload')->where('status', Status::ACTIVE)->orderBy('position', 'asc')->paginate(settings('paginate_value'));
+        });
+        return view('frontend.about-us', compact('testimonials'));
     }
     public function termsConditions(){
         return view('frontend.term-condition');

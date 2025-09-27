@@ -151,6 +151,12 @@
                             @case(Modules\Section\Enums\Type::POPUP_CONTENT)
                             @include('section::form.popups_content')
                             @break
+                            @case(Modules\Section\Enums\Type::CATEGORY)
+                            @include('section::form.category')
+                            @break
+                            @case(Modules\Section\Enums\Type::DOCTOR)
+                            @include('section::form.doctor')
+                            @break
 
                             @endswitch
 

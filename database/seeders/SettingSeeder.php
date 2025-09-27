@@ -38,7 +38,7 @@ class SettingSeeder extends Seeder
             ['key' => 'opening_days',                  'value' => 'monday-friday'],
             ['key' => 'address',                  'value' => 'Address:4th floor, Feni Center, Feni-3900, Bangladesh'],
             ['key' => 'paginate_value',                  'value' => '10'],
-            ['key' => 'copyright',              'value' => 'All rights reserved. Development by Doctor info Developers.'],
+            ['key' => 'copyright',              'value' => 'All rights reserved. Development by BugBuild Developers.'],
 
             ['key' => 'light_logo',               'value' => $this->uploadRepo->uploadSeederByPath("backend/assets/img/logo/logo-light.png")],
             ['key' => 'dark_logo',          'value' => $this->uploadRepo->uploadSeederByPath("backend/assets/img/logo/logo-dark.png")],

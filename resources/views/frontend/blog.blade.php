@@ -2,6 +2,9 @@
 @section('title', 'Blog')
 @section('Maincontent')
  <!-- page breadcrumb start -->
+ @php
+     $img = data_get(customSection(\Modules\Section\Enums\Type::BREADCRUMB, 'breadcrumb_image'), 'original');
+ @endphp
 
     <section class=" py-16 sm:py-18 relative z-[1] text-white">
         <div class="bg-cover bg-center absolute top-0 bottom-0 w-full h-full z-[-2]"
@@ -12,9 +15,9 @@
             <div class="text-center breadcrumb">
                 <h2 class="text-4xl sm:text-6xl font-bold mb-4">Blogs</h2>
                 <ul class="flex gap-2 items-ceneter justify-center leading-6 text-base font-medium">
-                    <li class="flex gap-2 items-center text-gray-200"><a href="./index.html">Home</a> <i
+                    <li class="flex gap-2 items-center text-gray-200"><a href="/">Home</a> <i
                             class="ph-bold ph-caret-right"></i></li>
-                    <li class="flex gap-2 items-center"><a href="./blogs.html">Blogs</a></li>
+                    <li class="flex gap-2 items-center"><a href="">Blogs</a></li>
                 </ul>
             </div>
         </div>
@@ -38,8 +41,8 @@
                                 fill="currentColor"></path>
                         </svg>
                     </span>
-                    Blogs</span>
-                <h2 class="text-2xl sm:text-4xl font-bold text-gray-800 mb-4">News & Blogs</h2>
+                   {{ customSection(\Modules\Section\Enums\Type::BLOGS, 'short_title') }}</span>
+                <h2 class="text-2xl sm:text-4xl font-bold text-gray-800 mb-4">{!! customSection(\Modules\Section\Enums\Type::BLOGS, 'title') !!}</h2>
             </div>
 
             <!-- Blog Grid -->

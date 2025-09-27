@@ -23,6 +23,16 @@
     <input type="email" class="form-control input-style-1" name="email" value="{{ @$section['email'] }}" required>
     <input type="hidden" class="form-control input-style-1" name="name[]" value="email">
 </div>
+<div class="form-group col-lg-6 ">
+    <label class="label-style-1">{{ ___('label.opening_days') }} </label>
+    <input type="text" class="form-control input-style-1" name="opening_days" value="{{ @$section['opening_days'] }}" required>
+    <input type="hidden" class="form-control input-style-1" name="name[]" value="opening_days">
+</div>
+<div class="form-group col-lg-6 ">
+    <label class="label-style-1">{{ ___('label.opening_hours') }} </label>
+    <input type="text" class="form-control input-style-1" name="opening_hours" value="{{ @$section['opening_hours'] }}" required>
+    <input type="hidden" class="form-control input-style-1" name="name[]" value="opening_hours">
+</div>
 
 
 

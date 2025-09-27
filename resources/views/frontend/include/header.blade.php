@@ -1,5 +1,6 @@
 
 {{-- @dd($languages) --}}
+{{-- @dd($social_links) --}}
 <header
         class="headerSticky bg-white lg:bg-blue-500 relative z-[2] py-3 lg:py-0 border-b border-gray-200 lg:border-0">
         <div class="container max-w-[1224px] mx-auto px-4 lg:px-0">
@@ -129,27 +130,23 @@
             <div class="mb-6">
                 <h4 class="text-xl font-semibold leading-6 mb-4 text-black">Contact Us</h4>
                 <p class="flex items-center gap-3 text-base leading-6 mb-3"><i
-                        class="ph ph-map-pin text-xl text-blue-500"></i> 2478 Street City Ohio 90255</p>
+                        class="ph ph-map-pin text-xl text-blue-500"></i> {{ customSection(\Modules\Section\Enums\Type::CONTACT_US, 'address') }}</p>
                 <p class="flex items-center gap-3 text-base leading-6 mb-3"><i
-                        class="ph ph-envelope-simple text-xl text-blue-500"></i> info@mediax.com</p>
+                        class="ph ph-envelope-simple text-xl text-blue-500"></i> {{ customSection(\Modules\Section\Enums\Type::CONTACT_US, 'email') }}</p>
                 <p class="flex items-center gap-3 text-base leading-6 mb-3"><i
-                        class="ph ph-phone text-xl text-blue-500"></i> +(402) 763 282 46</p>
+                        class="ph ph-phone text-xl text-blue-500"></i>{{ customSection(\Modules\Section\Enums\Type::CONTACT_US, 'phone') }}</p>
             </div>
             <ul class="social flex items-center gap-2 mb-10">
+                @foreach ($social_links as $social_link)
                 <li>
-                    <a href="#"
+                    <a href="{{ $social_link->link }}"
                         class="bg-gray-200 w-10 h-10 rounded-full flex items-center justify-center text-lg text-gray-800 hover:bg-blue-500 hover:text-white transition-all"><i
-                            class="icon-facebook"></i></a>
+                            class="{{ $social_link->icon }}"></i></a>
                 </li>
-                <li><a href="#"
-                        class="bg-gray-200 w-10 h-10 rounded-full flex items-center justify-center text-lg text-gray-800 hover:bg-blue-500 hover:text-white transition-all"><i
-                            class="icon-twitter"></i></a></li>
-                <li><a href="#"
-                        class="bg-gray-200 w-10 h-10 rounded-full flex items-center justify-center text-lg text-gray-800 hover:bg-blue-500 hover:text-white transition-all"><i
-                            class="icon-linkedin"></i></a></li>
-                <li><a href="#"
-                        class="bg-gray-200 w-10 h-10 rounded-full flex items-center justify-center text-lg text-gray-800 hover:bg-blue-500 hover:text-white transition-all"><i
-                            class="icon-pinterest"></i></a></li>
+
+                @endforeach
+
+        
             </ul>
 
             <div class="hidden lg:block">

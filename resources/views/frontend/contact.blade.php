@@ -2,7 +2,7 @@
 @section('title', 'Contact')
 @section('Maincontent')
  <!-- page breadcrumb start -->
-
+{{-- @dd(data_get(customSection(\Modules\Section\Enums\Type::BREADCRUMB, 'breadcrumb_image'), 'original')) --}}
     <section class=" py-16 sm:py-18 relative z-[1] text-white">
         <div class="bg-cover bg-center absolute top-0 bottom-0 w-full h-full z-[-2]"
             style="background-image: url({{asset('frontend')}}/assets/img/testimonial.jpg);"></div>
@@ -12,9 +12,9 @@
             <div class="text-center breadcrumb">
                 <h2 class="text-4xl sm:text-6xl font-bold mb-4">Contact Us</h2>
                 <ul class="flex gap-2 items-ceneter justify-center leading-6 text-base font-medium">
-                    <li class="flex gap-2 items-center text-gray-200"><a href="./index.html">Home</a> <i
+                    <li class="flex gap-2 items-center text-gray-200"><a href="/">Home</a> <i
                             class="ph-bold ph-caret-right"></i></li>
-                    <li class="flex gap-2 items-center"><a href="./contact.html">Contact Us</a></li>
+                    <li class="flex gap-2 items-center"><a href="">Contact Us</a></li>
                 </ul>
             </div>
         </div>
@@ -38,8 +38,8 @@
                     <!-- Right Content -->
                     <div class="font-normal">
                         <h3 class="text-xl font-bold text-gray-800 leading-5 mb-3">Opening Hours</h3>
-                        <p class="text-gray-500 leading-4 mb-1">Mon - Fri: 9:00 AM - 6:00 PM</p>
-                        <span class="text-green-500 leading-4">Saturday - Closed</span>
+                        <p class="text-gray-500 leading-4 mb-1">{{ customSection(\Modules\Section\Enums\Type::CONTACT_US, 'opening_hours') }}</p>
+                        <span class="text-green-500 leading-4">{{ customSection(\Modules\Section\Enums\Type::CONTACT_US, 'opening_days') }}</span>
                     </div>
                 </div>
 
@@ -51,7 +51,7 @@
                     <!-- Right Content -->
                     <div class="font-normal">
                         <h3 class="text-xl font-bold text-gray-800 leading-5 mb-3">Call Us</h3>
-                        <p class="text-gray-500 leading-4 mb-1">+880 1234 567 890</p>
+                        <p class="text-gray-500 leading-4 mb-1">{{ customSection(\Modules\Section\Enums\Type::CONTACT_US, 'phone') }}</p>
                     </div>
                 </div>
 
@@ -63,7 +63,7 @@
                     <!-- Right Content -->
                     <div class="font-normal">
                         <h3 class="text-xl font-bold text-gray-800 leading-5 mb-3">Visit Us</h3>
-                        <p class="text-gray-500 leading-4 mb-1">123 Main Street, Feni</p>
+                        <p class="text-gray-500 leading-4 mb-1">{{ customSection(\Modules\Section\Enums\Type::CONTACT_US, 'address') }}</p>
                     </div>
                 </div>
 
@@ -115,7 +115,7 @@
                     <!-- Google Map -->
                     <div class="overflow-hidden rounded-xl shadow-md h-[500px]">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.51089375452!2d90.39945241543147!3d23.780887584574378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8953dfc5e6f%3A0x1cda817b4f2bb1!2sDhaka!5e0!3m2!1sen!2sbd!4v1615991366509!5m2!1sen!2sbd"
+                            src="{{ customSection(\Modules\Section\Enums\Type::CONTACT_US, 'map') }}"
                             width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
                         </iframe>
                     </div>
@@ -136,20 +136,13 @@
             <div
                 class="container max-w-[1224px] mx-auto px-4 lg:px-0 flex items-center lg:justify-center justify-between lg:gap-6 gap-10 flex-wrap">
                 <div class="lg:w-[700px] me-auto">
-                    <h2 class="text-2xl md:text-5xl font-semibold lg:leading-13 mb-6">We’re welcoming new patients and
-                        can’t
-                        wait to meet you!</h2>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto aliquam cum voluptas fuga
-                        doloremque
-                        eos, voluptates dolor. In, ratione quas distinctio temporibus quidem id obcaecati, molestiae,
-                        laboriosam accusantium deleniti illum.</p>
+                    <h2 class="text-2xl md:text-5xl font-semibold lg:leading-13 mb-6">{{ customSection(\Modules\Section\Enums\Type::CTA, 'short_title') }}</h2>
+                    <p>{{ customSection(\Modules\Section\Enums\Type::CTA, 'short_title') }}</p>
                     <div class="flex flex-wrap gap-6 items-center mt-6">
-                        <a href="#"
-                            class="text-white-900 font-medium uppercase bg-gray-800 shadow hover:shadow-lg transition transform hover:-translate-y-1 py-4 px-6 rounded-lg inline-flex gap-2 items-center justify-center">Book
-                            Appointment <i class="ph-bold ph-arrow-up-right"></i></a>
-                        <a href="#"
-                            class="text-gray-900 font-medium uppercase bg-white shadow hover:shadow-lg transition transform hover:-translate-y-1 py-4 px-6 rounded-lg inline-flex gap-2 items-center justify-center">Get
-                            Free Consulting <i class="ph-bold ph-arrow-up-right"></i></a>
+                        <a href="{{ customSection(\Modules\Section\Enums\Type::CTA, 'button_one_link') }}"
+                            class="text-white-900 font-medium uppercase bg-gray-800 shadow hover:shadow-lg transition transform hover:-translate-y-1 py-4 px-6 rounded-lg inline-flex gap-2 items-center justify-center">{{ customSection(\Modules\Section\Enums\Type::CTA, 'button_one') }} <i class="ph-bold ph-arrow-up-right"></i></a>
+                        <a href="{{ customSection(\Modules\Section\Enums\Type::CTA, 'button_two_link') }}"
+                            class="text-gray-900 font-medium uppercase bg-white shadow hover:shadow-lg transition transform hover:-translate-y-1 py-4 px-6 rounded-lg inline-flex gap-2 items-center justify-center">{{ customSection(\Modules\Section\Enums\Type::CTA, 'button_two') }}<i class="ph-bold ph-arrow-up-right"></i></a>
                     </div>
                 </div>
 

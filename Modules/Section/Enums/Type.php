@@ -38,4 +38,6 @@ interface Type
     const HOW_WE_WORK               = 26;
     const DELIVERY_CALCULATOR_TWO   = 27;
     const FAQ_STYLE_TWO             = 28;
+    const CATEGORY                  = 29;
+    const DOCTOR                    = 30;
 }

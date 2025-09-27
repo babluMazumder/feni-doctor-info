@@ -24,6 +24,7 @@ interface ImageSize
     const FAQ_IMAGE                         = [652, 504];
     const SIGNIN_IMAGE                      = [643, 499];
     const SIGNUP_IMAGE                      = [643, 599];
+      const COVERAGE_AREA_BG_IMAGE            = [766, 427];
 
 
     const TESTIMONIAL_CLIENT_IMAGE = [80, 80];

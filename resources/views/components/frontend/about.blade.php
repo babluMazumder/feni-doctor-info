@@ -5,7 +5,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <!-- Left: Hero Image -->
                 <div class="w-full aspect-[16/14] lg:pr-12 about-img">
-                    <img src="{{asset('frontend')}}/assets/img/img-5.jpg" class="w-full h-full rounded-xl object-cover shadow-lg" />
+                    <img src="{{ data_get(customSection(\Modules\Section\Enums\Type::ABOUT_US, 'about_us_image'), 'original') }}" class="w-full h-full rounded-xl object-cover shadow-lg" />
                 </div>
 
                 <!-- Right: Content -->
@@ -19,16 +19,13 @@
                                         fill="currentColor"></path>
                                 </svg>
                             </span>
-                            About Us</span>
-                        <h2 class="text-2xl sm:text-5xl font-bold sm:leading-14 text-gray-800 mb-4">Affordable Health
-                            Care Solutions</h2>
+                            {{ customSection(\Modules\Section\Enums\Type::ABOUT_US, 'section_tagline')}}</span>
+                        <h2 class="text-2xl sm:text-5xl font-bold sm:leading-14 text-gray-800 mb-4">{{ customSection(\Modules\Section\Enums\Type::ABOUT_US, 'section_main_title')}}</h2>
                     </div>
 
                     <!-- Subheading -->
                     <p class="text-gray-600 mb-8">
-                        Redefining Beauty with Mediax™ is the captivating and inclusive title that invites visitors
-                        to explore the unique story and missions of Mediax. This title suggests a commitment to not only
-                        providing
+       {{ customSection(\Modules\Section\Enums\Type::ABOUT_US, 'promotional_red_text')}}
                     </p>
 
                     <!-- Bullet Points -->
@@ -37,23 +34,23 @@
                             <ul class="space-y-6 mb-8">
                                 <li class="flex items-center text-gray-900 gap-3 text-xl font-semibold">
                                     <i class="ph-fill ph-shield-check text-green-500 text-3xl leading-4"></i>
-                                    25+ Years Of Experience
+                                  {{ customSection(\Modules\Section\Enums\Type::ABOUT_US, 'years_of_experience')}} Years Of Experience
                                 </li>
                                 <li class="flex items-center text-gray-900 gap-3 text-xl font-semibold">
                                     <i class="ph-fill ph-shield-check text-green-500 text-3xl leading-4"></i>
-                                    15k+ Happy Customers
+                                   {{ customSection(\Modules\Section\Enums\Type::ABOUT_US, 'happay_customers')}} Happy Customers
                                 </li>
                                 <li class="flex items-center text-gray-900 gap-3 text-xl font-semibold">
                                     <i class="ph-fill ph-shield-check text-green-500 text-3xl leading-4"></i>
-                                    12k+ Positive Reviews
+                                    {{ customSection(\Modules\Section\Enums\Type::ABOUT_US, 'positive_reviews')}} Positive Reviews
                                 </li>
                             </ul>
 
-                            <a href="#" class="btn-primary inline-flex justify-center"> About More <i
+                            <a href="{{ customSection(\Modules\Section\Enums\Type::ABOUT_US, 'primary_button_link')}}" class="btn-primary inline-flex justify-center"> Abod{{ customSection(\Modules\Section\Enums\Type::ABOUT_US, 'primary_button_text')}}<i
                                     class="ph-bold ph-arrow-up-right"></i></a>
                         </div>
                         <div class="ab-inner-img rounded-xl overflow-hidden aspect-[16/12]">
-                            <img src="{{asset('frontend')}}/assets/img/ab-2.jpg" class="rounded-xl w-full h-full object-cover" alt="">
+                            <img src="{{ data_get(customSection(\Modules\Section\Enums\Type::ABOUT_US, 'video_image'), 'original') }}" class="rounded-xl w-full h-full object-cover" alt="">
                             <!-- Play Button (Trigger) -->
                             <button data-modal-target="videoModal1" class="play-btn cursor-pointer">
                                 <i class="ph-fill ph-play text-xl"></i>

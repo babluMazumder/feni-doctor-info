@@ -23,8 +23,9 @@
                             </svg>
                         </span>
                        {{customSection(\Modules\Section\Enums\Type::HERO_SECTION, 'hero_section_title')}}</span>
-                    <h1 class="text-3xl sm:text-7xl font-bold sm:leading-18 mb-4 sm:mb-10 capitalize">Caring for <span
-                            class="text-blue-500">Health</span> Caring for You</h1>
+                    <h1 class="text-3xl sm:text-7xl font-bold sm:leading-18 mb-4 sm:mb-10 capitalize"> {{customSection(\Modules\Section\Enums\Type::HERO_SECTION, 'hero_section_short_description')}}</h1>
+                    {{-- <h1 class="text-3xl sm:text-7xl font-bold sm:leading-18 mb-4 sm:mb-10 capitalize">Caring for <span
+                            class="text-blue-500">Health</span> Caring for You</h1> --}}
                     <p class="text-base font-normal text-gray-500 leading-6 mb-4 sm:mb-8">{!!  customSection(\Modules\Section\Enums\Type::HERO_SECTION, 'description')!!}</p>
 
                     <form action="#"

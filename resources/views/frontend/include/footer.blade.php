@@ -101,25 +101,21 @@
         <div class="bg-gray-800 py-4 text-base text-center">
             <div
                 class="container max-w-[1224px] px-4 mx-auto lg:px-0 flex flex-col md:flex-row items-center justify-between">
-                <p>Copyright © 2025 <a target="_blank" href="https://www.bugbuild.com"
-                        class="text-blue-500">Bugbuild</a>. All Rights Reserved.</p>
+              <p>Copyright © 2025<a target="_blank" href="https://www.bugbuild.com" class="text-inherit hover:text-inherit">{{ settings('copyright') }}</a></p>
+
                 <div class="flex gap-4 mt-4 md:mt-0">
-                    <a href="#"
-                        class="w-10 h-10 text-base bg-white text-gray-800 rounded-full flex items-center justify-center hover:bg-blue-500 hover:text-white transition">
-                        <i class="icon-facebook"></i>
-                    </a>
-                    <a href="#"
-                        class="w-10 h-10 text-base bg-white text-gray-800 rounded-full flex items-center justify-center hover:bg-blue-500 hover:text-white transition">
-                        <i class="icon-twitter"></i>
-                    </a>
-                    <a href="#"
-                        class="w-10 h-10 text-base bg-white text-gray-800 rounded-full flex items-center justify-center hover:bg-blue-500 hover:text-white transition">
-                        <i class="icon-pinterest"></i>
-                    </a>
-                    <a href="#"
-                        class="w-10 h-10 text-base bg-white text-gray-800 rounded-full flex items-center justify-center hover:bg-blue-500 hover:text-white transition">
-                        <i class="icon-whatsapp"></i>
-                    </a>
+                    <ul class="social flex items-center gap-2 mb-10">
+                @foreach ($social_links as $social_link)
+                <li>
+                    <a href="{{ $social_link->link }}"
+                        class="bg-gray-200 w-10 h-10 rounded-full flex items-center justify-center text-lg text-gray-800 hover:bg-blue-500 hover:text-white transition-all"><i
+                            class="{{ $social_link->icon }}"></i></a>
+                </li>
+
+                @endforeach
+
+
+            </ul>
                 </div>
             </div>
         </div>

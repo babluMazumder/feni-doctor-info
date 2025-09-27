@@ -19,7 +19,7 @@ class SocialLinkTableSeeder extends Seeder
         Model::unguard();
 
         $names = ['Facebook', 'Twitter', 'Instagram', 'Youtube'];
-        $icons = ['fab fa-facebook-f', 'fab fa-twitter', 'fab fa-instagram', 'fab fa-youtube'];
+        $icons = ['icon-facebook', 'icon-twitter', 'icon-instagram', 'icon-youtube'];
          $links  = [
             'https://facebook.com',
             'https://twitter.com',

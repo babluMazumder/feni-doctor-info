@@ -12,8 +12,8 @@
                                     fill="currentColor"></path>
                             </svg>
                         </span>
-                        Blogs</span>
-                    <h2 class="text-2xl sm:text-4xl font-bold text-gray-800 mb-4">News & Blogs</h2>
+                       {{ customSection(\Modules\Section\Enums\Type::BLOGS, 'short_title') }}</span>
+                    <h2 class="text-2xl sm:text-4xl font-bold text-gray-800 mb-4">{!! customSection(\Modules\Section\Enums\Type::BLOGS, 'title') !!}</h2>
                 </div>
                 <div><a class="btn-primary rounded-lg h-10" href="{{ route('blog') }}">View All <i
                             class="ph-bold ph-arrow-up-right"></i></a></div>

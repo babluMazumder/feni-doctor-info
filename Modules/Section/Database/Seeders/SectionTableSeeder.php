@@ -40,13 +40,40 @@ class SectionTableSeeder extends Seeder
         $this->Breadcrumb();
 
         $this->CTA();
+        $this->category();
+        $this->doctor();
 
 
         $this->popups_content();
     }
 
 
+    public function doctor(){
+        Section::create([
+            'type'  => Type::DOCTOR,
+            'key'   => 'doctor_title',
+            'value' => 'Doctors'
+        ]);
+        Section::create([
+            'type'  => Type::DOCTOR,
+            'key'   => 'doctor_sub_title',
+            'value' => 'Our Specialized Doctors'
+        ]);
+    }
 
+    public function category()
+    {
+        Section::create([
+            'type'  => Type::CATEGORY,
+            'key'   => 'category_title',
+            'value' => 'Disease Categories'
+        ]);
+        Section::create([
+            'type'  => Type::CATEGORY,
+            'key'   => 'category_sub_title',
+            'value' => 'Our Specialized Disease Categories'
+        ]);
+    }
     public function heroSection()
     {
         Section::create([
@@ -99,7 +126,7 @@ class SectionTableSeeder extends Seeder
         Section::create([
             'type'  => Type::HERO_SECTION,
             'key'   => 'description',
-            'value' => 'et consectetur adipisicing elit. Commodi nulla quibusdam sdf s fwefsdf'
+            'value' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi nulla quibusdam architecto, error exercitationem a?'
         ]);
     }
 
@@ -142,21 +169,22 @@ class SectionTableSeeder extends Seeder
             'key'   => 'email',
             'value' => 'support@bugbuild.com'
         ]);
+        Section::create([
+            'type'  => Type::CONTACT_US,
+            'key'   => 'opening_hours',
+            'value' => 'Mon - Fri: 9:00 AM - 6:00 PM'
+        ]);
+        Section::create([
+            'type'  => Type::CONTACT_US,
+            'key'   => 'opening_days',
+            'value' => 'Saturday - Closed'
+        ]);
         // Section::create([
         //     'type'  => Type::CONTACT_US,
         //     'key'   => 'Breadcrumb_image',
         //     'value' => $this->uploadRepo->uploadSeederByPath("frontend/assets/img/logistics-img/breadcrumb-img-4.jpg")
         // ]);
-        // Section::create([
-        //     'type'  => Type::CONTACT_US,
-        //     'key'   => 'left_info_image',
-        //     'value' => $this->uploadRepo->uploadSeederByPath("frontend/assets/img/logistics-img/shap-1.png")
-        // ]);
-        // Section::create([
-        //     'type'  => Type::CONTACT_US,
-        //     'key'   => 'right_info_image',
-        //     'value' => $this->uploadRepo->uploadSeederByPath("frontend/assets/img/logistics-img/hero-2.jpg")
-        // ]);
+
         Section::create([
             'type'  => Type::CONTACT_US,
             'key'   => 'website',
@@ -174,23 +202,22 @@ class SectionTableSeeder extends Seeder
     public function AboutUs()
     {
         $data = [
-            ['key' => 'section_tagline',             'value' => 'KNOW ABOUT OUR TRANSPORT'],
-            ['key' => 'section_main_title',          'value' => 'We Guarantee Fast & Safe Transport for You'],
-            ['key' => 'total_satisfied_clients',     'value' => '4.2k'],
-            ['key' => 'satisfied_clients_label',     'value' => 'Satisfied Clients'],
-            ['key' => 'left_service_title',          'value' => 'Affordable Cost'],
-            ['key' => 'left_service_icon',           'value' =>  $this->uploadRepo->uploadSeederByPath('uploads/seeders/section/hand.png')],
-            ['key' => 'right_service_title',         'value' => 'On Time Delivery'],
-            ['key' => 'right_service_icon',           'value' => $this->uploadRepo->uploadSeederByPath('uploads/seeders/section/002-delivery-man.png')],
-            ['key' => 'promotional_red_text',        'value' => 'Duis aute irure dolor in reprehenderit in velit esse cillum dolore eu nulla pariatur.'],
-            ['key' => 'primary_button_text',         'value' => 'Discover More'],
+            ['key' => 'section_tagline',             'value' => 'ABOUT '],
+            ['key' => 'section_main_title',          'value' => 'Affordable Health Care Solutions'],
+            ['key' => 'years_of_experience',     'value' => '25+'],
+            ['key' => 'happay_customers',     'value' => '15k'],
+            ['key' => 'positive_reviews',     'value' => '12k'],
+          
+
+            ['key' => 'promotional_red_text',        'value' => 'Redefining Beauty with Mediax™ is the captivating and inclusive title that invites visitors to explore the unique story and missions of Mediax. This title suggests a commitment to not only providing'],
+            ['key' => 'primary_button_text',         'value' => 'about More'],
             ['key' => 'primary_button_link',          'value' => 'https://bugbuild.com/'],
-            ['key' => 'contact_title',               'value' => 'Call Us free'],
-            ['key' => 'contact_number',              'value' => '+9993256589'],
+            ['key' => 'video_url',          'value' => 'https://www.youtube.com/embed/dEo9mZc65Bc'],
+
             ['key' => 'section_description',         'value' => 'Arki features minimal and stylish design. The theme is well crafted for all the modern architect and interior design website. With Arki, it makes your website look even more attractive and impressive to'],
-            ['key' => 'client_avatar',               'value' =>  $this->uploadRepo->uploadSeederByPath('uploads/seeders/section/person-1.png')],
-            ['key' => 'section_image_one',           'value' =>  $this->uploadRepo->uploadSeederByPath('uploads/seeders/section/ship-1.jpg')],
-            ['key' => 'section_image_two',           'value' =>  $this->uploadRepo->uploadSeederByPath('uploads/seeders/section/service-sidebar.jpg')],
+            ['key' => 'video_image',               'value' =>  $this->uploadRepo->uploadSeederByPath('uploads/seeders/section/img-11.jpg')],
+            ['key' => 'about_us_image',           'value' =>  $this->uploadRepo->uploadSeederByPath('uploads/seeders/section/img-5.jpg')],
+
         ];
 
         foreach ($data as $item) {
@@ -253,29 +280,24 @@ class SectionTableSeeder extends Seeder
     {
         Section::create([
             'type'  =>  Type::CLIENT_REVIEW,
-            'key'   =>  'short_title',
-            'value' =>  'Reviews'
+            'key'   =>  'client_title',
+            'value' =>  'Testimonial'
         ]);
 
         Section::create([
             'type'  =>  Type::CLIENT_REVIEW,
-            'key'   =>  'title',
-            'value' =>  'Client Reviews'
+            'key'   =>  'client_sub_title',
+            'value' =>  'What Our Present Says?'
         ]);
 
-        Section::create([
-            'type'  =>  Type::CLIENT_REVIEW,
-            'key'   =>  'description',
-            'value' =>  'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Finibus Bonorum et Malorum'
-        ]);
     }
 
     public function Blogs()
     {
         $data = [
             ['key' => 'short_title',            'value' => 'Blogs'],
-            ['key' => 'title',                  'value' => 'Latest Blogs'],
-            ['key' => 'short_description',      'value' => 'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Finibus Bonorum et Malorum'],
+            ['key' => 'title',                  'value' => 'News & Blogs'],
+
         ];
 
         foreach ($data as $item) {
@@ -320,8 +342,8 @@ class SectionTableSeeder extends Seeder
     {
         Section::create([
             'type'  => Type::BREADCRUMB,
-            'key'   => 'breadcrumb-image',
-            'value' => $this->uploadRepo->uploadSeederByPath("uploads/seeders/section/breadcrumb.jpg"),
+            'key'   => 'breadcrumb_image',
+            'value' => $this->uploadRepo->uploadSeederByPath("uploads/seeders/section/testimonial.jpg"),
         ]);
 
         Section::create([
@@ -382,19 +404,43 @@ class SectionTableSeeder extends Seeder
         Section::create([
             'type' => Type::CTA,
             'key'  => 'short_title',
-            'value' => 'Sign up with ParcelFly as a merchant'
+            'value' => 'We’re welcoming new patients and  can’t wait to meet you!'
         ]);
 
         Section::create([
             'type' => Type::CTA,
             'key'  => 'title',
-            'value' => 'Start delivering products using ParcelFly courier'
+            'value' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto aliquam cum voluptas fuga
+                        doloremque
+                        eos, voluptates dolor. In, ratione quas distinctio temporibus quidem id obcaecati, molestiae,
+                        laboriosam accusantium deleniti illum.'
+        ]);
+        Section::create([
+            'type' => Type::CTA,
+            'key'  => 'button_one',
+            'value' => 'Book Appointment'
+        ]);
+        Section::create([
+            'type' => Type::CTA,
+            'key'  => 'button_one_link',
+            'value' => 'https://bugbuild.com/'
         ]);
 
         Section::create([
             'type' => Type::CTA,
-            'key'  => 'cta-bg-image',
-            'value' => $this->uploadRepo->uploadSeederByPath("uploads/seeders/section/hero-on-bike.png"),
+            'key'  => 'button_two',
+            'value' => 'Get Free Consulting '
+        ]);
+        Section::create([
+            'type' => Type::CTA,
+            'key'  => 'button_two_link',
+            'value' => 'https://bugbuild.com/'
+        ]);
+
+        Section::create([
+            'type' => Type::CTA,
+            'key'  => 'cta_image',
+            'value' => $this->uploadRepo->uploadSeederByPath("uploads/seeders/section/cta-img-2.png"),
         ]);
     }
 

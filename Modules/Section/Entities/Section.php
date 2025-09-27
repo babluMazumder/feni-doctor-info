@@ -50,9 +50,9 @@ class Section extends Model
             //     $type = ___('label.Header');
             //     break;
 
-            // case Type::COUNT:
-            //     $type = ___('label.Counter');
-            //     break;
+            case Type::CATEGORY:
+                $type = ___('label.Category');
+                break;
 
             case Type::CONTACT_US:
                 $type = ___('label.Contact Us');
@@ -63,18 +63,16 @@ class Section extends Model
             case Type::ABOUT_US:
                 $type = ___('label.About Us');
                 break;
+            case Type::DOCTOR:
+                $type = ___('label.Doctors');
+                break;
             case Type::OUR_ACHIEVEMENT:
                 $type = ___('label.Our Achievement');
                 break;
             case Type::OUR_ACHIEVEMENT_TWO:
                 $type = ___('label.Our Achievement Two');
                 break;
-            case Type::HOW_WE_WORK:
-                $type = ___('label.How We Work');
-                break;
-            case Type::OUR_BEST_SERVICE:
-                $type = ___('label.Our Best Service');
-                break;
+
             case Type::FAQ:
                 $type = ___('label.FAQs');
                 break;
@@ -104,37 +102,14 @@ class Section extends Model
             //     $type = ___('label.delivery Calculation');
             //     break;
 
-            case Type::DELIVERY_CALCULATOR:
-                $type = ___('label.Delivery Calculator');
-                break;
-            case Type::DELIVERY_CALCULATOR_TWO:
-                $type = ___('label.Delivery Calculator Style Two');
-                break;
-            case Type::CHARGE_LIST:
-                $type = ___('label.Charge List');
-                break;
 
-            case Type::COVERAGE_AREA:
-                $type = ___('label.Coverage Area');
-                break;
             case Type::CTA:
                 $type = ___('label.CTA');
                 break;
             case Type::FOOTER:
                 $type = ___('label.Footer');
                 break;
-            case Type::THEME_APPEARANCE:
-                $type = ___('label.theme_appearance');
-                break;
-            case Type::DELIVERY_SUCCESS:
-                $type = ___('label.delivery_success');
-                break;
-            case Type::FEATURES:
-                $type = ___('label.features');
-                break;
-            case Type::GALLERY:
-                $type = ___('label.gallery');
-                break;
+
 
             case Type::POPUP_CONTENT:
                 $type = ___('label.popups_content');

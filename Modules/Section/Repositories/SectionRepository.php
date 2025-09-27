@@ -84,9 +84,9 @@ class SectionRepository implements SectionInterface
                     elseif ($request->type == Type::FAQ_STYLE_TWO) {
                         $image_id    = $this->upload->uploadImage(image: $value, path: 'section/', image_sizes: [ImageSize::FAQ_IMAGE], old_upload_id: $section->value);
                     }
-                    // elseif ($request->type == Type::CONTACT_US) {
-                    //     $image_id    = $this->upload->uploadImage(image: $value, path: 'section/', image_sizes: [ImageSize::COVERAGE_AREA_BG_IMAGE], old_upload_id: $section->value);
-                    // }
+                    elseif ($request->type == Type::CONTACT_US) {
+                        $image_id    = $this->upload->uploadImage(image: $value, path: 'section/', image_sizes: [ImageSize::COVERAGE_AREA_BG_IMAGE], old_upload_id: $section->value);
+                    }
                     elseif ($request->type == Type::SIGNIN) {
                         $image_id    = $this->upload->uploadImage(image: $value, path: 'section/', image_sizes: [ImageSize::SIGNIN_IMAGE], old_upload_id: $section->value);
                     }

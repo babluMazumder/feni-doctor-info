@@ -25,6 +25,7 @@ class SectionController extends Controller
     public function index()
     {
         $sections = $this->repo->get();
+    //    dd($sections);
         return view('section::index', compact('sections'));
     }
 

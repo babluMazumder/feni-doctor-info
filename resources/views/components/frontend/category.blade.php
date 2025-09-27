@@ -10,8 +10,8 @@
                                 d="M480 240A240 240 0 0 1 240 0 240 240 0 0 1 0 240a240 240 0 0 1 240 240 240 240 0 0 1 240-240Z"
                                 fill="currentColor"></path>
                         </svg>
-                    </span> Disease Categories</span>
-                <h2 class="text-2xl sm:text-4xl font-bold text-gray-800 mb-4">Our Specialized Disease Categories</h2>
+                    </span>{{ customSection(\Modules\Section\Enums\Type::CATEGORY, 'category_title') }}</span>
+                <h2 class="text-2xl sm:text-4xl font-bold text-gray-800 mb-4">{{ customSection(\Modules\Section\Enums\Type::CATEGORY, 'category_sub_title') }} </h2>
             </div>
 
             <!-- Grid -->

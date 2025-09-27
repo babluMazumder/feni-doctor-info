@@ -29,9 +29,9 @@
                     <i class="ph-light ph-headset text-5xl text-blue-500"></i>
                     <div>
                         <span class="block">Contact Us</span>
-                        <a href="tel:+1636543569"
+                        <a href="{{ customSection(\Modules\Section\Enums\Type::CONTACT_US, 'phone') }}"
                             class="text-gray-950 font-semibold text-lg hover:text-blue-500 transition">
-                            {{ settings('phone') }}
+                          {{ customSection(\Modules\Section\Enums\Type::CONTACT_US, 'phone') }}
                         </a>
                     </div>
                 </div>
@@ -40,8 +40,8 @@
                 <div class="flex items-center gap-3">
                     <i class="ph-light ph-clock text-5xl text-blue-500"></i>
                     <div>
-                        <span class="block">{{ settings('opening_days') }}</span>
-                        <span class="text-gray-950 font-semibold text-lg">{{ settings('opening_hours') }}</span>
+                        <span class="block">{{ customSection(\Modules\Section\Enums\Type::CONTACT_US, 'opening_days') }}</span>
+                        <span class="text-gray-950 font-semibold text-lg">{{ customSection(\Modules\Section\Enums\Type::CONTACT_US, 'opening_hours') }}</span>
                     </div>
                 </div>
             </div>

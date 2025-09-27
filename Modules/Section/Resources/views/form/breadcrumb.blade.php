@@ -9,6 +9,23 @@
         </button>
     </div>
 </div>
+<div class="col-md-6">
+    <label class="label-style-1">{{ ___('label.breadcrumb_image') }} <span class="fillable"></span></label>
+
+    <div class="ot_fileUploader left-side mb-3">
+
+        @php
+        $breadcrumb_image = App\Models\Upload::find($section['breadcrumb_image']);
+        @endphp
+
+        <img src="{{ getImage($breadcrumb_image,'original') }}" alt=" " class="rounded">
+        <input class="form-control input-style-1 placeholder" type="text" placeholder="{{ ___('placeholder.attach_file') }}" readonly>
+        <button class="primary-btn-small-input" type="button">
+            <label class="j-td-btn" for="breadcrumb_image">{{ ___('label.browse') }}</label>
+            <input type="file" class="d-none form-control" name="breadcrumb_image" value="breadcrumb_image" id="breadcrumb_image" accept="image/jpeg, image/jpg, image/png, image/webp">
+        </button>
+    </div>
+</div>
 
 <div class="form-group col-lg-6">
     <label class="label-style-1">{{ ___('label.aboutus-title') }} </label>
