@@ -13,7 +13,7 @@
         </div>
         <div class="px-6 relative z-[1]">
             <div class="text-center breadcrumb">
-                <h2 class="text-4xl sm:text-6xl font-bold mb-4">Blogs</h2>
+                <h2 class="text-4xl sm:text-6xl font-bold mb-4">{{ customSection(\Modules\Section\Enums\Type::BREADCRUMB, 'blog-single-title') }}</h2>
                 <ul class="flex gap-2 items-ceneter justify-center leading-6 text-base font-medium">
                     <li class="flex gap-2 items-center text-gray-200"><a href="/">Home</a> <i
                             class="ph-bold ph-caret-right"></i></li>

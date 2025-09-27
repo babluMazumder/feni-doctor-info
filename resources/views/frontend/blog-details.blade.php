@@ -12,9 +12,9 @@
             <div class="text-center breadcrumb">
                 <h2 class="text-4xl sm:text-6xl font-bold mb-4">Blogs Details</h2>
                 <ul class="flex gap-2 items-ceneter justify-center leading-6 text-base font-medium">
-                    <li class="flex gap-2 items-center text-gray-200"><a href="./index.html">Home</a> <i
+                    <li class="flex gap-2 items-center text-gray-200"><a href="/">Home</a> <i
                             class="ph-bold ph-caret-right"></i></li>
-                    <li class="flex gap-2 items-center"><a href="./blog-details.html">Blogs Details</a></li>
+                    <li class="flex gap-2 items-center"><a href="">Blogs Details</a></li>
                 </ul>
             </div>
         </div>
