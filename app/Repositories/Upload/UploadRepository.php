@@ -3,11 +3,10 @@
 namespace App\Repositories\Upload;
 
 use App\Models\Upload;
-use App\Repositories\Upload\UploadInterface;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
-use Intervention\Image\Facades\Image;
-
+use Illuminate\Support\Facades\File;
+use App\Repositories\Upload\UploadInterface;
+use Intervention\Image\Laravel\Facades\Image;
 
 class UploadRepository implements UploadInterface
 {
@@ -22,100 +21,94 @@ class UploadRepository implements UploadInterface
             $this->deleteImage($old_upload_id, 'update');
         }
 
-        $requestImage        = $image;
-        $fileType            = $requestImage->getClientOriginalExtension();
-
-        if ($fileType == 'jpg' || $fileType == 'JPG') {
+        $fileType = strtolower($image->getClientOriginalExtension());
+        if ($fileType === 'jpg') {
             $fileType = 'jpeg';
         }
 
-        $convertMethod     = 'imagecreatefrom' . $fileType;
-        $directory         = public_path("uploads/$path");
+        $directory = public_path("uploads/$path");
 
         // make directory if not exist
         if (!File::exists($directory)) {
-            File::makeDirectory($directory);
+            File::makeDirectory($directory, 0755, true);
         }
 
-        // for original images
+        // original image
         $originalImageName = $this->imageName('original', $fileType);
-        $originalImageUrl  = $directory . $originalImageName;
-        $this->imageSaveToStorage($convertMethod, $originalImageUrl, $requestImage, 'original', '', '', $fileType, $directory);
+        $originalImageUrl  = $directory . DIRECTORY_SEPARATOR . $originalImageName;
+
+        $this->imageSaveToStorage($image, $originalImageUrl, true, $fileType);
 
         $all_url = [];
 
         foreach ($image_sizes as $key => $image_size) {
             $imageName  = $this->imageName(++$key, 'webp');
-            $imageUrl   = $directory . $imageName;
+            $imageUrl   = $directory . DIRECTORY_SEPARATOR . $imageName;
             $all_url[]  = $imageUrl;
-            $this->imageSaveToStorage($convertMethod, $imageUrl, $requestImage, '', $image_size[1], $image_size[0]);
+
+            $this->imageSaveToStorage($image, $imageUrl, false, 'webp', $image_size[0], $image_size[1]);
         }
 
-        $upload     = Upload::find($old_upload_id);
+        $upload = Upload::find($old_upload_id);
         if (!$upload) {
             $upload = new Upload();
         }
 
-        $public_path = public_path() . "\uploads";
+        $public_path = public_path() . DIRECTORY_SEPARATOR . "uploads";
         $upload->original    = str_replace($public_path, 'uploads', $originalImageUrl);
-        $upload->image_one   = @$all_url[0] != "" ? str_replace($public_path, 'uploads', $all_url[0]) : null;
-        $upload->image_two   = @$all_url[1] != "" ? str_replace($public_path, 'uploads', $all_url[1]) : null;
-        $upload->image_three = @$all_url[2] != "" ? str_replace($public_path, 'uploads', $all_url[2]) : null;
-        $upload->type        = $fileType == 'pdf' ? 'file' : 'image';
+        $upload->image_one   = !empty($all_url[0]) ? str_replace($public_path, 'uploads', $all_url[0]) : null;
+        $upload->image_two   = !empty($all_url[1]) ? str_replace($public_path, 'uploads', $all_url[1]) : null;
+        $upload->image_three = !empty($all_url[2]) ? str_replace($public_path, 'uploads', $all_url[2]) : null;
+        $upload->type        = $fileType === 'pdf' ? 'file' : 'image';
         $upload->save();
+
         return $upload->id;
     }
 
     public function imageName($size, $fileType)
     {
-        $purpose = substr(0, 20) . $size . '.' . $fileType;
+        $purpose = $size . '.' . $fileType;
         $purpose = str_replace(" ", "-", $purpose);
         $purpose = date('Y-m-d') . '-' . strtolower(Str::random(12)) . '-' . $purpose;
 
         return $purpose;
     }
 
-    public function imageSaveToStorage($convertMethod, $imageUrl, $requestImage, $original, $height = "", $width = "", $fileType = '', $directory = '')
+    public function imageSaveToStorage($requestImage, $imageUrl, $isOriginal = false, $fileType = 'jpeg', $width = null, $height = null)
     {
-        if ($fileType == 'pdf') {
-            $requestImage->move($directory, $imageUrl);
+        if ($fileType === 'pdf') {
+            $requestImage->move(dirname($imageUrl), basename($imageUrl));
         } else {
+            $image = Image::read($requestImage);
 
-            if ($original == 'original') {
-                Image::make($convertMethod($requestImage))->save($imageUrl, 90);
+            if ($isOriginal) {
+                $image->save($imageUrl, 90);
             } else {
-                if ($height == 80 && $width == 80) {
-                    Image::make($convertMethod($requestImage))->resize($width, $height)->save($imageUrl, 90);
-                } else {
-                    Image::make($convertMethod($requestImage))->resize($width, $height, function ($constraint) {
+                if ($width && $height) {
+                    $image->resize($width, $height, function ($constraint) {
                         $constraint->aspectRatio();
-                    })->save($imageUrl, 90);
+                    })->toWebp()->save($imageUrl, 90);
+                } else {
+                    $image->toWebp()->save($imageUrl, 90);
                 }
             }
         }
+
         return true;
     }
 
 
-
     public function deleteImage($old_upload_id, $slug = "update")
     {
-        $upload = Upload::where('id', $old_upload_id)->first();
+        $upload = Upload::find($old_upload_id);
         if ($upload) {
-            if ($upload->original && File::exists(public_path($upload->original))) {
-                unlink(public_path($upload->original));
-            }
-            if ($upload->image_one && File::exists(public_path($upload->image_one))) {
-                unlink(public_path($upload->image_one));
-            }
-            if ($upload->image_two && File::exists(public_path($upload->image_two))) {
-                unlink(public_path($upload->image_two));
-            }
-            if ($upload->image_three && File::exists(public_path($upload->image_three))) {
-                unlink(public_path($upload->image_three));
+            foreach (['original', 'image_one', 'image_two', 'image_three'] as $field) {
+                if ($upload->$field && File::exists(public_path($upload->$field))) {
+                    unlink(public_path($upload->$field));
+                }
             }
 
-            if ($slug == "delete") {
+            if ($slug === "delete") {
                 $upload->delete();
             }
         }
@@ -146,7 +139,7 @@ class UploadRepository implements UploadInterface
         $upload->image_three = $destinationPath;
 
         $fileType            = pathinfo($destinationPath, PATHINFO_EXTENSION);
-        $upload->type        = in_array($fileType, ['jpg', 'jpeg', 'png', 'gif']) ? 'image' : null;
+        $upload->type        = in_array(strtolower($fileType), ['jpg', 'jpeg', 'png', 'gif', 'webp']) ? 'image' : 'file';
 
         $upload->save();
 

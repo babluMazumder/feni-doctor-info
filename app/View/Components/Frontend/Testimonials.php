@@ -24,9 +24,14 @@ class Testimonials extends Component
      */
     public function render(): View|Closure|string
     {
-         $testimonials = Cache::rememberForever('testimonials', function () {
-            return Testimonial::with('upload')->where('status', Status::ACTIVE)->orderBy('position', 'asc')->paginate(settings('paginate_value'));
+        $testimonials = Cache::rememberForever('testimonials', function () {
+            return Testimonial::with('upload')
+                ->where('status', Status::ACTIVE)
+                ->orderBy('position', 'asc')
+                ->get();
         });
+
+
         return view('components.frontend.testimonials', compact('testimonials'));
     }
 }
