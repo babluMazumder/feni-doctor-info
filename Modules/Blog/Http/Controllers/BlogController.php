@@ -42,7 +42,7 @@ class BlogController extends Controller
     public function edit($id)
     {
         $blog       = $this->repo->getFind($id);
-        $users      = $this->userRepo->getWithFilter();
+        $users      = $this->userRepo->all();
         return view('blog::blog.edit', compact('blog', 'users'));
     }
 
