@@ -22,6 +22,7 @@
                 $table->string('date')->nullable();
                 $table->longText('description')->nullable();
                 $table->bigInteger('banner')->nullable();
+                $table->bigInteger('seen')->nullable();
                 $table->integer('status')->default(Status::ACTIVE->value)->comment(Status::ACTIVE->value . '= ' . __('status.' . Status::ACTIVE->value) . ',' . Status::INACTIVE->value . '= ' . __('status.' . Status::INACTIVE->value));
                 $table->bigInteger('position')->nullable();
                 $table->timestamps();

@@ -56,7 +56,7 @@ class HospitalSeeder extends Seeder
                 'latitude' => 22.356900,
                 'longitude' => 91.783200,
                 'website_url' => 'https://meditest.com',
-                'status' => Status::INACTIVE->value,
+                'status' => Status::ACTIVE->value,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

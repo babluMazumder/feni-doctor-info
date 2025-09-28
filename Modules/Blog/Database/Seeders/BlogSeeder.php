@@ -48,6 +48,7 @@ class BlogSeeder extends Seeder
         foreach ($blogs as $index => $data) {
             $blog = new Blog();
             $blog->author = 1;
+            $blog->seen = 1;
             $blog->position = $index + 1;
             $blog->banner = $this->uploadRepo->uploadSeederByPath('uploads/seeders/img/blog-' . rand(1, 5) . '.jpg');
             $blog->title = $data['title'];

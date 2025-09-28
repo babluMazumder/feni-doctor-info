@@ -5,37 +5,58 @@ namespace Database\Seeders;
 use App\Enums\Status;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Faker\Factory as Faker;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class BloodBankSeeder extends Seeder
 {
-     public function run(): void
+    public function run(): void
     {
-        $faker = Faker::create();
-
         $bloodGroups = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
 
-        foreach (range(1, 15) as $i) {
-            // Generate random available groups with units
+        $bloodBanks = [
+            'Dhaka Medical College Blood Bank',
+            'Bangladesh Red Crescent Blood Bank',
+            'Square Hospital Blood Bank',
+            'Ibrahim Cardiac Blood Bank',
+            'Chittagong Medical College Blood Bank',
+            'Rajshahi Medical College Blood Bank',
+            'Sylhet MAG Osmani Medical Blood Bank',
+            'Khulna Medical College Blood Bank',
+            'Mymensingh Medical College Blood Bank',
+            'United Hospital Blood Bank',
+            'Anjuman Mufidul Islam Blood Bank',
+            'Apollo (Evercare) Blood Bank',
+            'Popular Diagnostic Blood Bank',
+            'BIRDEM Blood Bank',
+            'Barisal Sher-e-Bangla Medical Blood Bank',
+        ];
+
+        $districts = [
+            'Dhaka', 'Chattogram', 'Rajshahi', 'Khulna', 'Sylhet',
+            'Barisal', 'Rangpur', 'Mymensingh', 'Gazipur',
+            'Narayanganj', 'Cumilla', 'Jessore', 'Bogura', 'Feni', 'Cox’s Bazar'
+        ];
+
+        foreach ($bloodBanks as $index => $bankName) {
+            // Generate available groups with realistic units
             $availableGroups = [];
-            foreach ($faker->randomElements($bloodGroups, rand(3, 6)) as $group) {
-                $availableGroups[$group] = $faker->numberBetween(0, 50); // 0-50 units
+            $randomGroups = array_rand(array_flip($bloodGroups), rand(4, 7));
+            foreach ((array)$randomGroups as $group) {
+                $availableGroups[$group] = rand(5, 50); // 5–50 units available
             }
 
             DB::table('blood_banks')->insert([
-                'name'            => $faker->company . ' Blood Bank',
-                'license_no'      => strtoupper($faker->bothify('LIC-####')),
-                'email'           => $faker->unique()->safeEmail,
-                'phone'           => $faker->phoneNumber,
-                'address'         => $faker->address,
-                'district'        => $faker->city,
-                'latitude'        => $faker->latitude(-90, 90),
-                'longitude'       => $faker->longitude(-180, 180),
-                'available_groups'=> json_encode($availableGroups),
-                'status'          => $faker->randomElement([Status::ACTIVE->value, Status::INACTIVE->value]),
-                'created_at'      => now(),
-                'updated_at'      => now(),
+                'name'             => $bankName,
+                'license_no'       => 'LIC-' . rand(1000, 9999),
+                'email'            => strtolower(str_replace(' ', '', $bankName)) . '@gmail.com',
+                'phone'            => '01' . rand(3, 9) . rand(10000000, 99999999), // Bangladeshi mobile
+                'address'          => 'House ' . rand(1, 200) . ', Road ' . rand(1, 20) . ', ' . $districts[array_rand($districts)],
+                'district'         => $districts[array_rand($districts)],
+                'latitude'         => rand(220000, 260000) / 10000, // Bangladesh approx (22.0000 – 26.0000)
+                'longitude'        => rand(880000, 920000) / 10000, // Bangladesh approx (88.0000 – 92.0000)
+                'available_groups' => json_encode($availableGroups, JSON_UNESCAPED_UNICODE),
+                'status'           => [Status::ACTIVE->value, Status::INACTIVE->value][rand(0, 1)],
+                'created_at'       => now(),
+                'updated_at'       => now(),
             ]);
         }
     }

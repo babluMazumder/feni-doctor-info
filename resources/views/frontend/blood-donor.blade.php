@@ -1,0 +1,89 @@
+@php
+    use Carbon\Carbon;
+@endphp
+
+@extends('frontend.master')
+@section('title', 'doctor')
+@section('Maincontent')
+    <!-- doctor list Start-->
+
+    <section class="pt-16 pb-16 lg:pb-40 bg-white relative z-[1]">
+        <div class="bg-cover bg-center absolute top-0 bottom-0 w-full h-full z-[-1] opacity-5"
+            style="background-image: url({{ asset('frontend') }}/assets/img/shape-bg/abstract-2.jpg);"></div>
+        <div class="container max-w-[1224px] mx-auto px-6 relative z-[1] mb-25">
+            <div class="text-center mb-12">
+                <span class="text-base sm:text-xl font-semibold flex justify-center items-center gap-2 leading-4 mb-3">
+                    <span class="text-blue-500 leading-4">
+                        <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480">
+                            <path
+                                d="M480 240A240 240 0 0 1 240 0 240 240 0 0 1 0 240a240 240 0 0 1 240 240 240 240 0 0 1 240-240Z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </span>
+                    our donators</span>
+                {{-- <h2 class="text-2xl sm:text-4xl font-bold text-gray-800 mb-4">
+                    {{ customSection(\Modules\Section\Enums\Type::DOCTOR, 'doctor_sub_title') }}</h2> --}}
+            </div>
+        </div>
+
+        <div class="px-4 lg:px-[80px] ">
+            <!-- Doctors Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-x-6 gap-y-20 justify-center items-center">
+
+                <!-- Doctor Card -->
+                @foreach ($bloodDonors as $donor)
+                    @php
+                        $lastDonation = $donor->last_donation_date ? Carbon::parse($donor->last_donation_date) : null;
+                        $daysAgo = $lastDonation ? $lastDonation->diffForHumans() : 'Never donated';
+                    @endphp
+
+
+
+                    <div
+                        class="bg-white p-6 rounded-xl doctor-card shadow-md hover:shadow-2xl transition transform hover:-translate-y-2 border border-gray-100 group backdrop-blur-lg flex-1 text-center relative z-[1]">
+
+                        <div
+                            class="w-30 h-30 rounded-full overflow-hidden absolute -top-12 bg-gradient-to-r from-teal-400 via-purple-400 to-blue-500 p-3 left-1/2 -translate-x-1/2  z-[1]">
+                            <img src="{{ asset('frontend/assets/img/icons-person.png') }}"
+                                class="w-full h-full rounded-full object-cover" alt="">
+                        </div>
+
+                        <h2 class="text-red-600 font-semibold text-lg mt-18">{{ $donor->blood_group }}</h2>
+                        <h3 class="text-green-600 font-bold text-xl">{{ $donor->name }} </h3>
+                        <p class="text-gray-700 mt-2">
+                            {{ $donor->address }}<br>
+                            {{ $donor->phone }} <br>
+                            {{ $donor->email }}
+                        </p>
+
+                        @if ($lastDonation)
+                            <p class="text-red-600 mt-2 font-semibold">
+                                Last donated: {{ $lastDonation->format('M d, Y') }} ({{ $daysAgo }})
+                            </p>
+                        @else
+                            <p class="text-red-600 mt-2 font-semibold">No donation record</p>
+                        @endif
+
+                        <p class="text-red-600 mt-2 font-semibold">Gender:<span
+                                class="text-gray-600">({{ $donor->gender }})</span></p>
+                        <p class="text-green-600 font-semibold mb-6">Availability: {{ $donor->availability }}</p>
+                        <a href="tel:{{ $donor->phone }}" class="btn-primary rounded-lg btn-black h-10">Call Now <i
+                                class="ph-bold ph-arrow-up-right"></i></a>
+                    </div>
+                @endforeach
+
+                @if ($bloodDonors)
+                    <div class="mt-3">
+                        <x-paginate-show :items="$bloodDonors" />
+                    </div>
+                @endif
+            </div>
+        </div>
+
+
+
+    </section>
+
+
+    <!-- doctor list Ends-->
+@endsection

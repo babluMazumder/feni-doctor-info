@@ -29,14 +29,6 @@
         <div class="container max-w-[1224px] px-4 lg:px-0 mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-10 lg:gap-20">
                 <div class="h-fit">
-                    <div class="flex items-center gap-3 mb-3">
-                        <a href="#"
-                            class="inline-block px-6 py-2 text-sm font-medium bg-gray-100 text-black hover:bg-blue-500 hover:text-white transition rounded-full">Cardiology</a>
-                        <a href="#"
-                            class="inline-block px-6 py-2 text-sm font-medium bg-gray-100 text-black hover:bg-blue-500 hover:text-white transition rounded-full">Doctors</a>
-                        <a href="#"
-                            class="inline-block px-6 py-2 text-sm font-medium bg-gray-100 text-black hover:bg-blue-500 hover:text-white transition rounded-full">Heart</a>
-                    </div>
 
                     <h1 class="text-2xl md:text-5xl font-semibold lg:leading-15 mb-4">{{ $blog->title }}</h1>
 
@@ -82,17 +74,6 @@
 
                     <p class=" leading-7 font-normal text-lg mb-4 lg:mb-10">{{ $blog->description }}</p>
 
-                    <div class="p-10 border-l-4 border-blue-500 rounded-2xl bg-gray-100 mb-6 lg:mb-10">
-                        <h3 class="text-2xl sm:text-3xl font-semibold sm:leading-10 text-gray-900">Lorem ipsum dolor sit
-                            amet consectetur adipisicing elit. Dicta, fuga corrupti iure adipisci ad voluptatem.</h3>
-                    </div>
-
-                    <div class="flex gap-6 flex-col lg:flex-row mb-6 lg:mb-10">
-                        <div class="aspect-[16/10] rounded-xl overflow-hidden shrink-0 flex-1"><img
-                                src="{{asset('frontend')}}/assets/img/about-2.jpg" class="w-full h-full object-cover" alt=""></div>
-                        <div class="aspect-[16/10] rounded-xl overflow-hidden flex-1"><img src="{{asset('frontend')}}/assets/img/ab-2.jpg"
-                                class="w-full h-full object-cover" alt=""></div>
-                    </div>
 
                     <h3 class="text-2xl font-semibold sm:text-3xl text-gray-900 mb-4">Crafting Mobile-Optimized
                         Experiences</h3>
@@ -104,16 +85,7 @@
                     </p>
 
                     <div class="flex justify-between gap-3 items-center flex-wrap">
-                        <div class="flex gap-3 items-center mt-6 lg:mt-10 flex-wrap">
-                            <span>Tag: </span>
-                            <a href="#"
-                                class="py-2 px-4 capitalize font-normal text-gray-900 text-sm leading-4 border hover:bg-blue-500 hover:text-white transition border-gray-200 rounded-lg block">Cardiology</a>
-                            <a href="#"
-                                class="py-2 px-4 capitalize font-normal text-gray-900 text-sm leading-4 border hover:bg-blue-500 hover:text-white transition border-gray-200 rounded-lg block">Heart
-                                Attack</a>
-                            <a href="#"
-                                class="py-2 px-4 capitalize font-normal text-gray-900 text-sm leading-4 border hover:bg-blue-500 hover:text-white transition border-gray-200 rounded-lg block">Diabetes</a>
-                        </div>
+
 
                         <div class="flex gap-3 items-center mt-6 lg:mt-10 flex-wrap">
                             <span>Share: </span>
@@ -149,37 +121,7 @@
                         </a>
                         @endif
                     </div>
-                    <h4 class="capitalize text-lg font-semibold lg:mt-10 mt-6">Leave A comment</h4>
-                    <form action="#" class="form grid sm:grid-cols-2 gap-4 gap-y-5 mt-6">
-                        <div>
-                            <label for="name">Name</label>
-                            <input type="text" class="form-control mt-2 rounded-lg" id="name" placeholder="Your name">
-                        </div>
-                        <div>
-                            <label for="Email">Email</label>
-                            <input type="text" class="form-control mt-2 rounded-lg" id="Email" placeholder="Your Email">
-                        </div>
-                        <div class="col-span-full">
-                            <label for="Review">Review</label>
-                            <textarea class="form-control mt-2 rounded-lg" id="Review" rows="3"
-                                placeholder="Write Comment" required></textarea>
-                        </div>
-
-                        <label class="col-span-full flex items-center gap-2 cursor-pointer mb-4">
-                            <label class="flex items-center justify-center gap-2 cursor-pointer relative">
-                                <!-- Checkbox -->
-                                <input type="checkbox"
-                                    class="peer w-5 h-5 leding-4 appearance-none rounded border border-gray-400 checked:bg-blue-500 checked:border-blue-500" />
-                                <!-- Custom check icon -->
-                                <i class="ph ph-check text-white text-xs absolute hidden peer-checked:block"></i>
-                            </label>
-                            <span class="">Save my name, email, and website in this browser for the
-                                next time I comment.</span>
-                        </label>
-                        <div class="col-span-full">
-                            <button type="button" class="btn-primary rounded-sm">Post Comment</button>
-                        </div>
-                    </form>
+                
 
                 </div>
 
@@ -200,8 +142,7 @@
                             <span class="text-gray-800">Freelancer</span>
                         </div>
                     </div>
-                    <h4 class="text-lg font-semibold leading-6 mb-0"><a href="#"
-                            class="text-gray-900 hover:text-blue-500 transition duration-300">Exploring Trends in
+                    <h4 class="text-lg font-semibold leading-6 mb-0"><a href="#"class="text-gray-900 hover:text-blue-500 transition duration-300">Exploring Trends in
                             Medical Cosmetic Procedures</a></h4>
 
                               @foreach ($recentBlogs as $recentBlog)
@@ -238,7 +179,7 @@
 
     <!-- related blogs starts -->
 
-    <section class="bg-gray-50 py-16">
+    {{-- <section class="bg-gray-50 py-16">
         <div class="max-w-7xl mx-auto px-4">
             <div class=" mb-12 flex items-center gap-4 justify-between">
                 <div>
@@ -340,7 +281,7 @@
 
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <!-- related blogs Ends -->
 @endsection

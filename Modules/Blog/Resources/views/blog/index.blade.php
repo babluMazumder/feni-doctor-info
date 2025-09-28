@@ -48,6 +48,7 @@
                                 <th scope="col">{{ ___('label.title') }}</th>
                                 <th scope="col">{{ ___('label.banner') }}</th>
                                 <th scope="col">{{ ___('label.description') }}</th>
+                                <th scope="col">{{ ___('label.seen') }}</th>
                                 <th scope="col">{{ ___('label.position') }}</th>
                                 <th scope="col">{{ ___('label.status') }}</th>
 
@@ -70,6 +71,7 @@
                                 <td> <img class="h-50px w-100 object-fit-cover" src="{{ getImage($blog->upload, 'original','default-image-80x80.png') }}" alt="blog_logo"> </td>
                                 {{-- <td>{!! Str::limit($blog->description, 150) !!}</td> --}}
                                 <td>{!! Str::limit(strip_tags($blog->description), 150) !!} </td>
+                                <td>{{ $blog->seen }}</td>
                                 <td>{{ $blog->position }}</td>
                                 <td>{!! $blog->my_status !!}</td>
 

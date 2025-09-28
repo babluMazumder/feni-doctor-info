@@ -18,8 +18,13 @@
                     <li class="has-submenu">
                         <a href="#" class="py-6 text-white hover:text-green-400 transition duration-300 flex gap-2 items-center">Pages <i class="ph-bold ph-caret-down"></i></a>
                         <ul class="submenu shadow-lg capitalize">
-                            <li><a href="{{ route('about') }}" class="py-6 text-white hover:text-green-400 transition duration-300 block">About Us</a></li>
+                           <li><a href="{{ route('blood.donor') }}">blood donor</a></li>
+                            <li><a href="{{ route('ambulance') }}">Ambulances</a></li>
+                            <li><a href="{{ route('bloodbank') }}">Blood Banks</a></li>
+                            <li><a href="{{ route('hospital') }}">Hospital</a></li>
                             <li><a href="{{ route('terms') }}">Terms & Condition</a></li>
+                            <li><a href="{{ route('about') }}" class="py-6 text-white hover:text-green-400 transition duration-300 block">About Us</a></li>
+
                             <li><a href="">Privacy Policy</a></li>
                         </ul>
                     </li>

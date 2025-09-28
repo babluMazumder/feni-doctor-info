@@ -51,7 +51,11 @@ Route::middleware(['XSS'])->group(function () {
     Route::get('terms-conditions',                              [FrontendController::class, 'termsConditions'])->name('terms');
     Route::get('privacy-policy',                                [FrontendController::class, 'privacy'])->name('privacy');
     Route::get('faq',                                           [FrontendController::class, 'faq'])->name('faq');
-     Route::post('/contact-us/store',    [ContactUsController::class, 'storeMessage'])->name('frontend.contactUs.store');
+    Route::post('/contact-us/store',    [ContactUsController::class, 'storeMessage'])->name('frontend.contactUs.store');
+    Route::get('/blood/donor',    [FrontendController::class, 'showDonor'])->name('blood.donor');
+    Route::get( '/ambulance',    [FrontendController::class, 'showAmbulance'])->name('ambulance');
+    Route::get( 'bloodbank',    [FrontendController::class, 'showBloodBank'])->name('bloodbank');
+    Route::get( 'hospital',    [FrontendController::class, 'showHospital'])->name('hospital');
 
 
 

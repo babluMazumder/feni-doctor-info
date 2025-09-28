@@ -71,7 +71,11 @@
                                                 <td> {{ $row->gender }}</td>
                                                 <td> {{ $row->availability }}</td>
                                                 <td>
-                                                    {{ $row->status }}
+                                                    @if($row->status == 1)
+                                                    <span class="class='bullet-badge  bullet-badge-success">Active</span>
+                                                @else
+                                                    <span class="class='bullet-badge  bullet-badge-danger">Inactive</span>
+                                                @endif
                                                 </td>
 
                                                 <td>
