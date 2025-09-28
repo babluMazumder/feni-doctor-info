@@ -1,5 +1,4 @@
   <!-- testimonial start -->
-{{-- @dd($testimonials) --}}
     <section class="px-4 testimonial-section py-16">
         <div class="container max-w-[1224px] mx-auto px-4 lg:px-0">
             <div class="text-center">
