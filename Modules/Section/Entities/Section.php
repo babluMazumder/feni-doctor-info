@@ -85,6 +85,12 @@ class Section extends Model
             case Type::BLOGS:
                 $type = ___('label.Blogs');
                 break;
+            case Type::TERMS_AND_CONDITION:
+                $type = ___('label.Terms & Conditions');
+                break;
+            case Type::PRIVACY_RETURN_POLICY:
+                $type = ___('label.Privacy & Return Policy');
+                break;
             case Type::CLIENT_SECTION:
                 $type = ___('label.Client Section');
                 break;

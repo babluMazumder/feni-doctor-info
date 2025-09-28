@@ -40,4 +40,6 @@ interface Type
     const FAQ_STYLE_TWO             = 28;
     const CATEGORY                  = 29;
     const DOCTOR                    = 30;
+    const PRIVACY_RETURN_POLICY     = 31;
+    const TERMS_AND_CONDITION       = 32;
 }

@@ -157,6 +157,12 @@
                             @case(Modules\Section\Enums\Type::DOCTOR)
                             @include('section::form.doctor')
                             @break
+                            @case(Modules\Section\Enums\Type::PRIVACY_RETURN_POLICY)
+                            @include('section::form.privacy_return_policy')
+                            @break
+                            @case(Modules\Section\Enums\Type::TERMS_AND_CONDITION)
+                            @include('section::form.terms_and_condition')
+                            @break
 
                             @endswitch
 

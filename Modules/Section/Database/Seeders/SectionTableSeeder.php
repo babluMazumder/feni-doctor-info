@@ -42,6 +42,9 @@ class SectionTableSeeder extends Seeder
         $this->CTA();
         $this->category();
         $this->doctor();
+        $this->privacyReturnPolicy();
+        $this->termsConditions();
+
 
 
         $this->popups_content();
@@ -60,6 +63,23 @@ class SectionTableSeeder extends Seeder
             'value' => 'Our Specialized Doctors'
         ]);
     }
+
+    public function privacyReturnPolicy(){
+          Section::create([
+            'type'  => Type::PRIVACY_RETURN_POLICY,
+           'key' => 'title',                                     'value' => 'Return Policy',
+            'key' => 'description',                               'value' => '30-Day Return: You can return any product within 30 days of receiving it for a full refund or exchange. <br> <p style="text-align: justify;">We strive to ensure our customers are satisfied with their purchases. If you are not completely happy with your product, you may request a return within 7–14 days of delivery. To be eligible, the item must be unused, in original packaging, and accompanied by proof of purchase. Once we receive and inspect the returned item, we will notify you of the refund status. Approved refunds will be processed to your original payment method within 5–10 business days. Please note that return shipping costs are non-refundable unless the product was defective or incorrectly shipped. Digital goods, sale items, and personalized products are generally non-returnable. For return requests, please contact our support team.</p>'
+        ]);
+    }
+
+    public function termsConditions(){
+          Section::create([
+            'type'  => Type::TERMS_AND_CONDITION,
+           'key' => 'title',                                     'value' => 'Terms & Conditions',
+           'key' => 'description',                               'value' => '<p style="text-align: justify;">Welcome to our website. By accessing or using our services, you agree to be bound by the following Terms & Conditions. Please read them carefully. If you do not agree with any part of these terms, you must not use this website.</p><h3 style="margin-top: 25px;">1. Acceptance of Terms</h3><p style="text-align: justify;">By accessing this website, you acknowledge that you have read, understood, and agree to comply with these Terms & Conditions, our Privacy Policy, and all applicable laws and regulations.</p><h3 style="margin-top: 25px;">2. Use of the Website</h3><p style="text-align: justify;">You agree to use the website for lawful purposes only. You must not use the site in a way that may cause damage to the website or impair its availability or accessibility. You also agree not to use the site for fraudulent or unlawful activities.</p><h3 style="margin-top: 25px;">3. Intellectual Property</h3><p style="text-align: justify;">All content on this site, including text, graphics, logos, and software, is the property of the company or its content suppliers and is protected by applicable intellectual property laws. You may not copy, reproduce, or distribute any part of the site without written permission.</p><h3 style="margin-top: 25px;">4. User Content</h3><p style="text-align: justify;">Any content you submit to the website (comments, feedback, etc.) must not be unlawful or infringe on any third-party rights. By submitting content, you grant us a non-exclusive, royalty-free license to use, reproduce, and display such content.</p><h3 style="margin-top: 25px;">5. Limitations of Liability</h3><p style="text-align: justify;">We do not guarantee that the website will be free from errors or uninterrupted. We are not liable for any direct, indirect, incidental, or consequential damages arising from your use of the website.</p><h3 style="margin-top: 25px;">6. Third-Party Links</h3><p style="text-align: justify;">Our website may contain links to third-party websites. We are not responsible for the content or practices of these external sites and encourage you to review their terms and policies before engaging.</p><h3 style="margin-top: 25px;">7. Changes to Terms</h3><p style="text-align: justify;">We reserve the right to modify these Terms & Conditions at any time without prior notice. It is your responsibility to review this page periodically. Continued use of the site constitutes acceptance of the updated terms.</p><h3 style="margin-top: 25px;">8. Governing Law</h3><p style="text-align: justify;">These terms are governed by and construed in accordance with the laws of your jurisdiction. Any disputes arising under these terms will be subject to the exclusive jurisdiction of the courts in that jurisdiction.</p><p style="text-align: justify; margin-top: 30px; font-style: italic;">If you have any questions regarding these Terms & Conditions, please contact us before continuing to use our services.</p>'
+          ]);
+    }
+
 
     public function category()
     {
@@ -207,7 +227,7 @@ class SectionTableSeeder extends Seeder
             ['key' => 'years_of_experience',     'value' => '25+'],
             ['key' => 'happay_customers',     'value' => '15k'],
             ['key' => 'positive_reviews',     'value' => '12k'],
-          
+
 
             ['key' => 'promotional_red_text',        'value' => 'Redefining Beauty with Mediax™ is the captivating and inclusive title that invites visitors to explore the unique story and missions of Mediax. This title suggests a commitment to not only providing'],
             ['key' => 'primary_button_text',         'value' => 'about More'],
