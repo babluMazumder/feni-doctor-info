@@ -47,12 +47,12 @@
                                 <tbody>
                                     @forelse($feedbacks as $key => $feedback)
                                     <tr>
-                                        {{-- <td>{{$key + 1}}</td> --}}
-                                        <td>{{ $loop->iteration }}</td> {{-- laravel default --}}
+
+                                        <td>{{ $loop->iteration }}</td> 
                                         <td>{{$feedback->name}}</td>
                                         <td>{{$feedback->email}}</td>
                                         <td>{{$feedback->message}}</td>
-                                        <td>{{dateTimeFormat($feedback->created_at) }}</td>
+                                        <td>{{$feedback->created_at }}</td>
                                     </tr>
                                     @empty
                                     <x-nodata-found :colspan="5" />
