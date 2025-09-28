@@ -80,7 +80,6 @@ class BlogRepository implements BlogInterface
 
             return $this->responseWithSuccess(___('alert.successfully_added'), []);
         } catch (\Throwable $th) {
-            dd($th);
             return $this->responseWithError(___('alert.something_went_wrong'), []);
         }
     }
