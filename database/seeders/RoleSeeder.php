@@ -86,6 +86,10 @@ class RoleSeeder extends Seeder
             'section_update',
             'section_delete',
 
+            
+           'contact_us_read',
+
+
 
             'profile_read',
             'profile_update',

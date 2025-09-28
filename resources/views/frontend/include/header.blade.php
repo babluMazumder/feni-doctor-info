@@ -146,7 +146,7 @@
 
                 @endforeach
 
-        
+
             </ul>
 
             <div class="hidden lg:block">

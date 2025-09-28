@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\HospitalController;
 use App\Http\Controllers\Backend\LanguageController;
 use App\Http\Controllers\Backend\AmbulanceController;
 use App\Http\Controllers\Backend\BloodBankController;
+use App\Http\Controllers\Backend\ContactUsController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Backend\BloodDonorController;
@@ -40,7 +41,7 @@ Route::middleware(['XSS'])->group(function () {
 
  Route::get('/',                                               [FrontendController::class, 'index'])->name('home');
 
-    Route::get('contact-us',                                    [FrontendController::class, 'contact'])->name('contact');
+    Route::get('contact-us-form',                                    [FrontendController::class, 'contact'])->name('contact');
     Route::get('category',                                    [FrontendController::class, 'category'])->name('category');
     Route::get('days',                                    [FrontendController::class, 'days'])->name('days');
     Route::get('doctor',                                    [FrontendController::class, 'doctor'])->name('doctor');
@@ -50,6 +51,8 @@ Route::middleware(['XSS'])->group(function () {
     Route::get('terms-conditions',                              [FrontendController::class, 'termsConditions'])->name('terms');
     Route::get('privacy-policy',                                [FrontendController::class, 'privacy'])->name('privacy');
     Route::get('faq',                                           [FrontendController::class, 'faq'])->name('faq');
+
+
 
 
 
@@ -93,6 +96,10 @@ Route::middleware(['XSS'])->group(function () {
     Route::get('app-language/edit/{id}', [LanguageController::class, 'edit'])->name('language.edit')->middleware('hasPermission:language_update');
     Route::put('app-language/update', [LanguageController::class, 'update'])->name('language.update')->middleware('hasPermission:language_update');
     Route::delete('app-language/delete/{id}', [LanguageController::class, 'delete'])->name('language.delete')->middleware('hasPermission:language_delete');
+
+    // Route::get('/contact-us',           [FrontendController::class, 'contactUs'])->name('frontend.contactUs');
+    Route::post('/contact-us/store',    [ContactUsController::class, 'storeMessage'])->name('frontend.contactUs.store');
+    Route::get('admin/contact-us/inbox',              [ContactUsController::class, 'index'])->name('contactUs.index');
 
     Route::get('app-language/edit/phrase/{id}', [LanguageController::class, 'editPhrase'])->name('language.edit.phrase')->middleware('hasPermission:language_phrase_update');
     Route::post('app-language/update/phrase', [LanguageController::class, 'updatePhrase'])->name('language.update.phrase')->middleware('hasPermission:language_phrase_update');

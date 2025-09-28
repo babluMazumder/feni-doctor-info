@@ -77,31 +77,32 @@
             <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-md">
                 <!-- Contact Form -->
                 <div class="grid lg:grid-cols-2 gap-10">
-                    <form action="#" class="space-y-6">
+                    <form action="{{ route('frontend.contactUs.store') }}" method="POST" class="space-y-6" >
+                        @csrf
                         <h2 class="text-3xl font-bold text-gray-800 mb-10">Get in Touch</h2>
 
                         <!-- Name Field -->
                         <div class="relative">
-                            <input type="text" placeholder="Your Name" class="form-control rounded-lg">
+                            <input type="text" placeholder="Your Name" name="name" class="form-control rounded-lg">
                             <i class="ph ph-user absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
                         </div>
 
                         <!-- Email Field -->
                         <div class="relative">
-                            <input type="email" placeholder="Your Email" class="form-control rounded-lg">
+                            <input type="email" placeholder="Your Email" name="email" class="form-control rounded-lg">
                             <i
                                 class="ph ph-envelope-simple absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
                         </div>
 
                         <!-- Phone Field -->
                         <div class="relative">
-                            <input type="tel" placeholder="Your Phone" class="form-control rounded-lg">
+                            <input type="tel" placeholder="Your Phone" name="phone" class="form-control rounded-lg">
                             <i class="ph ph-phone absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
                         </div>
 
                         <!-- Message Field -->
                         <div class="relative">
-                            <textarea rows="4" placeholder="Your Message"
+                            <textarea rows="4" placeholder="Your Message" name="message"
                                 class="form-control rounded-lg resize-none"></textarea>
                             <i class="ph ph-chat-circle-text absolute right-4 top-6 text-gray-400"></i>
                         </div>

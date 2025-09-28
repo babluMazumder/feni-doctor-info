@@ -97,6 +97,10 @@ class PermissionSeeder extends Seeder
                 'delete'            => 'section_delete'
             ],
 
+             'contact_us' => [
+                'read'                  => 'contact_us_read',
+            ],
+
 
 
         ];

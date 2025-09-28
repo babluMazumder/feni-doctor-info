@@ -23,8 +23,10 @@ use App\Repositories\Language\LanguageRepository;
 use App\Repositories\Settings\SettingsRepository;
 use App\Repositories\Ambulance\AmbulanceInterface;
 use App\Repositories\BloodBank\BloodBankInterface;
+use App\Repositories\ContactUs\ContactUsInterface;
 use App\Repositories\Ambulance\AmbulanceRepository;
 use App\Repositories\BloodBank\BloodBankRepository;
+use App\Repositories\ContactUs\ContactUsRepository;
 use App\Repositories\BloodDonor\BloodDonorInterface;
 use App\Repositories\BloodDonor\BloodDonorRepository;
 use App\Repositories\LoginActivity\LoginActivityInterface;
@@ -58,6 +60,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(BloodBankInterface::class,                  BloodBankRepository::class);
         $this->app->bind(BloodDonorInterface::class,                  BloodDonorRepository::class);
         $this->app->bind(AmbulanceInterface::class,                  AmbulanceRepository::class);
+        $this->app->bind(ContactUsInterface::class,                  ContactUsRepository::class);
     }
 
     /**

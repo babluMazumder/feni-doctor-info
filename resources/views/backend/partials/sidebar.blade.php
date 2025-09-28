@@ -60,6 +60,11 @@
 
                 </ul>
             </li>
+             @if (hasPermission('contact_us_read'))
+            <li >
+                <a class="{{ request()->is('admin/contact-us/*') ? 'active' : '' }}" href="{{ route('contactUs.index') }}" ><i class="icon-envelope"></i><span class="nav-text">{{ ___('menus.contact_us_messages') }}</span></a>
+            </li>
+            @endif
 
 
             @if(hasPermission('todo_read'))
