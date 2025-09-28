@@ -22,31 +22,14 @@ class StoreRequest extends FormRequest
      */
     public function rules(): array
     {
-        dd($this->all());
+
         return [
             'name'      => 'required|string|min:3|max:100',
             'email'     => 'required|email',
             'phone'     => 'required',
-            'address'   => 'required',
-            'subject'   => 'required',
             'message'   => 'required|string|max:255',
-            // 'agree'     => 'required|in:on',
+
         ];
     }
 
-    // public function response(array $errors)
-    // {
-    //     if ($this->expectsJson()) {
-    //         return new JsonResponse($errors, JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
-    //     }
-
-    //     return parent::response($errors);
-    // }
-
-    // public function messages()
-    // {
-    //     return [
-    //         'agree.required'  => 'You have to agree.'
-    //     ];
-    // }
 }

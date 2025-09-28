@@ -24,7 +24,7 @@ class ContactUsController extends Controller
 
     public function storeMessage(StoreRequest $request)
     {
-        dd($request->all());
+      
         $result =  $this->repo->storeMessage($request);
 
         if (request()->wantsJson()) return response()->json($result);

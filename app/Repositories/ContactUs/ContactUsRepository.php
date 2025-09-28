@@ -31,14 +31,13 @@ class ContactUsRepository implements ContactUsInterface
 
     public function storeMessage($request)
     {
-        dd($request->all());
+       
         try {
 
             $contact            = new $this->model;
             $contact->name      = $request->name;
             $contact->email     = $request->email;
             $contact->phone     = $request->phone;
-            $contact->address   = $request->address;
             $contact->message   = $request->message;
             $contact->save();
 

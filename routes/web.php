@@ -51,6 +51,7 @@ Route::middleware(['XSS'])->group(function () {
     Route::get('terms-conditions',                              [FrontendController::class, 'termsConditions'])->name('terms');
     Route::get('privacy-policy',                                [FrontendController::class, 'privacy'])->name('privacy');
     Route::get('faq',                                           [FrontendController::class, 'faq'])->name('faq');
+     Route::post('/contact-us/store',    [ContactUsController::class, 'storeMessage'])->name('frontend.contactUs.store');
 
 
 
@@ -98,7 +99,7 @@ Route::middleware(['XSS'])->group(function () {
     Route::delete('app-language/delete/{id}', [LanguageController::class, 'delete'])->name('language.delete')->middleware('hasPermission:language_delete');
 
     // Route::get('/contact-us',           [FrontendController::class, 'contactUs'])->name('frontend.contactUs');
-    Route::post('/contact-us/store',    [ContactUsController::class, 'storeMessage'])->name('frontend.contactUs.store');
+
     Route::get('admin/contact-us/inbox',              [ContactUsController::class, 'index'])->name('contactUs.index');
 
     Route::get('app-language/edit/phrase/{id}', [LanguageController::class, 'editPhrase'])->name('language.edit.phrase')->middleware('hasPermission:language_phrase_update');
