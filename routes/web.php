@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Backend\TodoController;
 use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\HospitalController;
 use App\Http\Controllers\Backend\LanguageController;
 use App\Http\Controllers\Backend\AmbulanceController;
@@ -56,6 +57,12 @@ Route::middleware(['XSS'])->group(function () {
     Route::get( '/ambulance',    [FrontendController::class, 'showAmbulance'])->name('ambulance');
     Route::get( 'bloodbank',    [FrontendController::class, 'showBloodBank'])->name('bloodbank');
     Route::get( 'hospital',    [FrontendController::class, 'showHospital'])->name('hospital');
+
+    // Route::get('category/{slug}',    [FrontendController::class, 'categoryDetails'])->name('category.details');
+    // Route::get('days/{slug}',    [FrontendController::class, 'daysDetails'])->name('days.details');
+    // Route::get('doctor/{slug}',    [FrontendController::class, 'doctorDetails'])->name('doctor.details');
+    // Route::get('blog/{slug}',    [FrontendController::class, 'blogDetails'])->name('blog.details');
+    // Route::get('search',    [SearchController::class, 'search'])->name('search');
 
 
 
@@ -144,7 +151,13 @@ Route::middleware(['XSS'])->group(function () {
     Route::get('ambulance/edit/{id}', [AmbulanceController::class, 'edit'])->name('ambulance.edit')->middleware('hasPermission:ambulance_update');
     Route::put('ambulance/update/{id}', [AmbulanceController::class, 'update'])->name('ambulance.update')->middleware('hasPermission:ambulance_update');
     Route::delete('ambulance/delete/{id}', [AmbulanceController::class, 'delete'])->name('ambulance.delete')->middleware('hasPermission:ambulance_delete');
-
+   //category
+    Route::get('category/index', [CategoryController::class, 'index'])->name('category.index')->middleware('hasPermission:category_read');
+    Route::get('category/create', [CategoryController::class, 'create'])->name('category.create')->middleware('hasPermission:category_create');
+    Route::post('category/store', [CategoryController::class, 'store'])->name('category.store')->middleware('hasPermission:category_create');
+    Route::get('category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit')->middleware('hasPermission:category_update');
+    Route::put('category/update/{id}', [CategoryController::class, 'update'])->name('category.update')->middleware('hasPermission:category_update');
+    Route::delete('category/delete/{id}', [CategoryController::class, 'delete'])->name('category.delete')->middleware('hasPermission:category_delete');
 
 
 

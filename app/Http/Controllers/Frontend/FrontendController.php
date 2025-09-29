@@ -90,6 +90,11 @@ class FrontendController extends Controller
 
     public function blogDetails($slug)
     {
+         $blog = Blog::where('slug', $slug)->firstOrFail();
+
+       // Increment the seen count
+        $blog->increment('seen');
+
         $blog           = Blog::with('image', 'author')->firstWhere('slug', $slug);
 
         abort_if(!$blog, 404);

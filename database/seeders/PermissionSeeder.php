@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Permission;
+use App\View\Components\Frontend\Category;
 
 class PermissionSeeder extends Seeder
 {
@@ -99,6 +100,13 @@ class PermissionSeeder extends Seeder
 
              'contact_us' => [
                 'read'                  => 'contact_us_read',
+            ],
+
+            'category' => [
+                'read'                  => 'category_read',
+                'create'                => 'category_create',
+                'update'                => 'category_update',
+                'delete'                => 'category_delete'
             ],
 
 

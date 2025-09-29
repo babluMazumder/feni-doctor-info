@@ -66,7 +66,7 @@ class BlogRepository implements BlogInterface
             $blog              = new $this->model();
             $blog->author      = $request->author;
             $blog->title       = $request->title;
-             $blog->seen        = $request->seen;
+            $blog->seen        = $request->seen;
             $blog->slug        = Str::slug($blog->title);
             $blog->date        = $request->date;
             $blog->status      = $request->status ?? Status::INACTIVE;

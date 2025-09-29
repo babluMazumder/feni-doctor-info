@@ -35,7 +35,7 @@
                     <div class="flex items-center justify-between gap-4 mb-6 md:mb-10">
                         <div class="flex items-center gap-4 flex-wrap">
                             <div class="flex gap-3 items-center">
-                                <div class="w-12 h-12 rounded-full overflow-hidden"><img src="{{asset('frontend')}}/assets/img/img-4.jpeg"
+                                <div class="w-12 h-12 rounded-full overflow-hidden"><img src="{{ getImage(@$blog->user->image,'original') }}"
                                         class="w-full h-full object-cover" alt=""></div>
                                 <span class="text-gray-400">by <span class="text-gray-800">{{@$blog->user->name}}</span></span>
                             </div>
@@ -48,23 +48,16 @@
                         </div>
 
                         <div class="flex items-center gap-4 flex-wrap">
-                            <div class="flex gap-2 items-center">
-                                <div class="text-2xl leading-1"><i class="ph ph-chats-circle"></i></div>
-                                <span class="text-gray-800">12</span>
-                            </div>
-                            <div class="line w-px h-4 bg-gray-300"></div>
+
 
                             <div class="flex gap-2 items-center">
                                 <div class="text-2xl leading-1"><i class="ph ph-eye"></i></div>
-                                <span class="text-gray-800">260.2k</span>
+                                <span class="text-gray-800">{{ $blog->seen }}</span>
                             </div>
 
                             <div class="line w-px h-4 bg-gray-300"></div>
 
-                            <div class="flex gap-2 items-center">
-                                <div class="text-2xl leading-1"><i class="ph ph-clock"></i></div>
-                                <span class="text-gray-800">5 min Read</span>
-                            </div>
+
                         </div>
                     </div>
 
@@ -75,14 +68,6 @@
                     <p class=" leading-7 font-normal text-lg mb-4 lg:mb-10">{{ $blog->description }}</p>
 
 
-                    <h3 class="text-2xl font-semibold sm:text-3xl text-gray-900 mb-4">Crafting Mobile-Optimized
-                        Experiences</h3>
-
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur magni illum ullam hic.
-                        Perspiciatis quos aperiam fugit! Vitae iure quisquam quae qui asperiores maiores iste nesciunt
-                        accusantium voluptatum est velit beatae voluptatibus quasi corrupti alias et eveniet ratione, ut
-                        architecto. Ab, quaerat facilis adipisci nemo officiis recusandae. Saepe, debitis consequatur?
-                    </p>
 
                     <div class="flex justify-between gap-3 items-center flex-wrap">
 
@@ -121,7 +106,7 @@
                         </a>
                         @endif
                     </div>
-                
+
 
                 </div>
 
