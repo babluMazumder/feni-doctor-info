@@ -109,6 +109,13 @@ class PermissionSeeder extends Seeder
                 'delete'                => 'category_delete'
             ],
 
+            'doctor' => [
+                'read'                  => 'doctor_read',
+                'create'                => 'doctor_create',
+                'update'                => 'doctor_update',
+                'delete'                => 'doctor_delete'
+            ],
+
 
 
         ];

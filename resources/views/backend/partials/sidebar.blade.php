@@ -57,6 +57,12 @@
                         @if (hasPermission('ambulance_read'))
                         <li> <a href="{{ route('ambulance.index') }}" class={{ (request()->is('*ambulance*')) ? 'mm-active' : '' }} >{{ ___('label.ambulance') }}</a> </li>
                         @endif
+                        @if (hasPermission('category_read'))
+                        <li> <a href="{{ route('category.index') }}" class={{ (request()->is('*category*')) ? 'mm-active' : '' }} >{{ ___('label.category') }}</a> </li>
+                        @endif
+                        @if (hasPermission('doctor_read'))
+                        <li> <a href="{{ route('doctor.index') }}" class={{ (request()->is('*doctor*')) ? 'mm-active' : '' }} >{{ ___('label.doctors') }}</a> </li>
+                        @endif
 
                 </ul>
             </li>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Backend\TodoController;
+use App\Http\Controllers\Backend\DoctorController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\HospitalController;
@@ -158,6 +159,14 @@ Route::middleware(['XSS'])->group(function () {
     Route::get('category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit')->middleware('hasPermission:category_update');
     Route::put('category/update/{id}', [CategoryController::class, 'update'])->name('category.update')->middleware('hasPermission:category_update');
     Route::delete('category/delete/{id}', [CategoryController::class, 'delete'])->name('category.delete')->middleware('hasPermission:category_delete');
+
+    //doctor
+    Route::get('doctor/index', [DoctorController::class, 'index'])->name('doctor.index')->middleware('hasPermission:doctor_read');
+    Route::get('doctor/create', [DoctorController::class, 'create'])->name('doctor.create')->middleware('hasPermission:doctor_create');
+    Route::post('doctor/store', [DoctorController::class, 'store'])->name('doctor.store')->middleware('hasPermission:doctor_create');
+    Route::get('doctor/edit/{id}', [DoctorController::class, 'edit'])->name('doctor.edit')->middleware('hasPermission:doctor_update');
+    Route::put('doctor/update/{id}', [DoctorController::class, 'update'])->name('doctor.update')->middleware('hasPermission:doctor_update');
+    Route::delete('doctor/delete/{id}', [DoctorController::class, 'delete'])->name('doctor.delete')->middleware('hasPermission:doctor_delete');
 
 
 

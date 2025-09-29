@@ -92,7 +92,7 @@ class AmbulanceRepository implements AmbulanceInterface
 
             return $this->responseWithSuccess(___('alert.successfully_updated'));
         } catch (\Throwable $th) {
-            dd($th);
+            
             return $this->responseWithError(___('alert.something_went_wrong'));
         }
     }
@@ -100,13 +100,13 @@ class AmbulanceRepository implements AmbulanceInterface
     public function delete($id)
     {
         try {
-            $hospital = $this->model::findOrFail($id);
+            $Ambulance = $this->model::findOrFail($id);
 
-            $hospital->delete();
+            $Ambulance->delete();
 
             return $this->responseWithSuccess(___('alert.successfully_deleted'));
         } catch (\Throwable $th) {
-            dd($th);
+
             return $this->responseWithError(___('alert.something_went_wrong'));
         }
     }

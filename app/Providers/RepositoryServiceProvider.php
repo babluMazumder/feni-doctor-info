@@ -13,11 +13,15 @@ use App\Repositories\User\UserInterface;
 use App\Repositories\Role\RoleRepository;
 use App\Repositories\Todo\TodoRepository;
 use App\Repositories\User\UserRepository;
+use App\Repositories\Doctor\DoctorInterface;
 use App\Repositories\Upload\UploadInterface;
+use App\Repositories\Doctor\DoctorRepository;
 use App\Repositories\Upload\UploadRepository;
+use App\Repositories\Category\CategoryInterface;
 use App\Repositories\Hospital\HospitalInterface;
 use App\Repositories\Language\LanguageInterface;
 use App\Repositories\Settings\SettingsInterface;
+use App\Repositories\Category\CategoryRepository;
 use App\Repositories\Hospital\HospitalRepository;
 use App\Repositories\Language\LanguageRepository;
 use App\Repositories\Settings\SettingsRepository;
@@ -61,6 +65,8 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(BloodDonorInterface::class,                  BloodDonorRepository::class);
         $this->app->bind(AmbulanceInterface::class,                  AmbulanceRepository::class);
         $this->app->bind(ContactUsInterface::class,                  ContactUsRepository::class);
+        $this->app->bind(CategoryInterface::class,                  CategoryRepository::class);
+        $this->app->bind(DoctorInterface::class,                  DoctorRepository::class);
     }
 
     /**

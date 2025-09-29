@@ -33,7 +33,7 @@ class BloodDonorRepository implements BloodDonorInterface
     }
 
     public function store($request)
-    { 
+    {
         // dd($request->all());
         try {
 
@@ -41,14 +41,14 @@ class BloodDonorRepository implements BloodDonorInterface
             $bloodDonor->name = $request->name;
             $bloodDonor->last_donation_date = $request->last_donation_date;
             $bloodDonor->gender = $request->gender;
-            $bloodDonor->blood_group = $request->blood_group;    
+            $bloodDonor->blood_group = $request->blood_group;
             $bloodDonor->email = $request->email;
             $bloodDonor->availability = $request->availability;
             $bloodDonor->phone = $request->phone;
             $bloodDonor->address = $request->address;
             $bloodDonor->district = $request->district;
             $bloodDonor->status = \App\Enums\Status::tryFrom((int) $request->status);
-          
+
             $bloodDonor->save();
 
 
@@ -62,28 +62,28 @@ class BloodDonorRepository implements BloodDonorInterface
     }
 
     public function update($request)
-    {  
-        //   dd($request->all());
+    {
+
         try {
- 
+
             $bloodDonor = $this->model::findOrFail($request->id);
             $bloodDonor->name = $request->name;
             $bloodDonor->last_donation_date = $request->last_donation_date;
             $bloodDonor->gender = $request->gender;
-            $bloodDonor->blood_group = $request->blood_group;    
+            $bloodDonor->blood_group = $request->blood_group;
             $bloodDonor->email = $request->email;
             $bloodDonor->availability = $request->availability;
             $bloodDonor->phone = $request->phone;
             $bloodDonor->address = $request->address;
             $bloodDonor->district = $request->district;
             $bloodDonor->status = \App\Enums\Status::tryFrom((int) $request->status);
-          
+
             $bloodDonor->save();
 
 
             return $this->responseWithSuccess(___('alert.successfully_updated'));
         } catch (\Throwable $th) {
-            dd($th);
+
             return $this->responseWithError(___('alert.something_went_wrong'));
         }
     }
@@ -91,13 +91,13 @@ class BloodDonorRepository implements BloodDonorInterface
     public function delete($id)
     {
         try {
-            $hospital = $this->model::findOrFail($id);
+            $bloodDonor = $this->model::findOrFail($id);
 
-            $hospital->delete();
+            $bloodDonor->delete();
 
             return $this->responseWithSuccess(___('alert.successfully_deleted'));
         } catch (\Throwable $th) {
-            dd($th);
+
             return $this->responseWithError(___('alert.something_went_wrong'));
         }
     }

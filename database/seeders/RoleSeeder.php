@@ -97,6 +97,11 @@ class RoleSeeder extends Seeder
             'category_update',
             'category_delete',
 
+            'doctor_read',
+            'doctor_create',
+            'doctor_update',
+            'doctor_delete',
+
             'profile_read',
             'profile_update',
             'email_update',

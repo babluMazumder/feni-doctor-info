@@ -83,7 +83,7 @@ class HospitalRepository implements HospitalInterface
             $hospital->save();
             return $this->responseWithSuccess(___('alert.successfully_updated'));
         } catch (\Throwable $th) {
-            dd($th);
+            
             return $this->responseWithError(___('alert.something_went_wrong'));
         }
     }
@@ -97,7 +97,7 @@ class HospitalRepository implements HospitalInterface
 
             return $this->responseWithSuccess(___('alert.successfully_deleted'));
         } catch (\Throwable $th) {
-            dd($th);
+
             return $this->responseWithError(___('alert.something_went_wrong'));
         }
     }

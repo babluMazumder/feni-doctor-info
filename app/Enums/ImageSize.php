@@ -21,6 +21,7 @@ interface ImageSize
     const ABOUT_US_IMAGE  = [811, 640];
     const BREADCRUMB_IMAGE  = [811, 640];
     const CLIENT_LOGO       = [100, 100];
+    const IMAGE_750x450     = [750, 450];
     const FAQ_IMAGE                         = [652, 504];
     const SIGNIN_IMAGE                      = [643, 499];
     const SIGNUP_IMAGE                      = [643, 599];
