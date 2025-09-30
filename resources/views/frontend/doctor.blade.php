@@ -107,9 +107,9 @@
                             <p class="text-red-600 mt-2 font-semibold">{{ $doctor->visiting_hours }}
                                 [{{ $doctor->room_no }}] <br> {{ $doctor->days }}</p>
                             <p class="text-green-600 font-semibold mb-6">Digital Fee: {{ $doctor->visiting_fee }} TK</p>
-                            <a href="#" class="btn-primary rounded-lg btn-black h-10"
+                            <span  class="btn-primary rounded-lg btn-black h-10"
                                  data-modal-target="small-modal" data-modal-toggle="small-modal">Serial Now
-                                <i class="ph-bold ph-arrow-up-right"></i></a>
+                                <i class="ph-bold ph-arrow-up-right"></i></span>
                         </div>
                     @endforeach
 
