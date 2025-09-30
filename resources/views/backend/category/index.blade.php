@@ -42,6 +42,8 @@
                                         <tr>
                                             <th>{{ ___('label.id') }}</th>
                                             <th>{{ ___('label.title') }}</th>
+                                            <th>{{ ___('label.sub_title') }}</th>
+                                            <th>{{ ___('label.icon') }}</th>
                                             <th>{{ ___('label.position') }}</th>
 
                                             <th>{{ ___('label.status') }}</th>
@@ -54,6 +56,8 @@
                                             <tr id="row_{{ $row->id }}">
                                                 <td>{{ ++$key }}</td>
                                                 <td> {{ $row->title }}</td>
+                                                <td> {{ $row->sub_title }}</td>
+                                                 <td><img loading="lazy" src="{{ getImage($row->upload, 'original','default-image-80x80.png') }}" alt="" height="40" class="rounded"></td>
                                                 <td> {{ $row->position }}</td>
 
 

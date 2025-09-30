@@ -3,17 +3,22 @@
 namespace App\View\Components\Frontend;
 
 use Closure;
-use Illuminate\Contracts\View\View;
+use App\Enums\Status;
 use Illuminate\View\Component;
+use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Cache;
+use App\Models\Backend\Category as CategoryModel;
 
 class Category extends Component
 {
+    protected $categoryModel;
+
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct(CategoryModel $categoryModel)
     {
-        //
+        $this->categoryModel = $categoryModel;
     }
 
     /**
@@ -21,6 +26,8 @@ class Category extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.frontend.category');
+        $categories = Cache::remember('categories',now()->addMinutes(30),fn() => $this->categoryModel::where('status', Status::ACTIVE)->orderBy('id', 'desc')->get()
+        );
+        return view('components.frontend.category', compact('categories'));
     }
 }

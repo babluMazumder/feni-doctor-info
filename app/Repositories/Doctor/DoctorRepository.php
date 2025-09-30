@@ -48,6 +48,8 @@ class DoctorRepository implements DoctorInterface
             $doctor->hospital_name   = $request->hospital_name;
             $doctor->visiting_hours  = $request->visiting_hours;
             $doctor->days            = $request->days;
+           $doctor->days_select = json_encode($request->days_select);
+
             $doctor->room_no         = $request->room_no;
             $doctor->visiting_fee    = $request->visiting_fee;
             $doctor->contact_number  = $request->contact_number;
@@ -101,6 +103,9 @@ dd($th);
             $doctor->hospital_name   = $request->hospital_name;
             $doctor->visiting_hours  = $request->visiting_hours;
             $doctor->days            = $request->days;
+            $doctor->days_select = json_encode($request->days_select);
+
+
             $doctor->room_no         = $request->room_no;
             $doctor->visiting_fee    = $request->visiting_fee;
             $doctor->contact_number  = $request->contact_number;

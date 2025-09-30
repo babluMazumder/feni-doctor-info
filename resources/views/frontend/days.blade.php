@@ -6,7 +6,7 @@
 
     <section class=" py-16 sm:py-18 relative z-[1] text-white">
         <div class="bg-cover bg-center absolute top-0 bottom-0 w-full h-full z-[-2]"
-            style="background-image: url(./assets/img/testimonial.jpg);"></div>
+            style="background-image: url({{asset('frontend')}}/assets/img/testimonial.jpg);"></div>
         <div class="bg-overly absolute top-0 bottom-0 w-full h-full z-[-1]" style="background-color: rgba(0,0,0,0.5);">
         </div>
         <div class="px-6 relative z-[1]">
@@ -31,34 +31,20 @@
             <div>
                 <div>
                     <div class="days-container flex gap-4 justify-center items-center flex-wrap">
-                        <a href="./doctors.html"
-                            class="uppercase w-full md:w-[400px] text-white bg-white/20 border border-white/30 backdrop-blur-md shadow-md font-semibold py-4 px-6 rounded-xl block text-center transition transform hover:-translate-y-1 hover:bg-white/30 hover:shadow-xl">
-                            Friday
-                        </a>
-                        <a href="./doctors.html"
-                            class="uppercase w-full md:w-[400px] text-white bg-white/20 border border-white/30 backdrop-blur-md shadow-md font-semibold py-4 px-6 rounded-xl block text-center transition transform hover:-translate-y-1 hover:bg-white/30 hover:shadow-xl">
-                            Saturday
-                        </a>
-                        <a href="./doctors.html"
-                            class="uppercase w-full md:w-[400px] text-white bg-white/20 border border-white/30 backdrop-blur-md shadow-md font-semibold py-4 px-6 rounded-xl block text-center transition transform hover:-translate-y-1 hover:bg-white/30 hover:shadow-xl">
-                            Sunday
-                        </a>
-                        <a href="./doctors.html"
-                            class="uppercase w-full md:w-[400px] text-white bg-white/20 border border-white/30 backdrop-blur-md shadow-md font-semibold py-4 px-6 rounded-xl block text-center transition transform hover:-translate-y-1 hover:bg-white/30 hover:shadow-xl">
-                            Monday
-                        </a>
-                        <a href="./doctors.html"
-                            class="uppercase w-full md:w-[400px] text-white bg-white/20 border border-white/30 backdrop-blur-md shadow-md font-semibold py-4 px-6 rounded-xl block text-center transition transform hover:-translate-y-1 hover:bg-white/30 hover:shadow-xl">
-                            Tuesday
-                        </a>
-                        <a href="./doctors.html"
-                            class="uppercase w-full md:w-[400px] text-white bg-white/20 border border-white/30 backdrop-blur-md shadow-md font-semibold py-4 px-6 rounded-xl block text-center transition transform hover:-translate-y-1 hover:bg-white/30 hover:shadow-xl">
-                            Wednesday
-                        </a>
-                        <a href="./doctors.html"
-                            class="uppercase w-full md:w-[400px] text-white bg-white/20 border border-white/30 backdrop-blur-md shadow-md font-semibold py-4 px-6 rounded-xl block text-center transition transform hover:-translate-y-1 hover:bg-white/30 hover:shadow-xl">
-                            Thursday
-                        </a>
+
+
+                        @foreach ($days as $day)
+                        <ul>
+                            <li>
+                                <a href="{{ route('doctor', ['day' => $day->value, 'category' => request('category')]) }}"
+                                    class="uppercase w-full md:w-[400px] text-white bg-white/20 border border-white/30 backdrop-blur-md shadow-md font-semibold py-4 px-6 rounded-xl block text-center transition transform hover:-translate-y-1 hover:bg-white/30 hover:shadow-xl">
+                                {{ $day->value }}
+                                </a>
+                            </li>
+                        </ul>
+                        @endforeach
+
+
                     </div>
                 </div>
 

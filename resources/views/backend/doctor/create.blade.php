@@ -78,13 +78,22 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group col-md-6">
-                                <label>{{ ___('label.days') }}</label>
-                                <input type="text" placeholder="{{ ___('placeholder.days') }}" class="form-control input-style-1" name="days" value="{{ old('days') }}">
-                                @error('days')
-                                <p class="pt-2 text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
+                            <div class="col-md-6">
+                                  <label for="">{{ ___('label.days_select') }}</label>
+                                  @php
+                                      use App\Enums\WeekDay;
+                                  @endphp
+                                  <select name="days_select[]" class="form-control input-style-1 select2" multiple>
+
+                                      @foreach (WeekDay::cases() as $type)
+                                          <option value="{{ $type->value }}"  {{ collect(old('days_select'))->contains($type->value) ? 'selected' : '' }}>
+                                              {{ $type->value }}
+                                          </option>
+                                      @endforeach
+                                  </select>
+                              </div>
+
+
 
                             <div class="form-group col-md-6">
                                 <label>{{ ___('label.room_no') }}</label>

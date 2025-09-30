@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Interfaces\AuthInterface;
 use App\Models\Backend\Ambulance;
 use App\Models\Backend\BloodDonor;
+use App\Models\Backend\Appointment;
 use App\Repositories\AuthRepository;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\Role\RoleInterface;
@@ -33,6 +34,8 @@ use App\Repositories\BloodBank\BloodBankRepository;
 use App\Repositories\ContactUs\ContactUsRepository;
 use App\Repositories\BloodDonor\BloodDonorInterface;
 use App\Repositories\BloodDonor\BloodDonorRepository;
+use App\Repositories\Appointment\AppointmentInterface;
+use App\Repositories\Appointment\AppointmentRepository;
 use App\Repositories\LoginActivity\LoginActivityInterface;
 use App\Repositories\LoginActivity\LoginActivityRepository;
 
@@ -67,6 +70,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(ContactUsInterface::class,                  ContactUsRepository::class);
         $this->app->bind(CategoryInterface::class,                  CategoryRepository::class);
         $this->app->bind(DoctorInterface::class,                  DoctorRepository::class);
+        $this->app->bind(AppointmentInterface::class,                  AppointmentRepository::class);
     }
 
     /**

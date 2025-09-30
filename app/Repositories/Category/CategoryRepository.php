@@ -2,19 +2,23 @@
 
 namespace App\Repositories\Category;
 
-use App\Repositories\Category\CategoryInterface;
-use App\Traits\ReturnFormatTrait;
 use App\Enums\Status;
+use App\Enums\ImageSize;
 use App\Models\Backend\Category;
+use App\Traits\ReturnFormatTrait;
+use App\Repositories\Upload\UploadInterface;
+use App\Repositories\Category\CategoryInterface;
 
 class CategoryRepository implements CategoryInterface
 {
     use ReturnFormatTrait;
-    protected $model;
-    public function __construct(Category $model)
+    protected $model, $upload;
+    public function __construct(Category $model,UploadInterface $upload)
     {
 
         $this->model = $model;
+
+        $this->upload   = $upload;
     }
 
 
@@ -40,6 +44,12 @@ class CategoryRepository implements CategoryInterface
             $category = new $this->model;
 
             $category->title = $request->title;
+            $category->sub_title = $request->sub_title;
+            // $category->icon = $request->icon;
+             if ($request->hasFile('icon')) {
+                $category->icon = $this->upload->uploadImage($request->icon, 'category/', ImageSize::IMAGE_750x450
+                );
+            }
             $category->position = $request->position;
 
 
@@ -67,6 +77,11 @@ class CategoryRepository implements CategoryInterface
             $category =  $this->model::findOrFail($request->id);
 
             $category->title = $request->title;
+            $category->sub_title = $request->sub_title;
+             if ($request->hasFile('icon')) {
+                $category->icon = $this->upload->uploadImage($request->icon, 'category/', ImageSize::IMAGE_750x450
+                );
+            }
             $category->position = $request->position;
 
 
@@ -92,7 +107,7 @@ class CategoryRepository implements CategoryInterface
 
             return $this->responseWithSuccess(___('alert.successfully_deleted'));
         } catch (\Throwable $th) {
-            
+
             return $this->responseWithError(___('alert.something_went_wrong'));
         }
     }

@@ -27,6 +27,8 @@ return new class extends Migration
             // Visiting Info
             $table->string('visiting_hours', 100)->nullable();
             $table->string('days', 100)->nullable();
+            $table->json('days_select')->nullable();
+
             $table->string('room_no', 150)->nullable();
             $table->decimal('visiting_fee', 10, 2)->nullable();
 

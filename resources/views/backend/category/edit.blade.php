@@ -39,6 +39,27 @@
                                 <p class="pt-2 text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
+                             <div class="form-group col-md-6 ">
+                                <label>{{ ___('label.sub_title') }} <span class="text-danger">*</span></label>
+                                <input type="text" placeholder="{{ ___('placeholder.sub_title') }}" class="form-control input-style-1" name="sub_title" value="{{ old('sub_title', $category->sub_title) }}">
+                                @error('sub_title')
+                                <p class="pt-2 text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label class="label-style-1">{{ ___('label.icon') }}<span class="fillable"></span></label>
+                                <div class="ot_fileUploader left-side mb-3">
+                                    <img src="{{ getImage(null) }}">
+                                    <input class="form-control input-style-1 placeholder" type="text" placeholder="{{ ___('placeholder.attach_file') }}" readonly>
+                                    <button class="primary-btn-small-input" type="button">
+                                        <label class="j-td-btn" for="icon">{{ ___('label.browse') }}</label>
+                                        <input type="file" class="d-none form-control" name="icon" id="icon" accept="image/jpeg, image/jpg, image/png, image/webp">
+                                    </button>
+                                </div>
+                                @error('profile_photo')
+                                <small class="text-danger mt-2">{{ $message }}</small>
+                                @enderror
+                            </div>
 
 
 

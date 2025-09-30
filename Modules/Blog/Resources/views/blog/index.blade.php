@@ -68,6 +68,7 @@
                                 <td>{{ $blog->user->name }}</td>
                                 <td>{{ $blog->date }}</td>
                                 <td>{{ $blog->title }}</td>
+                           
                                 <td> <img class="h-50px w-100 object-fit-cover" src="{{ getImage($blog->upload, 'original','default-image-80x80.png') }}" alt="blog_logo"> </td>
                                 {{-- <td>{!! Str::limit($blog->description, 150) !!}</td> --}}
                                 <td>{!! Str::limit(strip_tags($blog->description), 150) !!} </td>

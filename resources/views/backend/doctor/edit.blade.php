@@ -86,6 +86,22 @@
                                 <p class="pt-2 text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
+                            <div class="col-md-6">
+                                  <label for="">{{ ___('label.days_select') }}</label>
+                                  @php
+                                      use App\Enums\WeekDay;
+                                  @endphp
+                                  <select name="days_select[]" class="form-control input-style-1 select2" multiple>
+
+                                      @foreach (WeekDay::cases() as $type)
+                                          <option value="{{ $type->value }}"  @selected(in_array($type->value, json_decode($doctor->days_select ?? '[]', true) ?? []))>
+                                           
+
+                                              {{ $type->value }}
+                                          </option>
+                                      @endforeach
+                                  </select>
+                              </div>
 
                             <div class="form-group col-md-6">
                                 <label>{{ ___('label.room_no') }}</label>

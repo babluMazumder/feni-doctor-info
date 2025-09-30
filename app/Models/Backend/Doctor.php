@@ -11,13 +11,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Doctor extends Model
 {
     use HasFactory, CommonHelperTrait;
-     public function image()
-    {
-        return $this->belongsTo(Upload::class, 'image_id', 'id');
-    }
+
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
+
+     public function upload()
+    {
+        return $this->belongsTo(Upload::class, 'profile_photo', 'id');
     }
 
 }

@@ -48,6 +48,7 @@
                                             <th>{{ ___('label.hospital_name') }}</th>
                                             <th>{{ ___('label.visiting_hours') }}</th>
                                             <th>{{ ___('label.days') }}</th>
+                                            <th>{{ ___('label.days_select') }}</th>
                                             <th>{{ ___('label.room_no') }}</th>
                                             <th>{{ ___('label.visiting_fee') }}</th>
                                             <th>{{ ___('label.contact_number') }}</th>
@@ -70,11 +71,21 @@
                                                 <td> {{ $row->hospital_name }}</td>
                                                 <td> {{ $row->visiting_hours }}</td>
                                                 <td> {{ $row->days }}</td>
+                                                <td>  @if(!empty($row->days_select))
+                                                    <ul>
+                                                        @foreach(json_decode($row->days_select, true) as $day)
+                                                            <li>{{ $day }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                    @else
+                                                        <span class="text-muted">No days selected</span>
+                                                    @endif
+                                               </td>
                                                 <td> {{ $row->room_no }}</td>
                                                 <td> {{ $row->visiting_fee }}</td>
                                                 <td> {{ $row->contact_number }}</td>
-                                                <td> {{ $row->profile_photo }}</td>
-                                                 {{-- <td><img loading="lazy" src="{{ getImage($row->profile_photo) }}" alt="" height="40" class="rounded"></td> --}}
+                                                {{-- <td> {{ $row->profile_photo }}</td> --}}
+                                                 <td><img loading="lazy" src="{{ getImage($row->upload, 'original','default-image-80x80.png') }}" alt="" height="40" class="rounded"></td>
                                                 <td> {{ $row->slug }}</td>
                                                 <td> {{ $row->category->title }}</td>
                                                 <td>

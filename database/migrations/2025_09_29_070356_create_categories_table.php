@@ -15,8 +15,11 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('title', 100);
+            $table->string('sub_title', 100);
             $table->bigInteger('position')->nullable();
             $table->tinyInteger('status')->default(Status::ACTIVE->value);
+            $table->foreignId('icon')->nullable()
+                  ->constrained('uploads')->nullOnDelete();
 
             $table->timestamps();
         });

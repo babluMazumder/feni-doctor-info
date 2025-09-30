@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Backend\BloodDonorController;
 use App\Http\Controllers\Backend\ActivityLogController;
+use App\Http\Controllers\Frontend\AppointmentController;
 use App\Http\Controllers\Backend\LoginActivityController;
 
 /*
@@ -58,6 +59,9 @@ Route::middleware(['XSS'])->group(function () {
     Route::get( '/ambulance',    [FrontendController::class, 'showAmbulance'])->name('ambulance');
     Route::get( 'bloodbank',    [FrontendController::class, 'showBloodBank'])->name('bloodbank');
     Route::get( 'hospital',    [FrontendController::class, 'showHospital'])->name('hospital');
+    Route::get('/get-doctors/{category}', [FrontendController::class, 'getDoctorsByCategory'])->name('get-doctors');
+    Route::post('/appointments/store', [AppointmentController::class, 'store'])->name('appointments.store');
+
 
     // Route::get('category/{slug}',    [FrontendController::class, 'categoryDetails'])->name('category.details');
     // Route::get('days/{slug}',    [FrontendController::class, 'daysDetails'])->name('days.details');

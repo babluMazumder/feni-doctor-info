@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Enums\Status;
+use App\Enums\WeekDay;
 use Illuminate\Http\Request;
+use App\Models\Backend\Doctor;
 use Modules\Blog\Entities\Blog;
+use App\Models\Backend\Category;
+use App\Models\Backend\Hospital;
 use App\Models\Backend\Ambulance;
 use App\Models\Backend\BloodBank;
 use App\Models\Backend\BloodDonor;
 use App\Http\Controllers\Controller;
-use App\Models\Backend\Hospital;
 use Illuminate\Support\Facades\Cache;
 use Modules\Testimonial\Entities\Testimonial;
 use Modules\Blog\Repositories\Blog\BlogInterface;
@@ -38,15 +41,43 @@ class FrontendController extends Controller
 
     public function category()
     {
-        return view('frontend.category');
+        $categories = Cache::remember('categories', now()->addMinutes(30), fn() => Category::where('status', Status::ACTIVE)->paginate(settings('paginate_value')));
+        return view('frontend.category', compact('categories'));
     }
     public function days()
     {
-        return view('frontend.category');
+        $days = WeekDay::cases();
+        return view('frontend.days', compact('days'));
     }
-    public function doctor()
+
+    public function doctor(Request $request)
     {
-        return view('frontend.doctor');
+        // dd($request->all());
+          // Get categories for the dropdown (cache for 30 minutes)
+    $categories = Cache::remember('categories', now()->addMinutes(30), fn() => Category::where('status', Status::ACTIVE)->get());
+
+    // Build doctor query
+    $query = Doctor::where('status', Status::ACTIVE);
+
+    // Filter by category if provided
+    if ($request->filled('category')) {
+        $query->where('category_id', $request->category);
+    }
+
+    // Filter by doctor if provided
+    if ($request->filled('doctor')) {
+        $query->where('id', $request->doctor);
+    }
+
+    // Filter by day if provided
+    if ($request->filled('day')) {
+        $query->whereJsonContains('days_select', $request->day);
+    }
+
+    // Paginate doctors with query string to preserve filters in pagination links
+    $doctors = $query->paginate(settings('paginate_value'))->withQueryString();
+
+        return view('frontend.doctor', compact('doctors', 'categories'));
     }
     public function blog()
     {
@@ -54,6 +85,19 @@ class FrontendController extends Controller
 
         $blogs      = $this->blogRepo->all(paginate: $paginate, status: Status::ACTIVE->value, orderBy: 'position');
         return view('frontend.blog', compact('blogs'));
+    }
+
+    public function getDoctorsByCategory($categoryId)
+    {
+             $query = Doctor::where('status', Status::ACTIVE);
+
+    if($categoryId !== 'all'){
+        $query->where('category_id', $categoryId);
+    }
+
+    $doctors = $query->get(['id', 'name']);
+
+    return response()->json($doctors);
     }
 
 
@@ -69,10 +113,13 @@ class FrontendController extends Controller
         return view('frontend.blood-donor', compact('bloodDonors'));
     }
 
+
     public function showAmbulance(){
         $ambulances=Cache::remember('ambulances',now()->addMinutes(30),fn() =>Ambulance::where('status',Status::ACTIVE)->paginate(settings('paginate_value')));
         return view('frontend.ambulance',compact('ambulances'));
     }
+
+
     public function showHospital(){
         $hospitals=Cache::remember('hospitals',now()->addMinutes(30),fn() =>Hospital::where('status',Status::ACTIVE)->paginate(settings('paginate_value')));
         return view('frontend.hospital',compact('hospitals'));
@@ -106,6 +153,7 @@ class FrontendController extends Controller
 
         return view('frontend.blog-details', compact('blog', 'recentBlogs', 'previousBlog', 'nextBlog'));
     }
+
     public function about()
     {
         $testimonials = Cache::rememberForever('testimonials', function () {
@@ -113,6 +161,7 @@ class FrontendController extends Controller
         });
         return view('frontend.about-us', compact('testimonials'));
     }
+    
     public function termsConditions()
     {
         return view('frontend.term-condition');
