@@ -37,7 +37,9 @@ class AppointmentRepository implements AppointmentInterface
 
             $appointment            = new $this->model;
             $appointment->phone_number      = $request->phone_number;
+            $appointment->doctor_id      = $request->doctor_id;
             $appointment->patient_name      = $request->patient_name;
+            $appointment->day      = $request->day;
 
             $appointment->save();
 

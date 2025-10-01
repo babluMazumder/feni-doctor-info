@@ -61,6 +61,7 @@ Route::middleware(['XSS'])->group(function () {
     Route::get( 'hospital',    [FrontendController::class, 'showHospital'])->name('hospital');
     Route::get('/get-doctors/{category}', [FrontendController::class, 'getDoctorsByCategory'])->name('get-doctors');
     Route::post('/appointments/store', [AppointmentController::class, 'store'])->name('appointments.store');
+    Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
 
 
     // Route::get('category/{slug}',    [FrontendController::class, 'categoryDetails'])->name('category.details');

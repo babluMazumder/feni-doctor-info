@@ -10,4 +10,11 @@ class Appointment extends Model
 {
     use HasFactory, CommonHelperTrait;
      protected $fillable = ['patient_name', 'phone_number'];
+
+     public function doctor()
+     {
+         return $this->belongsTo(Doctor::class);
+     }
+
+
 }

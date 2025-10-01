@@ -72,6 +72,11 @@
             </li>
             @endif
 
+            <li>
+                 <a class="{{ request()->is('admin/appointment/*') ? 'active' : '' }}" href="{{ route('appointments.index') }}" ><i class="icon-envelope"></i><span class="nav-text">{{ ___('menus.Appointments') }}</span></a>
+
+            </li>
+
 
             @if(hasPermission('todo_read'))
             <li> <a href="{{ route('todo.index') }}" aria-expanded="true"> <i class="icon-notebook"></i> <span class="nav-text">{{___('menus.todo_list')}}</span> </a> </li>

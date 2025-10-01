@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
            $table->id();
-            $table->string('patient_name');   // রোগীর নাম
-            $table->string('phone_number');   // ফোন নম্বর
+            $table->string('patient_name');
+            $table->string('phone_number');
+            $table->foreignId('doctor_id')->constrained('doctors')->nullable()->onDelete('cascade');
+            $table->text('day')->nullable();
+
             $table->timestamps();
         });
     }

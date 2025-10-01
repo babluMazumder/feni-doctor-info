@@ -53,29 +53,20 @@ class FrontendController extends Controller
     public function doctor(Request $request)
     {
         // dd($request->all());
-          // Get categories for the dropdown (cache for 30 minutes)
-    $categories = Cache::remember('categories', now()->addMinutes(30), fn() => Category::where('status', Status::ACTIVE)->get());
+        $categories = Cache::remember('categories', now()->addMinutes(30), fn() => Category::where('status', Status::ACTIVE)->get());
 
-    // Build doctor query
-    $query = Doctor::where('status', Status::ACTIVE);
+        $query = Doctor::where('status', Status::ACTIVE);
 
-    // Filter by category if provided
-    if ($request->filled('category')) {
-        $query->where('category_id', $request->category);
-    }
-
-    // Filter by doctor if provided
-    if ($request->filled('doctor')) {
-        $query->where('id', $request->doctor);
-    }
-
-    // Filter by day if provided
-    if ($request->filled('day')) {
-        $query->whereJsonContains('days_select', $request->day);
-    }
-
-    // Paginate doctors with query string to preserve filters in pagination links
-    $doctors = $query->paginate(settings('paginate_value'))->withQueryString();
+        if ($request->filled('category')) {
+            $query->where('category_id', $request->category);
+        }
+        if ($request->filled('doctor')) {
+            $query->where('id', $request->doctor);
+        }
+        if ($request->filled('day')) {
+            $query->whereJsonContains('days_select', $request->day);
+        }
+        $doctors = $query->paginate(settings('paginate_value'))->withQueryString();
 
         return view('frontend.doctor', compact('doctors', 'categories'));
     }
@@ -161,7 +152,7 @@ class FrontendController extends Controller
         });
         return view('frontend.about-us', compact('testimonials'));
     }
-    
+
     public function termsConditions()
     {
         return view('frontend.term-condition');

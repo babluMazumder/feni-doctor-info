@@ -31,7 +31,7 @@
                         <img src="{{ getImage($category->upload, 'original','default-image-80x80.png') }}" alt="Internal Medicine" class="w-10 h-10" />
                     </div>
                     <h3 class="text-xl font-bold"><a class="text-gray-900 hover:text-blue-500 transition"
-                            href="{{asset('frontend')}}/days.html">{{ $category->title }}</a></h3>
+                            href="">{{ $category->title }}</a></h3>
                     <p class="text-gray-700 text-base font-medium mt-3 mb-6">
                        {{ $category->sub_title }}
                     </p>

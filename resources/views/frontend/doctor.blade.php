@@ -107,21 +107,17 @@
                             <p class="text-red-600 mt-2 font-semibold">{{ $doctor->visiting_hours }}
                                 [{{ $doctor->room_no }}] <br> {{ $doctor->days }}</p>
                             <p class="text-green-600 font-semibold mb-6">Digital Fee: {{ $doctor->visiting_fee }} TK</p>
-                            <span  class="btn-primary rounded-lg btn-black h-10"
+                            <button type="button" data-id="{{ $doctor->id }}" class="btn-primary rounded-lg btn-black h-10 open-modal"
                                  data-modal-target="small-modal" data-modal-toggle="small-modal">Serial Now
-                                <i class="ph-bold ph-arrow-up-right"></i></span>
+                                <i class="ph-bold ph-arrow-up-right"></i></button>
                         </div>
                     @endforeach
-
-
-
-
             </div>
 
             <div class="mt-3">
                 <x-paginate-show :items="$doctors" />
             </div>
-        @else
+           @else
             <p class="text-center text-gray-500 col-span-5">No doctors avilable</p>
             @endif
         </div>
@@ -130,39 +126,6 @@
     <!-- doctor list Ends-->
 @endsection
 
-{{-- @push('scripts')
-    <script>
-        $(document).ready(function() {
-            $('#category').change(function() {
-                let categoryId = $(this).val();
-                let doctorDropdown = $('#doctor');
-                doctorDropdown.html('<option>Loading...</option>');
-
-                let url = '/get-doctors/' + (categoryId ? categoryId : 'all'); // handle all categories
-
-                $.ajax({
-                    url: url,
-                    type: 'GET',
-                    success: function(data) {
-                        let options = '<option value="">All Doctors</option>';
-                        if (data.length > 0) {
-                            $.each(data, function(key, doctor) {
-                                options +=
-                                    `<option value="${doctor.id}">${doctor.name}</option>`;
-                            });
-                        } else {
-                            options += '<option value="">No doctors available</option>';
-                        }
-                        doctorDropdown.html(options);
-                    },
-                    error: function() {
-                        doctorDropdown.html('<option value="">No doctors available</option>');
-                    }
-                });
-            });
-        });
-    </script>
-@endpush --}}
 
 
 {{-- Serial Modal Start --}}
@@ -187,6 +150,7 @@
             <div class="p-4 md:p-5 space-y-4">
                 <form action="{{ route('appointments.store') }}" method="POST">
                     @csrf
+                    <input type="hidden" name="doctor_id" id="doctor_id">
                     <div>
 
                         <input type="text" name="patient_name" id="text"
@@ -199,6 +163,19 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                             placeholder="আপনার ফোন নম্বর লিখুন" required />
                     </div>
+                      {{-- Day Select --}}
+                      @php
+                        use App\Enums\WeekDay;
+                    @endphp
+                        <div>
+                            <select name="day" id="day"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
+                                <option value="">দিন নির্বাচন করুন</option>
+                                @foreach (WeekDay::cases() as $day)
+                                    <option value="{{ $day->value }}">{{ $day->value }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                      <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
                         <button data-modal-hide="small-modal" type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">সিরিয়াল নিন </button>
                         <button data-modal-hide="small-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"> বাতিল করুন </button>
@@ -212,3 +189,37 @@
 </div>
 
 {{-- Serial Modal Ends --}}
+
+
+ {{-- <script src="{{ asset('backend/js/custom/delete_ajax.js') }}"></script> --}}
+@push('scripts')
+<script src="{{ asset('frontend/js/category.js') }}"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const modalButtons = document.querySelectorAll(".open-modal");
+            const hiddenInput = document.getElementById("doctor_id");
+
+            modalButtons.forEach(button => {
+                button.addEventListener("click", function () {
+                    let doctorId = this.getAttribute("data-id");
+                    hiddenInput.value = doctorId; // inject doctor_id into modal form
+                });
+            });
+        });
+
+
+
+            document.addEventListener("DOMContentLoaded", function () {
+                // Get "day" from query string if exists
+                const urlParams = new URLSearchParams(window.location.search);
+                const dayParam = urlParams.get("day");
+
+                // If modal exists and dayParam is found, set it as selected
+                const daySelect = document.getElementById("day");
+                if (dayParam && daySelect) {
+                    daySelect.value = dayParam;
+                }
+            });
+    </script>
+@endpush
