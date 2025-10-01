@@ -37,7 +37,7 @@
                             <div class="flex gap-3 items-center">
                                 <div class="w-12 h-12 rounded-full overflow-hidden"><img src="{{ getImage(@$blog->user->image,'original') }}"
                                         class="w-full h-full object-cover" alt=""></div>
-                                <span class="text-gray-400">by <span class="text-gray-800">{{@$blog->user->name}}</span></span>
+                                <span class="text-gray-400">by:<span class="text-gray-800">{{@$blog->user->name}}</span></span>
                             </div>
                             <div class="line w-px h-4 bg-gray-300"></div>
 
@@ -70,24 +70,39 @@
 
 
                     <div class="flex justify-between gap-3 items-center flex-wrap">
+                            @php
+                                $blogUrl = route('blog.details', ['slug' => $blog->slug]);
+                            @endphp
 
 
-                        <div class="flex gap-3 items-center mt-6 lg:mt-10 flex-wrap">
-                            <span>Share: </span>
-                            <a href="#"
-                                class="w-12 h-12 rounded-full capitalize font-normal text-gray-900 text-lg border hover:bg-blue-500 hover:text-white transition border-gray-200  flex items-center justify-center"><span
-                                    class="icon-facebook"></span></a>
-                            <a href="#"
-                                class="w-12 h-12 rounded-full capitalize font-normal text-gray-900 text-lg border hover:bg-blue-500 hover:text-white transition border-gray-200  flex items-center justify-center"><span
-                                    class="icon-twitter"></span></a>
-                            <a href="#"
-                                class="w-12 h-12 rounded-full capitalize font-normal text-gray-900 text-lg border hover:bg-blue-500 hover:text-white transition border-gray-200  flex items-center justify-center"><span
-                                    class="icon-instagram"></span></a>
-                            <a href="#"
-                                class="w-12 h-12 rounded-full capitalize font-normal text-gray-900 text-lg border hover:bg-blue-500 hover:text-white transition border-gray-200  flex items-center justify-center"><span
-                                    class="icon-youtube"></span></a>
-                        </div>
-                    </div>
+
+                                <div class="flex gap-3 items-center mt-6 lg:mt-10 flex-wrap">
+                                        <span>Share: </span>
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($blogUrl) }}"target="_blank"
+                                            class="w-12 h-12 rounded-full capitalize font-normal text-gray-900 text-lg border hover:bg-blue-500 hover:text-white transition border-gray-200  flex items-center justify-center"><span
+                                                class="icon-facebook"></span></a>
+                                        <a href="https://twitter.com/intent/tweet?url={{ urlencode($blogUrl) }}&text={{ urlencode($blog->title) }}" target="_blank"
+                                            class="w-12 h-12 rounded-full capitalize font-normal text-gray-900 text-lg border hover:bg-blue-500 hover:text-white transition border-gray-200  flex items-center justify-center"><span
+                                                class="icon-twitter"></span></a>
+                                        <a href="https://api.whatsapp.com/send?text={{ urlencode($blog->title . ' ' . $blogUrl) }}" target="_blank"
+                                            class="w-12 h-12 rounded-full capitalize font-normal text-gray-900 text-lg border hover:bg-blue-500 hover:text-white transition border-gray-200  flex items-center justify-center"><span
+                                                class="icon-whatsapp"></span></a>
+                                </div>
+                              <!-- Copy button with message placeholder -->
+                            <div class="relative inline-block">
+                                <a href="javascript:void(0)"
+                                onclick="copyLink(this)"
+                                class="w-12 h-12 rounded-full border flex items-center justify-center hover:bg-gray-700 hover:text-white"
+                                title="Copy Link">
+                                <i class="ph ph-link"></i>
+                                </a>
+                                <!-- Message -->
+                                <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-green-600 text-white text-xs px-3 py-1 rounded-lg shadow
+                                            opacity-0 transition-opacity duration-700 ease-in-out">
+                                    ✅ Link copied
+                                </div>
+                            </div>
+                     </div>
 
                     <div
                         class="flex items-center xl:gap-30 gap-10 justify-between flex-wrap sm:flex-nowrap mt-7 border-y border-gray-200 lg:mt-10 py-5">
@@ -112,11 +127,11 @@
 
                 <div class="h-fit lg:sticky lg:top-24 box-border">
                     <div class="mb-4">
-                        <h4 class="text-xl font-semibold mb-4">Recent Posts</h4>
-                        <div class="aspect-[16/10] rounded-lg overflow-hidden"><img src="{{asset('frontend')}}/assets/img/blog-1.jpg"
+                        {{-- <h4 class="text-xl font-semibold mb-4">Recent Posts</h4> --}}
+                        <div class="aspect-[16/10] rounded-lg overflow-hidden"><img src="{{ getImage(@$blog->user->image,'original') }}"
                                 class="w-full h-full object-cover" alt=""></div>
                     </div>
-                    <div class="flex gap-3 items-center flex-wrap mb-3">
+                    {{-- <div class="flex gap-3 items-center flex-wrap mb-3">
                         <div class="flex gap-2 items-center">
                             <div class="text-xl leading-1"><i class="ph ph-calendar-blank"></i></div>
                             <span class="text-gray-800">31 August, 2025</span>
@@ -128,7 +143,7 @@
                         </div>
                     </div>
                     <h4 class="text-lg font-semibold leading-6 mb-0"><a href="#"class="text-gray-900 hover:text-blue-500 transition duration-300">Exploring Trends in
-                            Medical Cosmetic Procedures</a></h4>
+                            Medical Cosmetic Procedures</a></h4> --}}
 
                               @foreach ($recentBlogs as $recentBlog)
                             <div class="flex gap-4 items-center border-t border-gray-200 pt-4 mt-4">
@@ -140,7 +155,7 @@
                                     <div class="flex gap-2 items-center text-sm mt-2">
                                         <span class="text-gray-800">{{ $recentBlog->date }}</span>
                                         <div class="line w-px h-3 bg-gray-300"></div>
-                                        <span class="text-gray-800"> by{{ $recentBlog->user?->name  }}</span>
+                                        <span class="text-gray-800"> by:{{ $recentBlog->user?->name  }}</span>
                                     </div>
                                 </div>
                               </div>
@@ -158,115 +173,41 @@
         </div>
 
     </section>
-
-    <!-- blog details Ends -->
-
-
-    <!-- related blogs starts -->
-
-    {{-- <section class="bg-gray-50 py-16">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class=" mb-12 flex items-center gap-4 justify-between">
-                <div>
-                    <span class="text-base sm:text-xl font-semibold flex items-center gap-2 leading-4 mb-3">
-                        <span class="text-blue-500 leading-4">
-                            <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480">
-                                <path
-                                    d="M480 240A240 240 0 0 1 240 0 240 240 0 0 1 0 240a240 240 0 0 1 240 240 240 240 0 0 1 240-240Z"
-                                    fill="currentColor"></path>
-                            </svg>
-                        </span>
-                        Blogs</span>
-                    <h2 class="text-2xl sm:text-4xl font-bold text-gray-800 mb-4">News & Blogs</h2>
-                </div>
-                <div><a class="btn-primary rounded-lg h-10" href="./blog-details.html">View All <i
-                            class="ph-bold ph-arrow-up-right"></i></a></div>
-            </div>
-
-            <!-- Blog Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Blog Card 1 -->
-                <div
-                    class="bg-white rounded-xl shadow border border-gray-100 hover:shadow-lg transition overflow-hidden group">
-                    <!-- Parent div with padding -->
-                    <div class="p-6 overflow-hidden rounded-xl">
-                        <div class="aspect-[16/10] overflow-hidden rounded-xl">
-                            <a href="./blog-details.html"><img src="{{asset('frontend')}}/assets/img/blog-1.jpg" alt="Blog 1"
-                                    class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"></a>
-                        </div>
-                    </div>
-
-                    <div class="pb-6 px-6">
-                        <div class="flex items-center text-gray-500 text-sm mb-2 space-x-4">
-                            <span class="flex items-center gap-1"><i class="ph ph-user text-green-500"></i> By
-                                Mediax</span>
-                            <span class="flex items-center gap-1"><i class="ph ph-calendar text-green-500"></i> 15
-                                March, 2024</span>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3">
-                            <a href="./blog-details.html" class="text-gray-900 hover:text-blue-500 transition">Exploring
-                                Trends in Medical Cosmetic Procedures</a>
-                        </h3>
-                        <a href="./blog-details.html" class="btn-primary rounded-lg h-10">Read More <i
-                                class="ph-bold ph-arrow-up-right"></i></a>
-                    </div>
-                </div>
-
-                <div
-                    class="bg-white rounded-xl shadow border border-gray-100 hover:shadow-lg transition overflow-hidden group">
-                    <!-- Parent div with padding -->
-                    <div class="p-6 overflow-hidden rounded-xl">
-                        <div class="aspect-[16/10] overflow-hidden rounded-xl">
-                            <a href="./blog-details.html"><img src="{{asset('frontend')}}/assets/img/blog-2.jpg" alt="Blog 1"
-                                    class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"></a>
-                        </div>
-                    </div>
-
-                    <div class="pb-6 px-6">
-                        <div class="flex items-center text-gray-500 text-sm mb-2 space-x-4">
-                            <span class="flex items-center gap-1"><i class="ph ph-user text-green-500"></i> By
-                                Mediax</span>
-                            <span class="flex items-center gap-1"><i class="ph ph-calendar text-green-500"></i> 15
-                                March, 2024</span>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3">
-                            <a href="./blog-details.html" class="text-gray-900 hover:text-blue-500 transition">Exploring
-                                Trends in Medical Cosmetic Procedures</a>
-                        </h3>
-                        <a href="./blog-details.html" class="btn-primary rounded-lg h-10">Read More <i
-                                class="ph-bold ph-arrow-up-right"></i></a>
-                    </div>
-                </div>
-
-                <div
-                    class="bg-white rounded-xl shadow border border-gray-100 hover:shadow-lg transition overflow-hidden group">
-                    <!-- Parent div with padding -->
-                    <div class="p-6 overflow-hidden rounded-xl">
-                        <div class="aspect-[16/10] overflow-hidden rounded-xl">
-                            <a href="./blog-details.html"><img src="{{asset('frontend')}}/assets/img/blog-3.jpg" alt="Blog 1"
-                                    class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"></a>
-                        </div>
-                    </div>
-
-                    <div class="pb-6 px-6">
-                        <div class="flex items-center text-gray-500 text-sm mb-2 space-x-4">
-                            <span class="flex items-center gap-1"><i class="ph ph-user text-green-500"></i> By
-                                Mediax</span>
-                            <span class="flex items-center gap-1"><i class="ph ph-calendar text-green-500"></i> 15
-                                March, 2024</span>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3">
-                            <a href="./blog-details.html" class="text-gray-900 hover:text-blue-500 transition">Exploring
-                                Trends in Medical Cosmetic Procedures</a>
-                        </h3>
-                        <a href="./blog-details.html" class="btn-primary rounded-lg h-10">Read More <i
-                                class="ph-bold ph-arrow-up-right"></i></a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section> --}}
-
-    <!-- related blogs Ends -->
 @endsection
+
+<script>
+function copyLink(element) {
+    const url = window.location.href;
+    const message = element.parentElement.querySelector("div");
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(() => showMessage(message))
+        .catch(() => fallbackCopy(url, message));
+    } else {
+        fallbackCopy(url, message);
+    }
+}
+
+function fallbackCopy(url, message) {
+    const temp = document.createElement("input");
+    document.body.appendChild(temp);
+    temp.value = url;
+    temp.select();
+    document.execCommand("copy");
+    document.body.removeChild(temp);
+    showMessage(message);
+}
+
+function showMessage(message) {
+    // fade in
+    message.classList.remove("opacity-0");
+    message.classList.add("opacity-100");
+
+    setTimeout(() => {
+        // fade out
+        message.classList.remove("opacity-100");
+        message.classList.add("opacity-0");
+    }, 2000);
+}
+</script>
+

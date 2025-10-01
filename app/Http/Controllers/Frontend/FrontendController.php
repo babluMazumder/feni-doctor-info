@@ -138,7 +138,7 @@ class FrontendController extends Controller
         abort_if(!$blog, 404);
 
 
-        $recentBlogs    = Cache::remember('recent_blog', now()->addMinutes(30), fn() => Blog::with('image', 'author')->where('status', Status::ACTIVE)->whereNot('id', $blog->id)->latest()->take(3)->get(['title', 'slug', 'position', 'date', 'banner', 'id']));
+        $recentBlogs    = Cache::remember('recent_blog', now()->addMinutes(30), fn() => Blog::with('image', 'user')->where('status', Status::ACTIVE)->whereNot('id', $blog->id)->latest()->take(4)->get());
         $previousBlog   = Blog::where('position', '<', $blog->position)->orderBy('position', 'desc')->first(['id', 'title', 'slug', 'position']);
         $nextBlog       = Blog::where('position', '>', $blog->position)->orderBy('position', 'asc')->first(['id', 'title', 'slug', 'position']);
 

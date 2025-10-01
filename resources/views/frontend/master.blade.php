@@ -45,10 +45,10 @@
     <script src="{{ asset('frontend') }}/assets/vendor/easing.min.js"></script>
     <script src="{{ asset('frontend') }}/assets/js/main.js"></script>
     <script src="{{ asset('frontend') }}/assets/vendor/jquery.min.js"></script>
-    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
     <script src="{{ asset('frontend') }}/assets/vendor/flowbite.min.js"></script>
     <script src="{{asset('backend/vendor/sweetalert2/js/sweetalert2.all.min.js') }}"></script>
     <script src="{{asset('backend/js/custom.min.js') }}"></script>
+    <script src="{{ asset('backend/js/custom/dynamic_modal.js') }}"></script>
 
     @stack('scripts')
 </body>

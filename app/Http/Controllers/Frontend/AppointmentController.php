@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
+use App\Traits\ReturnFormatTrait;
 use App\Models\Backend\Appointment;
 use App\Http\Controllers\Controller;
 use App\Repositories\Appointment\AppointmentInterface;
 
 class AppointmentController extends Controller
 {
+
+    use ReturnFormatTrait;
     private $repo;
 
     public function __construct(AppointmentInterface $repo)
@@ -32,6 +35,8 @@ class AppointmentController extends Controller
             'doctor_id' => 'required|exists:doctors,id',
         ]);
         $result =  $this->repo->storeMessage($request);
+
+// dd($result);
 
         if ($result['status']) {
             return redirect()->back()->with('success', $result['message']);

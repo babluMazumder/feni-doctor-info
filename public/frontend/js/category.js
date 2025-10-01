@@ -4,7 +4,7 @@
                 let doctorDropdown = $('#doctor');
                 doctorDropdown.html('<option>Loading...</option>');
 
-                let url = '/get-doctors/' + (categoryId ? categoryId : 'all'); // handle all categories
+                let url = '/get-doctors/' + (categoryId ? categoryId : 'all');
 
                 $.ajax({
                     url: url,

@@ -43,7 +43,7 @@ class AppointmentRepository implements AppointmentInterface
 
             $appointment->save();
 
-            return $this->responseWithSuccess(___('alert.successfully_added'), []);
+            return $this->responseWithSuccess(___('alert.Appointment_booked_successfully!'), []);
 
         } catch (\Throwable $th) {
             return $this->responseWithError(___('alert.something_went_wrong'), []);
